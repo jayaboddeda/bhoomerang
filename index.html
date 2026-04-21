@@ -138,19 +138,44 @@
                         <p>Search Engine Optimization (SEO) & Google/PPC Ads</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/web-branding.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                    <a href="services/web-branding.html" class="tool-card anim anim-up mobile-hide" style="transition-delay: 500ms;">
                         <h4>Building the Foundation</h4>
                         <p>Website Development & Creative Branding</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/email-performance.html" class="tool-card anim anim-up" style="transition-delay: 600ms;">
+                    <a href="services/email-performance.html" class="tool-card anim anim-up mobile-hide" style="transition-delay: 600ms;">
                         <h4>Nurturing the Lead</h4>
                         <p>Email Automation & Performance Marketing</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
 
-                <div class="anim anim-up" style="transition-delay: 750ms; margin-top: 40px;">
+                <div class="anim anim-up mobile-hide" style="transition-delay: 750ms; margin-top: 40px;">
+                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3b: More services (mobile-only continuation slide) -->
+        <section id="chapter-3b" class="mobile-only-section">
+            <div class="container">
+                <h2 class="section-title anim anim-up">More <span class="script-text">Services</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">Foundation &amp; nurture: the other half of the toolkit.</p>
+
+                <div class="services-grid">
+                    <a href="services/web-branding.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                        <h4>Building the Foundation</h4>
+                        <p>Website Development & Creative Branding</p>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/email-performance.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                        <h4>Nurturing the Lead</h4>
+                        <p>Email Automation & Performance Marketing</p>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="anim anim-up" style="transition-delay: 600ms; margin-top: 30px;">
                     <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
@@ -167,6 +192,35 @@
                     </p>
                     <a href="strategy.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+                <div class="journey-steps mobile-hide">
+                    <div class="step-item anim anim-right" style="transition-delay: 100ms;">
+                        <span class="step-number">1</span>
+                        <div><strong>Discover:</strong> Market Research & Competitor Analysis</div>
+                    </div>
+                    <div class="step-item anim anim-right" style="transition-delay: 200ms;">
+                        <span class="step-number">2</span>
+                        <div><strong>Focus:</strong> Audience Targeting & Channel Selection</div>
+                    </div>
+                    <div class="step-item anim anim-right" style="transition-delay: 300ms;">
+                        <span class="step-number">3</span>
+                        <div><strong>Design:</strong> Campaign Strategy & Creative Planning</div>
+                    </div>
+                    <div class="step-item anim anim-right" style="transition-delay: 400ms;">
+                        <span class="step-number">4</span>
+                        <div><strong>Launch:</strong> Campaign Execution</div>
+                    </div>
+                    <div class="step-item anim anim-right" style="transition-delay: 500ms;">
+                        <span class="step-number">5</span>
+                        <div><strong>Evolve:</strong> Continuous Performance Optimization</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 4b: 5-Step Journey (mobile-only continuation slide) -->
+        <section id="chapter-4b" class="mobile-only-section">
+            <div class="container">
+                <h2 class="section-title anim anim-up">The 5-Step <span class="script-text">Journey</span></h2>
                 <div class="journey-steps">
                     <div class="step-item anim anim-right" style="transition-delay: 100ms;">
                         <span class="step-number">1</span>
@@ -379,25 +433,44 @@
         });
 
         // --- Slider Controls: prev/next arrows + pagination dots ---
-        const sections = Array.from(scrollContainer.querySelectorAll('section'));
+        const allSections = Array.from(scrollContainer.querySelectorAll('section'));
         const prevBtn = document.getElementById('slider-prev');
         const nextBtn = document.getElementById('slider-next');
         const dotsWrap = document.getElementById('slider-dots');
 
-        // Build one dot per section
-        sections.forEach((section, i) => {
-            const dot = document.createElement('button');
-            dot.className = 'slider-dot';
-            dot.setAttribute('role', 'tab');
-            dot.setAttribute('aria-label', `Go to section ${i + 1}`);
-            dot.addEventListener('click', () => scrollToSection(section));
-            dotsWrap.appendChild(dot);
-        });
-        const dots = Array.from(dotsWrap.children);
+        // The set of "live" sections changes between desktop and mobile because
+        // .mobile-only-section continuation slides only render below 768px.
+        let sections = [];
+        let dots = [];
+
+        function visibleSections() {
+            return allSections.filter(s => s.offsetParent !== null);
+        }
+
+        function rebuildSlider() {
+            sections = visibleSections();
+            dotsWrap.innerHTML = '';
+            sections.forEach((section, i) => {
+                const dot = document.createElement('button');
+                dot.className = 'slider-dot';
+                dot.setAttribute('role', 'tab');
+                dot.setAttribute('aria-label', `Go to section ${i + 1}`);
+                dot.addEventListener('click', () => scrollToSection(section));
+                dotsWrap.appendChild(dot);
+            });
+            dots = Array.from(dotsWrap.children);
+            updateSliderUI();
+        }
 
         function currentSectionIndex() {
-            const w = scrollContainer.clientWidth;
-            return Math.round(scrollContainer.scrollLeft / w);
+            const sl = scrollContainer.scrollLeft;
+            let closest = 0;
+            let minDist = Infinity;
+            sections.forEach((s, i) => {
+                const d = Math.abs(s.offsetLeft - sl);
+                if (d < minDist) { minDist = d; closest = i; }
+            });
+            return closest;
         }
 
         function updateSliderUI() {
@@ -417,8 +490,39 @@
         });
 
         scrollContainer.addEventListener('scroll', updateSliderUI);
-        window.addEventListener('resize', updateSliderUI);
-        updateSliderUI();
+        window.addEventListener('resize', rebuildSlider);
+        rebuildSlider();
+
+        // --- Mobile: route vertical touch swipes to horizontal section nav ---
+        // Horizontal swipes still scroll natively; vertical swipes that exceed
+        // the threshold advance/retreat one section.
+        const SWIPE_THRESHOLD = 40;
+        let touchStartY = null;
+        let touchStartX = null;
+
+        scrollContainer.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+            touchStartX = e.touches[0].clientX;
+        }, { passive: true });
+
+        scrollContainer.addEventListener('touchend', (e) => {
+            if (touchStartY === null) return;
+            const endY = e.changedTouches[0].clientY;
+            const endX = e.changedTouches[0].clientX;
+            const dy = touchStartY - endY;
+            const dx = touchStartX - endX;
+            touchStartY = touchStartX = null;
+
+            // Only treat as vertical swipe when Y movement dominates.
+            if (Math.abs(dy) > Math.abs(dx) && Math.abs(dy) > SWIPE_THRESHOLD) {
+                const idx = currentSectionIndex();
+                if (dy > 0 && idx < sections.length - 1) {
+                    scrollToSection(sections[idx + 1]);
+                } else if (dy < 0 && idx > 0) {
+                    scrollToSection(sections[idx - 1]);
+                }
+            }
+        }, { passive: true });
     </script>
 </body>
 </html>

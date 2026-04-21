@@ -599,6 +599,11 @@ section {
     }
 }
 
+/* Mobile-only continuation slides: hidden on desktop */
+.mobile-only-section { display: none !important; }
+/* Items hidden on mobile (e.g. cards moved to a continuation slide) */
+.mobile-hide { /* shown on desktop */ }
+
 /* --- Mobile: keep horizontal scroll, make it touch-friendly --- */
 @media (max-width: 768px) {
     .horizontal-scroll-container {
@@ -606,7 +611,7 @@ section {
         height: 100dvh;
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior-x: contain;
+        overscroll-behavior: contain;
     }
     section {
         min-width: 100vw;
@@ -616,61 +621,30 @@ section {
         min-height: 0;
         scroll-snap-align: start;
         scroll-snap-stop: always;
-        /* Safety net: allow vertical scroll inside a panel if content still overflows after
-           clamping. `safe center` centers short content but flips to top-aligned when tall. */
         overflow-y: auto;
         align-items: safe center;
         padding: 80px 6% 70px;
+        /* Block native vertical pan inside a section so the JS handler can convert
+           vertical swipes into horizontal navigation */
+        touch-action: pan-x;
     }
     section::-webkit-scrollbar { display: none; }
+    .mobile-only-section { display: flex !important; }
+    .mobile-hide { display: none !important; }
 
-    /* --- Clamp dense content so each chapter fits within one screen --- */
-
-    /* Long body paragraphs: clamp to 5 lines */
-    .body-text {
-        display: -webkit-box;
-        -webkit-line-clamp: 5;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    /* Service card descriptions: clamp to 2 lines */
-    .tool-card p {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    /* Step item description: single line with ellipsis (label + summary remain readable) */
-    .step-item > div {
-        flex: 1;
-        min-width: 0;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
-
-    /* Contact address: clamp to 2 lines */
-    .contact-item span {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
-
-    /* Keep services in a 2x2 grid on phones so 4 cards still fit on screen */
+    /* Each mobile slide shows only 2 cards (the rest live on the continuation slide),
+       so a single column keeps each card readable */
     .services-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 12px;
+        grid-template-columns: 1fr;
+        gap: 14px;
         margin-top: 20px;
     }
     .tool-card {
-        padding: 16px;
+        padding: 18px 20px;
     }
     .tool-card .card-link {
         margin-top: 8px;
-        font-size: 0.85rem;
+        font-size: 0.9rem;
     }
 
     /* Tone down blobs on small screens to reduce paint cost */
@@ -679,15 +653,6 @@ section {
     }
 }
 
-/* On very narrow phones, fall back to a single column for service cards */
-@media (max-width: 420px) {
-    .services-grid {
-        grid-template-columns: 1fr;
-    }
-    .tool-card p {
-        -webkit-line-clamp: 1;
-    }
-}
 
 /* Short viewports (landscape phones): compact vertical rhythm */
 @media (max-height: 600px) and (orientation: landscape) {
