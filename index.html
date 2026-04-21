@@ -10,319 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --bg-dark: #0a0a0a;
-            --bg-texture: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)" opacity="0.05"/%3E%3C/svg%3E');
-            --orange-accent: #ff8a00;
-            --text-white: #ffffff;
-            --text-muted: #e0e0e0;
-            --dark-card: rgba(255, 255, 255, 0.03);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--bg-dark);
-            color: var(--text-white);
-            line-height: 1.6;
-            overflow: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-image: var(--bg-texture);
-            pointer-events: none;
-            z-index: -2;
-        }
-
-        /* Fixed Parallax Background */
-        .fixed-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .gradient-blob {
-            position: absolute;
-            filter: blur(100px);
-            opacity: 0.35;
-            border-radius: 50%;
-            animation: drift 20s ease-in-out infinite alternate;
-            will-change: transform;
-        }
-
-        .blob-1 {
-            width: 50vw;
-            height: 50vw;
-            background: radial-gradient(circle, var(--orange-accent), transparent);
-            top: -20vh;
-            left: -10vw;
-        }
-
-        .blob-2 {
-            width: 60vw;
-            height: 60vw;
-            background: radial-gradient(circle, #ff2a00, transparent);
-            bottom: -30vh;
-            right: -10vw;
-            animation-delay: -10s;
-        }
-
-        @keyframes drift {
-            0% { margin-left: 0; margin-top: 0; }
-            50% { margin-left: 5vw; margin-top: 5vh; }
-            100% { margin-left: -5vw; margin-top: -5vh; }
-        }
-
-        .rocket {
-            position: absolute;
-            bottom: 15%;
-            left: 0;
-            color: rgba(255, 138, 0, 0.25);
-            font-size: 6rem;
-            will-change: transform;
-            transform: rotate(45deg); /* Pointing forward and up */
-        }
-
-        .highlight {
-            color: var(--orange-accent);
-            font-weight: 600;
-        }
-
-        .script-text {
-            font-family: 'Caveat', cursive;
-            color: var(--orange-accent);
-            font-size: 1.4em;
-            display: inline-block;
-            transform: rotate(-5deg);
-        }
-
-        .horizontal-scroll-container {
-            display: flex;
-            overflow-x: auto;
-            overflow-y: hidden;
-            width: 100vw;
-            height: 100vh;
-        }
-
-        .horizontal-scroll-container::-webkit-scrollbar {
-            display: none;
-        }
-
-        /* Common Section Styles */
-        section {
-            min-width: 100vw;
-            min-height: 100vh;
-            flex-shrink: 0;
-            padding: 60px 5%;
-            display: flex;
-            align-items: center;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        /* Generic Layout Classes */
-        .split-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .center-layout {
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            font-size: 1.8rem;
-            color: var(--orange-accent);
-            font-weight: 500;
-            margin-bottom: 30px;
-        }
-
-        .body-text {
-            font-size: 1.15rem;
-            font-weight: 300;
-            color: var(--text-muted);
-            margin-bottom: 30px;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background-color: var(--orange-accent);
-            color: #000;
-            font-weight: 600;
-            font-size: 1.1rem;
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 138, 0, 0.3);
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(255, 138, 0, 0.5);
-            background-color: #ff9b26;
-        }
-
-        /* --- Chapter 1: The Hook --- */
-        #chapter-1 {
-            background: radial-gradient(circle at center, rgba(40,40,40,0.5) 0%, rgba(10,10,10,1) 100%);
-        }
-        
-        /* --- Chapter 3: Toolkit (Services) --- */
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .tool-card {
-            background: var(--dark-card);
-            padding: 30px;
-            border-radius: 12px;
-            border-left: 4px solid var(--orange-accent);
-            transition: transform 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-5px);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .tool-card h4 {
-            font-size: 1.2rem;
-            color: var(--orange-accent);
-            margin-bottom: 10px;
-        }
-
-        /* --- Chapter 4: The Strategy --- */
-        .journey-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: var(--dark-card);
-            padding: 15px 25px;
-            border-radius: 50px;
-        }
-
-        .step-number {
-            font-family: 'Caveat', cursive;
-            font-size: 2rem;
-            color: var(--orange-accent);
-            min-width: 40px;
-        }
-
-        /* --- Chapter 6: Alliance --- */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .stat-box {
-            text-align: center;
-            padding: 30px;
-            background: var(--dark-card);
-            border-radius: 12px;
-            border: 1px solid rgba(255,138,0,0.2);
-        }
-        .stat-box i {
-            font-size: 2.5rem;
-            color: var(--orange-accent);
-            margin-bottom: 15px;
-        }
-        .stat-box p {
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        /* --- Chapter 7: Contact --- */
-        .contact-details {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            font-size: 1.1rem;
-        }
-        .contact-item i {
-            color: var(--orange-accent);
-            font-size: 1.5rem;
-            width: 30px;
-        }
-
-        /* Responsive */
-        @media (max-width: 992px) {
-            .split-layout {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-        
-        /* Reveal animation support */
-        .reveal {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    </style>
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        // Disable Tailwind's built-in .container utility so our custom .container class controls max-width.
+        tailwind.config = { corePlugins: { container: false } };
+    </script>
+    <!-- Custom styles (loaded after Tailwind so our rules win) -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -332,102 +27,164 @@
         <i class="fa-solid fa-rocket rocket" id="scroll-rocket"></i>
     </div>
 
+    <!-- Top Header -->
+    <header class="site-header">
+        <a href="#chapter-1" class="logo">
+            <img src="bhoom-logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <!-- Offcanvas Menu -->
+    <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+    <aside class="offcanvas" id="offcanvas">
+        <div class="offcanvas-header">
+            <span class="script-text" style="font-size: 1.6rem; transform: none;">Navigate</span>
+            <button class="offcanvas-close" id="offcanvas-close" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="offcanvas-nav">
+            <li><a href="#chapter-1"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="#chapter-2"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li class="has-dropdown">
+                <button type="button" class="nav-dropdown-toggle" aria-expanded="false">
+                    <span><i class="fa-solid fa-briefcase"></i> Services</span>
+                    <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <ul class="nav-submenu">
+                    <li><a href="#chapter-3">Social Media &amp; Content</a></li>
+                    <li><a href="#chapter-3">SEO &amp; Google Ads</a></li>
+                    <li><a href="#chapter-3">Web Development &amp; Branding</a></li>
+                    <li><a href="#chapter-3">Email &amp; Performance Marketing</a></li>
+                </ul>
+            </li>
+            <li><a href="#chapter-7"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="offcanvas-footer">
+            <div><i class="fa-solid fa-envelope" style="color: var(--orange-accent); margin-right: 8px;"></i>hello@bhoomerangmedia.com</div>
+            <div style="margin-top: 8px;"><i class="fa-solid fa-phone" style="color: var(--orange-accent); margin-right: 8px;"></i>+91 8096 56 2345</div>
+        </div>
+    </aside>
+
+    <!-- Slider Controls -->
+    <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous section">
+        <i class="fa-solid fa-chevron-left"></i>
+    </button>
+    <button class="slider-arrow slider-next" id="slider-next" aria-label="Next section">
+        <i class="fa-solid fa-chevron-right"></i>
+    </button>
+    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Section navigation"></div>
+
     <div class="horizontal-scroll-container">
         
         <!-- Chapter 1: The Hook -->
         <section id="chapter-1">
-            <div class="container center-layout reveal">
-                <h1 class="section-title">
+            <video class="bg-video" src="intro.mp4" autoplay muted loop playsinline preload="auto"></video>
+            <div class="container center-layout">
+                <h1 class="section-title anim anim-up">
                     You put your brand out into the <span class="script-text">world.</span>
                 </h1>
-                <h3 class="section-subtitle">We make sure it comes back with an impact.</h3>
-                <p class="body-text">
-                    Welcome to <span class="highlight">BHOOMerang Media</span>. We believe every brand has a story worth telling. 
-                    We help you tell yours through data-driven digital marketing strategies, creative storytelling, 
+                <h3 class="section-subtitle anim anim-up" style="transition-delay: 150ms;">We make sure it comes back with an impact.</h3>
+                <p class="body-text anim anim-up" style="transition-delay: 300ms;">
+                    Welcome to <span class="highlight">BHOOMerang Media</span>. We believe every brand has a story worth telling.
+                    We help you tell yours through data-driven digital marketing strategies, creative storytelling,
                     and campaigns built purely for performance.
                 </p>
-                <a href="#chapter-2" class="btn">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="#chapter-2" class="btn anim anim-scale" style="transition-delay: 500ms;">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
 
         <!-- Chapter 2: The Purpose -->
         <section id="chapter-2">
-            <div class="container split-layout reveal">
+            <div class="container split-layout">
                 <div class="title-column">
-                    <h2 class="section-title">
+                    <h2 class="section-title anim anim-left">
                         Driven by <span class="highlight">Growth.</span><br>
                         Defined by <span class="highlight">Results.</span>
                     </h2>
                 </div>
                 <div class="text-column">
-                    <p class="body-text">
-                        Every great brand needs a trusted guide to navigate the digital landscape. Our purpose is simple: 
-                        to become your global digital growth partner. We don't just chase likes; we combine the art of 
-                        creativity with the science of analytics to generate high-quality leads, boost sales, 
+                    <p class="body-text anim anim-right" style="transition-delay: 200ms;">
+                        Every great brand needs a trusted guide to navigate the digital landscape. Our purpose is simple:
+                        to become your global digital growth partner. We don't just chase likes; we combine the art of
+                        creativity with the science of analytics to generate high-quality leads, boost sales,
                         and produce real, trackable results.
                     </p>
-                    <p class="body-text">
+                    <p class="body-text anim anim-right" style="transition-delay: 400ms;">
                         <strong class="highlight">The Promise:</strong> Innovative, performance-focused marketing that maximizes your ROI and secures long-term success.
                     </p>
+                    <a href="about.html" class="btn btn-outline anim anim-up" style="transition-delay: 600ms;">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 3: The Toolkit -->
         <section id="chapter-3">
-            <div class="container reveal">
-                <h2 class="section-title">The Blueprint for Your <span class="script-text">Success</span></h2>
-                <p class="body-text">To elevate your brand, we build a comprehensive digital ecosystem tailored to your goals.</p>
-                
+            <div class="container">
+                <h2 class="section-title anim anim-up">The Blueprint for Your <span class="script-text">Success</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">To elevate your brand, we build a comprehensive digital ecosystem tailored to your goals.</p>
+
                 <div class="services-grid">
-                    <div class="tool-card">
+                    <a href="services/social-media.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
                         <h4>Capturing Attention</h4>
                         <p>Social Media Marketing & Content Creation</p>
-                    </div>
-                    <div class="tool-card">
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/seo-ads.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
                         <h4>Driving Intent</h4>
                         <p>Search Engine Optimization (SEO) & Google/PPC Ads</p>
-                    </div>
-                    <div class="tool-card">
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/web-branding.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
                         <h4>Building the Foundation</h4>
                         <p>Website Development & Creative Branding</p>
-                    </div>
-                    <div class="tool-card">
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/email-performance.html" class="tool-card anim anim-up" style="transition-delay: 600ms;">
                         <h4>Nurturing the Lead</h4>
                         <p>Email Automation & Performance Marketing</p>
-                    </div>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="anim anim-up" style="transition-delay: 750ms; margin-top: 40px;">
+                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 4: The Strategy -->
         <section id="chapter-4">
-            <div class="container split-layout reveal">
+            <div class="container split-layout">
                 <div class="text-column">
-                    <h2 class="section-title">A Calculated Path <span class="highlight">Forward</span></h2>
-                    <p class="body-text">
-                        Growth doesn't happen by accident. It requires a structured, relentless approach. 
+                    <h2 class="section-title anim anim-left">A Calculated Path <span class="highlight">Forward</span></h2>
+                    <p class="body-text anim anim-left" style="transition-delay: 200ms;">
+                        Growth doesn't happen by accident. It requires a structured, relentless approach.
                         We deploy your narrative across the platforms where your audience actually lives—Meta, Google, YouTube, and LinkedIn—following a proven 5-step journey:
                     </p>
+                    <a href="strategy.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="journey-steps">
-                    <div class="step-item">
+                    <div class="step-item anim anim-right" style="transition-delay: 100ms;">
                         <span class="step-number">1</span>
                         <div><strong>Discover:</strong> Market Research & Competitor Analysis</div>
                     </div>
-                    <div class="step-item">
+                    <div class="step-item anim anim-right" style="transition-delay: 200ms;">
                         <span class="step-number">2</span>
                         <div><strong>Focus:</strong> Audience Targeting & Channel Selection</div>
                     </div>
-                    <div class="step-item">
+                    <div class="step-item anim anim-right" style="transition-delay: 300ms;">
                         <span class="step-number">3</span>
                         <div><strong>Design:</strong> Campaign Strategy & Creative Planning</div>
                     </div>
-                    <div class="step-item">
+                    <div class="step-item anim anim-right" style="transition-delay: 400ms;">
                         <span class="step-number">4</span>
                         <div><strong>Launch:</strong> Campaign Execution</div>
                     </div>
-                    <div class="step-item">
+                    <div class="step-item anim anim-right" style="transition-delay: 500ms;">
                         <span class="step-number">5</span>
                         <div><strong>Evolve:</strong> Continuous Performance Optimization</div>
                     </div>
@@ -437,50 +194,52 @@
 
         <!-- Chapter 5: The Studio -->
         <section id="chapter-5">
-            <div class="container split-layout reveal">
+            <div class="container split-layout">
                 <div class="title-column">
-                    <h2 class="section-title">Bringing Your Story to Life,<br><span class="highlight">Under One Roof.</span></h2>
+                    <h2 class="section-title anim anim-left">Bringing Your Story to Life,<br><span class="highlight">Under One Roof.</span></h2>
                 </div>
                 <div class="text-column">
-                    <p class="body-text">
-                        We don't outsource your brand's voice. With our fully equipped, in-house production facility 
+                    <p class="body-text anim anim-right" style="transition-delay: 150ms;">
+                        We don't outsource your brand's voice. With our fully equipped, in-house production facility
                         and soundproof podcast studio, we maintain absolute creative control from the first frame to the final edit.
                     </p>
-                    <p class="body-text">
+                    <p class="body-text anim anim-right" style="transition-delay: 300ms;">
                         <strong class="highlight">What We Create:</strong> High-end commercial shoots, social reels, corporate videos, and product photography.
                     </p>
-                    <p class="body-text">
+                    <p class="body-text anim anim-right" style="transition-delay: 450ms;">
                         <strong class="highlight">The Podcast Advantage:</strong> Professional-grade mics and multi-camera setups ready for brand podcasts, CEO interviews, and industry discussions. Faster turnaround, consistent storytelling.
                     </p>
+                    <a href="studio.html" class="btn btn-outline anim anim-right" style="transition-delay: 600ms;">Explore Our Studio <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 6: The Alliance -->
         <section id="chapter-6">
-            <div class="container split-layout reveal">
+            <div class="container split-layout">
                 <div class="text-column">
-                    <h2 class="section-title">Your Co-Authors in <span class="script-text">Growth</span></h2>
-                    <p class="body-text">
-                        Your story requires the right supporting cast. We offer flexible team structures to match your exact stage of growth. 
-                        Whether you need a fully Remote Dedicated Team, Hybrid Support for your internal staff, or a Full On-Site Team 
+                    <h2 class="section-title anim anim-left">Your Co-Authors in <span class="script-text">Growth</span></h2>
+                    <p class="body-text anim anim-left" style="transition-delay: 200ms;">
+                        Your story requires the right supporting cast. We offer flexible team structures to match your exact stage of growth.
+                        Whether you need a fully Remote Dedicated Team, Hybrid Support for your internal staff, or a Full On-Site Team
                         deployed directly at your office, we adapt to you.
                     </p>
+                    <a href="contact.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms;">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="stats-grid">
-                    <div class="stat-box">
+                    <div class="stat-box anim anim-scale" style="transition-delay: 150ms;">
                         <i class="fa-solid fa-hand-pointer"></i>
                         <p>Click-Through Rates</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box anim anim-scale" style="transition-delay: 250ms;">
                         <i class="fa-solid fa-bullseye"></i>
                         <p>Cost Per Lead</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box anim anim-scale" style="transition-delay: 350ms;">
                         <i class="fa-solid fa-chart-pie"></i>
                         <p>ROAS Optimization</p>
                     </div>
-                    <div class="stat-box">
+                    <div class="stat-box anim anim-scale" style="transition-delay: 450ms;">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                         <p>Revenue Growth</p>
                     </div>
@@ -490,30 +249,30 @@
 
         <!-- Chapter 7: The Next Chapter -->
         <section id="chapter-7">
-            <div class="container center-layout reveal">
-                <h2 class="section-title">Let’s Write Your Next <span class="highlight">Chapter.</span></h2>
-                <p class="body-text">
-                    We've crafted success stories across E-commerce, Real Estate, Health, Education, Finance, and for emerging Startups. 
+            <div class="container center-layout">
+                <h2 class="section-title anim anim-up">Let's Write Your Next <span class="highlight">Chapter.</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                    We've crafted success stories across E-commerce, Real Estate, Health, Education, Finance, and for emerging Startups.
                     Now, it's time to elevate your brand.
                 </p>
-                
+
                 <div class="contact-details">
-                    <div class="contact-item">
+                    <div class="contact-item anim anim-left" style="transition-delay: 300ms;">
                         <i class="fa-solid fa-location-dot"></i>
                         <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item anim anim-left" style="transition-delay: 400ms;">
                         <i class="fa-solid fa-envelope"></i>
                         <span>hello@bhoomerangmedia.com</span>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-item anim anim-left" style="transition-delay: 500ms;">
                         <i class="fa-solid fa-phone"></i>
                         <span>+91 8096 56 2345</span>
                     </div>
                 </div>
-                
+
                 <br><br>
-                <a href="mailto:hello@bhoomerangmedia.com" class="btn">Let's Elevate Your Brand Together <i class="fa-solid fa-paper-plane"></i></a>
+                <a href="mailto:hello@bhoomerangmedia.com" class="btn anim anim-scale" style="transition-delay: 650ms;">Let's Elevate Your Brand Together <i class="fa-solid fa-paper-plane"></i></a>
             </div>
         </section>
 
@@ -524,30 +283,24 @@
         const rocket = document.getElementById('scroll-rocket');
         const blob1 = document.getElementById('blob-1');
         const blob2 = document.getElementById('blob-2');
-        
-        // Translate vertical wheel scroll to horizontal scroll
+
+        // Translate vertical wheel scroll to horizontal scroll (desktop pointers).
+        // Touch devices handle horizontal swipe natively via overflow-x: auto.
         window.addEventListener('wheel', (evt) => {
             evt.preventDefault();
             scrollContainer.scrollLeft += evt.deltaY + evt.deltaX;
         }, { passive: false });
 
         scrollContainer.addEventListener('scroll', () => {
-            // standard scroll reveal animation
-            reveal();
-
-            // Parallax animations calculation
             let maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
             let scrollPercentage = 0;
             if (maxScrollLeft > 0) {
                 scrollPercentage = scrollContainer.scrollLeft / maxScrollLeft;
             }
 
-            // Move the Rocket horizontally from 0vw to ~85vw. The extra calc handles the angle.
             if (rocket) {
                 rocket.style.transform = `translateX(calc(${scrollPercentage} * 90vw)) translateY(calc(${scrollPercentage} * -10vh)) rotate(45deg)`;
             }
-            
-            // Move Blobs contrary to scroll for beautiful depth 
             if (blob1) {
                 blob1.style.transform = `translateX(calc(${scrollPercentage} * 20vw))`;
             }
@@ -556,21 +309,116 @@
             }
         });
 
-        // Simple scroll reveal animation horizontally
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowWidth = window.innerWidth;
-                var elementLeft = reveals[i].getBoundingClientRect().left;
-                var elementVisible = 150;
-                if (elementLeft < windowWidth - elementVisible) {
-                    reveals[i].classList.add("active");
+        // IntersectionObserver-based scroll animations.
+        // Root is the horizontal scroll container so left/right visibility is tracked.
+        const animObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    animObserver.unobserve(entry.target);
                 }
-            }
+            });
+        }, {
+            root: scrollContainer,
+            threshold: 0.15,
+            rootMargin: '0px -10% 0px -10%'
+        });
+
+        document.querySelectorAll('.anim, .anim-reveal').forEach(el => animObserver.observe(el));
+
+        // Offcanvas menu
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const offcanvas = document.getElementById('offcanvas');
+        const offcanvasOverlay = document.getElementById('offcanvas-overlay');
+        const offcanvasClose = document.getElementById('offcanvas-close');
+
+        function openOffcanvas() {
+            offcanvas.classList.add('active');
+            offcanvasOverlay.classList.add('active');
         }
-        
-        // Trigger once on load
-        reveal();
+        function closeOffcanvas() {
+            offcanvas.classList.remove('active');
+            offcanvasOverlay.classList.remove('active');
+        }
+
+        hamburgerBtn.addEventListener('click', openOffcanvas);
+        offcanvasClose.addEventListener('click', closeOffcanvas);
+        offcanvasOverlay.addEventListener('click', closeOffcanvas);
+
+        // Nav links: horizontally scroll to the target chapter
+        function scrollToSection(target) {
+            scrollContainer.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+        }
+
+        document.querySelectorAll('.offcanvas-nav a, .site-header .logo').forEach(link => {
+            link.addEventListener('click', (e) => {
+                const href = link.getAttribute('href');
+                if (href && href.startsWith('#')) {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        e.preventDefault();
+                        scrollToSection(target);
+                        closeOffcanvas();
+                    }
+                }
+            });
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeOffcanvas();
+        });
+
+        // Services dropdown toggle
+        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const parent = toggle.closest('.has-dropdown');
+                const isOpen = parent.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen);
+            });
+        });
+
+        // --- Slider Controls: prev/next arrows + pagination dots ---
+        const sections = Array.from(scrollContainer.querySelectorAll('section'));
+        const prevBtn = document.getElementById('slider-prev');
+        const nextBtn = document.getElementById('slider-next');
+        const dotsWrap = document.getElementById('slider-dots');
+
+        // Build one dot per section
+        sections.forEach((section, i) => {
+            const dot = document.createElement('button');
+            dot.className = 'slider-dot';
+            dot.setAttribute('role', 'tab');
+            dot.setAttribute('aria-label', `Go to section ${i + 1}`);
+            dot.addEventListener('click', () => scrollToSection(section));
+            dotsWrap.appendChild(dot);
+        });
+        const dots = Array.from(dotsWrap.children);
+
+        function currentSectionIndex() {
+            const w = scrollContainer.clientWidth;
+            return Math.round(scrollContainer.scrollLeft / w);
+        }
+
+        function updateSliderUI() {
+            const idx = currentSectionIndex();
+            dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+            prevBtn.disabled = idx <= 0;
+            nextBtn.disabled = idx >= sections.length - 1;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            const idx = currentSectionIndex();
+            scrollToSection(sections[Math.max(0, idx - 1)]);
+        });
+        nextBtn.addEventListener('click', () => {
+            const idx = currentSectionIndex();
+            scrollToSection(sections[Math.min(sections.length - 1, idx + 1)]);
+        });
+
+        scrollContainer.addEventListener('scroll', updateSliderUI);
+        window.addEventListener('resize', updateSliderUI);
+        updateSliderUI();
     </script>
 </body>
 </html>
