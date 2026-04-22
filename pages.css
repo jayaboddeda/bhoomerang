@@ -57,6 +57,24 @@ body {
     .page section:first-of-type { padding-top: 110px; }
 }
 
+/* Neutralise the home page's mobile horizontal-snap section rules
+   (styles.css @max-width:768px) on inner pages so each section stops
+   becoming its own 100vh scroll container — that's what caused the
+   double scrollbar and the trapped vertical swipe. */
+@media (max-width: 768px) {
+    .page section {
+        min-width: 0;
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        overflow: visible;
+        scroll-snap-align: none;
+        scroll-snap-stop: normal;
+        touch-action: auto;
+        align-items: stretch;
+    }
+}
+
 /* ============================================================
    IMAGE SLOTS — placeholders with aspect ratios & hover zoom
    Replace <img src> with real assets in /images/ when ready.
