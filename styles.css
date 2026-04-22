@@ -647,6 +647,8 @@ section {
 
 /* Mobile-only continuation slides: hidden on desktop */
 .mobile-only-section { display: none !important; }
+/* Inline elements (buttons, rows) that replace a desktop element on mobile */
+.mobile-only-inline { display: none !important; }
 /* Items hidden on mobile (e.g. cards moved to a continuation slide) */
 .mobile-hide { /* shown on desktop */ }
 
@@ -676,6 +678,7 @@ section {
     }
     section::-webkit-scrollbar { display: none; }
     .mobile-only-section { display: flex !important; }
+    .mobile-only-inline { display: block !important; }
     .mobile-hide { display: none !important; }
 
     /* Each mobile slide shows only 2 cards (the rest live on the continuation slide),

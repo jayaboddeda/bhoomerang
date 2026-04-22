@@ -103,6 +103,7 @@
         #chapter-2.chapter-bg::before { background-image: url('images/bg-purpose.jpg'); }
         #chapter-3.chapter-bg::before { background-image: url('images/bg-toolkit.jpg'); }
         #chapter-3b.chapter-bg::before { background-image: url('images/bg-toolkit.jpg'); }
+        #chapter-3c.chapter-bg::before { background-image: url('images/bg-toolkit.jpg'); }
         #chapter-4.chapter-bg::before { background-image: url('images/bg-strategy.jpg'); }
         #chapter-4b.chapter-bg::before { background-image: url('images/bg-strategy.jpg'); }
         #chapter-5.chapter-bg::before { background-image: url('images/bg-studio.jpg'); }
@@ -365,22 +366,28 @@
               Title was getting clipped by the fixed header and the View-All
               button fell below the fold. Reduce title size, card padding, and
               tool-icon dimensions so all 4 cards + intro + CTA sit in 100vh. */
-        #chapter-3, #chapter-3b { padding-top: 90px; padding-bottom: 50px; }
+        #chapter-3, #chapter-3b, #chapter-3c { padding-top: 90px; padding-bottom: 50px; }
         #chapter-3 .section-title,
-        #chapter-3b .section-title {
+        #chapter-3b .section-title,
+        #chapter-3c .section-title {
             font-size: 2.8rem;
             margin-bottom: 10px;
         }
         #chapter-3 .body-text,
-        #chapter-3b .body-text {
+        #chapter-3b .body-text,
+        #chapter-3c .body-text {
             font-size: 1rem;
             margin-bottom: 18px;
         }
         #chapter-3 .services-grid,
-        #chapter-3b .services-grid {
+        #chapter-3b .services-grid,
+        #chapter-3c .services-grid {
             margin-top: 22px;
             gap: 18px;
             grid-template-columns: repeat(3, 1fr); /* 3 cards in a row — one per service */
+        }
+        #chapter-3c .services-grid {
+            grid-template-columns: 1fr 1fr; /* mobile-only slide — 2 cards */
         }
         @media (max-width: 992px) {
             #chapter-3 .services-grid,
@@ -388,14 +395,17 @@
         }
         @media (max-width: 600px) {
             #chapter-3 .services-grid,
-            #chapter-3b .services-grid { grid-template-columns: 1fr; }
+            #chapter-3b .services-grid,
+            #chapter-3c .services-grid { grid-template-columns: 1fr; }
         }
         #chapter-3 .tool-card,
-        #chapter-3b .tool-card {
+        #chapter-3b .tool-card,
+        #chapter-3c .tool-card {
             padding: 22px 24px;
         }
         #chapter-3 .tool-card .tool-icon,
-        #chapter-3b .tool-card .tool-icon {
+        #chapter-3b .tool-card .tool-icon,
+        #chapter-3c .tool-card .tool-icon {
             width: 44px;
             height: 44px;
             font-size: 1.25rem;
@@ -403,28 +413,33 @@
             border-radius: 11px;
         }
         #chapter-3 .tool-card h4,
-        #chapter-3b .tool-card h4 {
+        #chapter-3b .tool-card h4,
+        #chapter-3c .tool-card h4 {
             font-size: 1.08rem;
             margin-bottom: 4px;
         }
         #chapter-3 .tool-card p,
-        #chapter-3b .tool-card p {
+        #chapter-3b .tool-card p,
+        #chapter-3c .tool-card p {
             font-size: 0.92rem;
             line-height: 1.5;
         }
         #chapter-3 .tool-card .card-link,
-        #chapter-3b .tool-card .card-link {
+        #chapter-3b .tool-card .card-link,
+        #chapter-3c .tool-card .card-link {
             margin-top: 10px;
             font-size: 0.9rem;
         }
 
         @media (max-width: 992px) {
             #chapter-3 .section-title,
-            #chapter-3b .section-title { font-size: 2.2rem; }
+            #chapter-3b .section-title,
+            #chapter-3c .section-title { font-size: 2.2rem; }
         }
         @media (max-width: 600px) {
             #chapter-3 .section-title,
-            #chapter-3b .section-title { font-size: 1.9rem; }
+            #chapter-3b .section-title,
+            #chapter-3c .section-title { font-size: 1.9rem; }
         }
 
         /* === Chapter 7 (Contact) — compress section height.
@@ -528,19 +543,23 @@
             #chapter-2 .icon-chip { font-size: 0.78rem; padding: 6px 12px; gap: 6px; }
             #chapter-2 .body-text[style*="margin-top"] { margin-top: 12px !important; }
 
-            /* Chapter 3 / 3b — Toolkit (3 stacked cards is the heaviest mobile slide) */
-            #chapter-3, #chapter-3b { padding-top: 68px; padding-bottom: 50px; }
-            #chapter-3 .body-text, #chapter-3b .body-text { font-size: 0.88rem; margin-bottom: 8px; }
-            #chapter-3 .services-grid, #chapter-3b .services-grid { gap: 10px; margin-top: 12px; }
-            #chapter-3 .tool-card, #chapter-3b .tool-card { padding: 12px 14px; }
+            /* Chapter 3 / 3b / 3c — Toolkit (2 cards per mobile slide — a little more
+               breathing room than the old 3-card stack) */
+            #chapter-3, #chapter-3b, #chapter-3c { padding-top: 68px; padding-bottom: 50px; }
+            #chapter-3 .body-text, #chapter-3b .body-text, #chapter-3c .body-text { font-size: 0.9rem; margin-bottom: 10px; }
+            #chapter-3 .services-grid, #chapter-3b .services-grid, #chapter-3c .services-grid { gap: 12px; margin-top: 16px; }
+            #chapter-3 .tool-card, #chapter-3b .tool-card, #chapter-3c .tool-card { padding: 16px 18px; }
             #chapter-3 .tool-card .tool-icon,
-            #chapter-3b .tool-card .tool-icon { width: 34px; height: 34px; font-size: 0.95rem; margin-bottom: 6px; border-radius: 9px; }
-            #chapter-3 .tool-card h4, #chapter-3b .tool-card h4 { font-size: 0.95rem; margin-bottom: 2px; }
-            #chapter-3 .tool-card p, #chapter-3b .tool-card p { font-size: 0.8rem; line-height: 1.4; }
+            #chapter-3b .tool-card .tool-icon,
+            #chapter-3c .tool-card .tool-icon { width: 38px; height: 38px; font-size: 1rem; margin-bottom: 8px; border-radius: 10px; }
+            #chapter-3 .tool-card h4, #chapter-3b .tool-card h4, #chapter-3c .tool-card h4 { font-size: 1rem; margin-bottom: 4px; }
+            #chapter-3 .tool-card p, #chapter-3b .tool-card p, #chapter-3c .tool-card p { font-size: 0.85rem; line-height: 1.45; }
             #chapter-3 .tool-card .card-link,
-            #chapter-3b .tool-card .card-link { margin-top: 4px; font-size: 0.8rem; }
+            #chapter-3b .tool-card .card-link,
+            #chapter-3c .tool-card .card-link { margin-top: 6px; font-size: 0.82rem; }
             #chapter-3 .container > div:last-child,
-            #chapter-3b .container > div:last-child { margin-top: 14px !important; }
+            #chapter-3b .container > div:last-child,
+            #chapter-3c .container > div:last-child { margin-top: 18px !important; }
 
             /* Chapter 4 — Strategy */
             #chapter-4 .body-text { margin-bottom: 12px; }
@@ -710,7 +729,7 @@
                         <p>Logos, visual identity, brand guidelines &amp; marketing collateral — produced in-house.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/seo-aeo-geo.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                    <a href="services/seo-aeo-geo.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
                         <div class="tool-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h4>SEO, AEO &amp; GEO</h4>
                         <p>Rank on Google, win featured snippets, get cited by ChatGPT &amp; Perplexity.</p>
@@ -743,7 +762,37 @@
                         <p>Commercials, Reels, corporate films, podcasts &amp; ad creatives from our ESI studio.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/web-development.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                    <a href="services/web-development.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+                        <h4>Web Development &amp; UI/UX</h4>
+                        <p>Fast, mobile-first, SEO-ready websites &amp; intuitive experiences built to convert.</p>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="anim anim-up mobile-hide" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
+                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+                <div class="anim anim-up mobile-only-inline" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
+                    <a href="#chapter-3c" class="btn btn-outline">More Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 3c: The Toolkit (mobile-only continuation, 3/3) -->
+        <section id="chapter-3c" class="mobile-only-section chapter-bg">
+            <div class="container">
+                <h2 class="section-title anim anim-up">Round Out the <span class="script-text">Toolkit</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">Get found &amp; convert — the digital foundation layer.</p>
+
+                <div class="services-grid">
+                    <a href="services/seo-aeo-geo.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h4>SEO, AEO &amp; GEO</h4>
+                        <p>Rank on Google, win featured snippets, get cited by ChatGPT &amp; Perplexity.</p>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/web-development.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
                         <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
                         <h4>Web Development &amp; UI/UX</h4>
                         <p>Fast, mobile-first, SEO-ready websites &amp; intuitive experiences built to convert.</p>
