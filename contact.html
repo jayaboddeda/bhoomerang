@@ -15,57 +15,14 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
 </head>
-<body class="page">
+<body class="page" data-base="" data-page="contact">
 
     <div class="fixed-background">
         <div class="gradient-blob blob-1"></div>
         <div class="gradient-blob blob-2"></div>
     </div>
 
-    <header class="site-header">
-        <a href="index.html" class="logo">
-            <img src="logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
-        </a>
-        <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
-            <i class="fa-solid fa-bars"></i>
-        </button>
-    </header>
-
-    <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
-    <aside class="offcanvas" id="offcanvas">
-        <div class="offcanvas-header">
-            <span class="script-text" style="font-size: 1.6rem; transform: none;">Navigate</span>
-            <button class="offcanvas-close" id="offcanvas-close" aria-label="Close menu">
-                <i class="fa-solid fa-xmark"></i>
-            </button>
-        </div>
-        <ul class="offcanvas-nav">
-            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
-            <li class="has-dropdown">
-                <button type="button" class="nav-dropdown-toggle" aria-expanded="false">
-                    <span><i class="fa-solid fa-briefcase"></i> Services</span>
-                    <i class="fa-solid fa-chevron-down chevron"></i>
-                </button>
-                <ul class="nav-submenu">
-                    <li><a href="services/social-media-management.html">Social Media Management</a></li>
-                    <li><a href="services/branding-design.html">Branding &amp; Design</a></li>
-                    <li><a href="services/seo-aeo-geo.html">SEO, AEO &amp; GEO</a></li>
-                    <li><a href="services/performance-marketing.html">Performance Marketing</a></li>
-                    <li><a href="services/video-production.html">Video Production</a></li>
-                    <li><a href="services/web-development.html">Web Development &amp; UI/UX</a></li>
-                </ul>
-            </li>
-            <li><a href="portfolio.html"><i class="fa-solid fa-images"></i> Portfolio</a></li>
-            <li><a href="strategy.html"><i class="fa-solid fa-route"></i> Strategy</a></li>
-            <li><a href="studio.html"><i class="fa-solid fa-video"></i> Studio</a></li>
-            <li><a href="contact.html" aria-current="page"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
-        </ul>
-        <div class="offcanvas-footer">
-            <div><i class="fa-solid fa-envelope" style="color: var(--orange-accent); margin-right: 8px;"></i>hello@bhoomerangmedia.com</div>
-            <div style="margin-top: 8px;"><i class="fa-solid fa-phone" style="color: var(--orange-accent); margin-right: 8px;"></i>+91 8096 56 2345</div>
-        </div>
-    </aside>
+    <div id="site-header-root"></div>
 
     <main>
 
@@ -292,29 +249,12 @@
 
     </main>
 
+    <script src="js/site-header.js"></script>
     <script>
         const animObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); animObserver.unobserve(entry.target); } });
         }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
         document.querySelectorAll('.anim, .anim-reveal').forEach(el => animObserver.observe(el));
-
-        const hamburgerBtn = document.getElementById('hamburger-btn');
-        const offcanvas = document.getElementById('offcanvas');
-        const offcanvasOverlay = document.getElementById('offcanvas-overlay');
-        const offcanvasClose = document.getElementById('offcanvas-close');
-        const openOc = () => { offcanvas.classList.add('active'); offcanvasOverlay.classList.add('active'); };
-        const closeOc = () => { offcanvas.classList.remove('active'); offcanvasOverlay.classList.remove('active'); };
-        hamburgerBtn.addEventListener('click', openOc);
-        offcanvasClose.addEventListener('click', closeOc);
-        offcanvasOverlay.addEventListener('click', closeOc);
-        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOc(); });
-        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
-            toggle.addEventListener('click', () => {
-                const parent = toggle.closest('.has-dropdown');
-                const isOpen = parent.classList.toggle('open');
-                toggle.setAttribute('aria-expanded', isOpen);
-            });
-        });
 
         // Read-only form submit (no backend wired yet): show a friendly notice.
         document.querySelector('.contact-form')?.addEventListener('submit', (e) => {
@@ -322,5 +262,9 @@
             alert("Thanks — we'll get back to you within 24 hours. (Note: form endpoint not yet connected.)");
         });
     </script>
+    <!-- Floating WhatsApp CTA -->
+    <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Bhoomerang Media on WhatsApp" title="Chat on WhatsApp">
+        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
+    </a>
 </body>
 </html>
