@@ -3,7 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bhoomerang Media - Digital Marketing Agency</title>
+    <title>Best Digital Marketing Agency In ESI Hyderabad | Bhoomerang Media</title>
+    <meta name="description" content="Bhoomerang Media is the Best Digital Marketing Agency in ESI, Hyderabad. SEO, Social Media, Google Ads, Web Design &amp; Performance Marketing for businesses near ESI Hospital, Erragadda. Get a free strategy call." />
+    <meta name="author" content="Bhoomerang Media" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IN-TG" />
+    <meta name="geo.placename" content="Erragadda, Hyderabad" />
+    <meta name="geo.position" content="17.4486;78.4338" />
+    <meta name="ICBM" content="17.4486, 78.4338" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Bhoomerang Media" />
+    <meta property="og:title" content="Best Digital Marketing Agency In ESI Hyderabad | Bhoomerang Media" />
+    <meta property="og:description" content="SEO, Social Media, Google Ads, Web Design &amp; Performance Marketing for businesses near ESI Hospital, Erragadda. Free strategy call." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@bhoomerangmedia" />
+    <link rel="sitemap" type="application/xml" href="sitemap.xml" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LocalBusiness",
+      "name": "Bhoomerang Media",
+      "description": "Digital marketing agency in ESI, Hyderabad. Full-service digital marketing — SEO, social media, Google Ads, web design and performance marketing for businesses across Erragadda and Telangana.",
+      "telephone": "+918096562345",
+      "email": "hello@bhoomerangmedia.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station",
+        "addressLocality": "Erragadda",
+        "addressRegion": "Telangana",
+        "postalCode": "500038",
+        "addressCountry": "IN"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": "17.4486", "longitude": "78.4338" },
+      "areaServed": { "@type": "City", "name": "Hyderabad" },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Digital Marketing Services",
+        "itemListElement": [
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Social Media Management" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Branding & Design" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "SEO, AEO & GEO" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Performance Marketing — Meta & Google Ads" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Video Production & Editing" } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development & UI/UX" } }
+        ]
+      },
+      "openingHoursSpecification": [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+        "opens": "09:00",
+        "closes": "19:00"
+      }]
+    }
+    </script>
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,6 +73,439 @@
     </script>
     <!-- Custom styles (loaded after Tailwind so our rules win) -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Home-page visual enhancements -->
+    <style>
+        /* === Per-chapter background images ===
+           Drop into /images/ as the filenames below. Each section lays a
+           low-opacity image underneath, then a gradient overlay keeps text
+           readable over it. The gradient blobs in .fixed-background still
+           show through for depth. */
+        .chapter-bg::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.18;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .chapter-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(10,10,10,0.75), rgba(10,10,10,0.45) 60%, rgba(10,10,10,0.9));
+            z-index: 0;
+            pointer-events: none;
+        }
+        .chapter-bg > .container { position: relative; z-index: 2; }
+
+        #chapter-2.chapter-bg::before { background-image: url('images/bg-purpose.jpg'); }
+        #chapter-3.chapter-bg::before { background-image: url('images/bg-toolkit.jpg'); }
+        #chapter-3b.chapter-bg::before { background-image: url('images/bg-toolkit.jpg'); }
+        #chapter-4.chapter-bg::before { background-image: url('images/bg-strategy.jpg'); }
+        #chapter-4b.chapter-bg::before { background-image: url('images/bg-strategy.jpg'); }
+        #chapter-5.chapter-bg::before { background-image: url('images/bg-studio.jpg'); }
+        #chapter-6.chapter-bg::before { background-image: url('images/bg-alliance.jpg'); opacity: 0.22; }
+        #chapter-7.chapter-bg::before { background-image: url('images/bg-contact.jpg'); }
+
+        /* === Floating decorative icons (hero) === */
+        .float-icons {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .float-icons i {
+            position: absolute;
+            color: var(--orange-accent);
+            opacity: 0.35;
+            filter: drop-shadow(0 0 12px rgba(255, 138, 0, 0.5));
+            animation: gentle-float 6s ease-in-out infinite;
+        }
+        .float-icons i:nth-child(1) { top: 18%; left: 10%; font-size: 2.2rem; animation-delay: 0s; }
+        .float-icons i:nth-child(2) { top: 25%; right: 12%; font-size: 1.8rem; animation-delay: 1.2s; }
+        .float-icons i:nth-child(3) { bottom: 22%; left: 14%; font-size: 2rem; animation-delay: 2.4s; }
+        .float-icons i:nth-child(4) { bottom: 28%; right: 10%; font-size: 1.6rem; animation-delay: 3.6s; }
+        .float-icons i:nth-child(5) { top: 55%; left: 50%; font-size: 1.4rem; animation-delay: 1.8s; }
+        @keyframes gentle-float {
+            0%, 100% { transform: translateY(0); }
+            50%      { transform: translateY(-18px); }
+        }
+        @media (max-width: 768px) {
+            .float-icons i:nth-child(3), .float-icons i:nth-child(4), .float-icons i:nth-child(5) { display: none; }
+        }
+
+        /* === Icon chips (small inline stat tiles) === */
+        .icon-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+        .icon-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.25);
+            border-radius: 50px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+        .icon-chip:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 138, 0, 0.08);
+            border-color: var(--orange-accent);
+        }
+        .icon-chip i { color: var(--orange-accent); }
+        .icon-chip strong { color: var(--text-white); font-weight: 600; }
+
+        /* === Service tool-card enhancements (icon header + hover polish) === */
+        .tool-card .tool-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            background: linear-gradient(135deg, rgba(255, 138, 0, 0.18), rgba(255, 138, 0, 0.04));
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--orange-accent);
+            font-size: 1.6rem;
+            margin-bottom: 16px;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+        }
+        .tool-card:hover .tool-icon {
+            transform: rotate(-8deg) scale(1.08);
+            background: linear-gradient(135deg, rgba(255, 138, 0, 0.35), rgba(255, 138, 0, 0.1));
+        }
+
+        /* === Studio image gallery (2x2 grid) === */
+        .studio-gallery {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-top: 24px;
+        }
+        .studio-tile {
+            position: relative;
+            aspect-ratio: 4 / 3;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.2);
+        }
+        .studio-tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .studio-tile:hover img { transform: scale(1.08); }
+        .studio-tile .tile-fallback {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: var(--orange-accent);
+            background: linear-gradient(135deg, rgba(255, 138, 0, 0.15), rgba(10,10,10,0.5));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .studio-tile .tile-fallback i { font-size: 1.8rem; }
+        .studio-tile .tile-fallback span {
+            font-size: 0.75rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+        .studio-tile.empty .tile-fallback { opacity: 1; }
+        .studio-tile .tile-label {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            background: rgba(10, 10, 10, 0.75);
+            color: #fff;
+            padding: 4px 10px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            letter-spacing: 0.04em;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 138, 0, 0.3);
+        }
+
+        /* === Industry strip (chapter 6) === */
+        .industry-strip {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            margin-top: 30px;
+        }
+        .industry-tile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 18px 10px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.15);
+            border-radius: 14px;
+            transition: transform 0.35s ease, background 0.3s ease, border-color 0.3s ease;
+            text-align: center;
+        }
+        .industry-tile:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 138, 0, 0.06);
+            border-color: var(--orange-accent);
+        }
+        .industry-tile i { font-size: 1.6rem; color: var(--orange-accent); }
+        .industry-tile span { font-size: 0.85rem; color: var(--text-muted); font-weight: 500; }
+        @media (max-width: 768px) {
+            .industry-strip { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* === Hero badge (small caption above h1) === */
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 138, 0, 0.12);
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--orange-accent);
+            font-weight: 500;
+            margin-bottom: 24px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .hero-badge i { font-size: 0.75rem; animation: pulse-dot 2s ease-in-out infinite; }
+        @keyframes pulse-dot {
+            0%, 100% { opacity: 0.4; }
+            50%      { opacity: 1; }
+        }
+
+        /* === Step icon (add icon bubble to journey step) === */
+        .step-item > div { flex: 1; } /* text column expands, pushing icon to the far right */
+        .step-item .step-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.1);
+            color: var(--orange-accent);
+            font-size: 0.9rem;
+            margin-left: auto;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            flex-shrink: 0;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .step-item:hover .step-icon {
+            transform: rotate(8deg);
+            background: var(--orange-accent);
+            color: #000;
+        }
+
+        /* === Contact card inside chapter 7 === */
+        .contact-card {
+            margin-top: 30px;
+            padding: 28px 32px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.25);
+            border-radius: 18px;
+            backdrop-filter: blur(10px);
+            max-width: 760px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* === Studio meta row (equipment icons under image gallery) === */
+        .studio-meta {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            justify-content: center;
+        }
+        .studio-meta .meta-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 14px;
+            background: rgba(255, 138, 0, 0.08);
+            border: 1px solid rgba(255, 138, 0, 0.25);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+        .studio-meta .meta-pill i { color: var(--orange-accent); }
+
+        /* === Stat-box image (replaces default icon when image provided) === */
+        .stat-box .stat-number {
+            font-family: 'Caveat', cursive;
+            font-size: 2.8rem;
+            color: var(--orange-accent);
+            line-height: 1;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* === Chapter 3 (Toolkit) — compress so everything fits in one viewport.
+              Title was getting clipped by the fixed header and the View-All
+              button fell below the fold. Reduce title size, card padding, and
+              tool-icon dimensions so all 4 cards + intro + CTA sit in 100vh. */
+        #chapter-3, #chapter-3b { padding-top: 90px; padding-bottom: 50px; }
+        #chapter-3 .section-title,
+        #chapter-3b .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+        #chapter-3 .body-text,
+        #chapter-3b .body-text {
+            font-size: 1rem;
+            margin-bottom: 18px;
+        }
+        #chapter-3 .services-grid,
+        #chapter-3b .services-grid {
+            margin-top: 22px;
+            gap: 18px;
+            grid-template-columns: repeat(3, 1fr); /* 3 cards in a row — one per service */
+        }
+        @media (max-width: 992px) {
+            #chapter-3 .services-grid,
+            #chapter-3b .services-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            #chapter-3 .services-grid,
+            #chapter-3b .services-grid { grid-template-columns: 1fr; }
+        }
+        #chapter-3 .tool-card,
+        #chapter-3b .tool-card {
+            padding: 22px 24px;
+        }
+        #chapter-3 .tool-card .tool-icon,
+        #chapter-3b .tool-card .tool-icon {
+            width: 44px;
+            height: 44px;
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            border-radius: 11px;
+        }
+        #chapter-3 .tool-card h4,
+        #chapter-3b .tool-card h4 {
+            font-size: 1.08rem;
+            margin-bottom: 4px;
+        }
+        #chapter-3 .tool-card p,
+        #chapter-3b .tool-card p {
+            font-size: 0.92rem;
+            line-height: 1.5;
+        }
+        #chapter-3 .tool-card .card-link,
+        #chapter-3b .tool-card .card-link {
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 992px) {
+            #chapter-3 .section-title,
+            #chapter-3b .section-title { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            #chapter-3 .section-title,
+            #chapter-3b .section-title { font-size: 1.9rem; }
+        }
+
+        /* === Chapter 7 (Contact) — compress section height.
+              Title was too large and the contact card + CTAs had too much
+              breathing room. Tighten everything so it reads as one focused
+              panel instead of a sprawling footer. */
+        #chapter-7 { padding-top: 80px; padding-bottom: 50px; }
+        #chapter-7 .hero-badge { margin-bottom: 16px; }
+        #chapter-7 .section-title {
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            line-height: 1.15;
+        }
+        #chapter-7 .body-text {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        #chapter-7 .contact-card {
+            margin-top: 24px;
+            padding: 22px 26px;
+            max-width: 720px;
+        }
+        #chapter-7 .contact-details { gap: 12px; }
+        #chapter-7 .contact-item { font-size: 1rem; }
+        #chapter-7 .contact-item i { font-size: 1.25rem; }
+        #chapter-7 .contact-card .icon-chips { margin-top: 18px; gap: 10px; }
+        #chapter-7 .icon-chip { font-size: 0.88rem; padding: 8px 14px; }
+
+        @media (max-width: 992px) {
+            #chapter-7 .section-title { font-size: 2.2rem; }
+        }
+        @media (max-width: 600px) {
+            #chapter-7 .section-title { font-size: 1.85rem; }
+            #chapter-7 .contact-card { padding: 18px 20px; }
+        }
+
+        /* === Chapter 6 (Alliance) — compress section height.
+              Stat boxes were too tall (30px padding + big icon), pushing the
+              industry strip and CTA below the fold. Tighten everything so
+              title + stats + industries + CTA fit one viewport. */
+        #chapter-6 { padding-top: 90px; padding-bottom: 50px; }
+        #chapter-6 .section-title {
+            font-size: 2.6rem;
+            margin-bottom: 10px;
+        }
+        #chapter-6 .body-text {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+        #chapter-6 .stats-grid {
+            gap: 14px;
+            margin-top: 22px;
+        }
+        #chapter-6 .stat-box {
+            padding: 16px 18px;
+        }
+        #chapter-6 .stat-box i {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+        }
+        #chapter-6 .stat-box p {
+            font-size: 0.95rem;
+        }
+        #chapter-6 .industry-strip {
+            margin-top: 22px;
+            gap: 10px;
+        }
+        #chapter-6 .industry-tile {
+            padding: 12px 8px;
+            gap: 6px;
+        }
+        #chapter-6 .industry-tile i { font-size: 1.35rem; }
+        #chapter-6 .industry-tile span { font-size: 0.8rem; }
+
+        @media (max-width: 992px) {
+            #chapter-6 .section-title { font-size: 2.1rem; }
+        }
+        @media (max-width: 600px) {
+            #chapter-6 .section-title { font-size: 1.8rem; }
+        }
+    </style>
 </head>
 <body>
 
@@ -30,7 +518,7 @@
     <!-- Top Header -->
     <header class="site-header">
         <a href="#chapter-1" class="logo">
-            <img src="bhoom-logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
+            <img src="logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
         </a>
         <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
             <i class="fa-solid fa-bars"></i>
@@ -48,20 +536,25 @@
         </div>
         <ul class="offcanvas-nav">
             <li><a href="#chapter-1"><i class="fa-solid fa-house"></i> Home</a></li>
-            <li><a href="#chapter-2"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
             <li class="has-dropdown">
                 <button type="button" class="nav-dropdown-toggle" aria-expanded="false">
                     <span><i class="fa-solid fa-briefcase"></i> Services</span>
                     <i class="fa-solid fa-chevron-down chevron"></i>
                 </button>
                 <ul class="nav-submenu">
-                    <li><a href="#chapter-3">Social Media &amp; Content</a></li>
-                    <li><a href="#chapter-3">SEO &amp; Google Ads</a></li>
-                    <li><a href="#chapter-3">Web Development &amp; Branding</a></li>
-                    <li><a href="#chapter-3">Email &amp; Performance Marketing</a></li>
+                    <li><a href="services/social-media-management.html">Social Media Management</a></li>
+                    <li><a href="services/branding-design.html">Branding &amp; Design</a></li>
+                    <li><a href="services/seo-aeo-geo.html">SEO, AEO &amp; GEO</a></li>
+                    <li><a href="services/performance-marketing.html">Performance Marketing</a></li>
+                    <li><a href="services/video-production.html">Video Production</a></li>
+                    <li><a href="services/web-development.html">Web Development &amp; UI/UX</a></li>
                 </ul>
             </li>
-            <li><a href="#chapter-7"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+            <li><a href="portfolio.html"><i class="fa-solid fa-images"></i> Portfolio</a></li>
+            <li><a href="strategy.html"><i class="fa-solid fa-route"></i> Strategy</a></li>
+            <li><a href="studio.html"><i class="fa-solid fa-video"></i> Studio</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
         </ul>
         <div class="offcanvas-footer">
             <div><i class="fa-solid fa-envelope" style="color: var(--orange-accent); margin-right: 8px;"></i>hello@bhoomerangmedia.com</div>
@@ -83,203 +576,272 @@
         <!-- Chapter 1: The Hook -->
         <section id="chapter-1">
             <video class="bg-video" src="intro.mp4" autoplay muted loop playsinline preload="auto"></video>
+
+            <!-- Floating decorative icons -->
+            <div class="float-icons" aria-hidden="true">
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-solid fa-bullseye"></i>
+                <i class="fa-solid fa-chart-line"></i>
+                <i class="fa-brands fa-youtube"></i>
+                <i class="fa-solid fa-magnifying-glass-chart"></i>
+            </div>
+
             <div class="container center-layout">
+                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Digital Marketing Agency · ESI, Hyderabad</span>
                 <h1 class="section-title anim anim-up">
                     You put your brand out into the <span class="script-text">world.</span>
                 </h1>
                 <h3 class="section-subtitle anim anim-up" style="transition-delay: 150ms;">We make sure it comes back with an impact.</h3>
                 <p class="body-text anim anim-up" style="transition-delay: 300ms;">
-                    Welcome to <span class="highlight">BHOOMerang Media</span>. We believe every brand has a story worth telling.
-                    We help you tell yours through data-driven digital marketing strategies, creative storytelling,
+                    Welcome to <span class="highlight">BHOOMerang Media</span>. Data-driven strategy, creative storytelling,
                     and campaigns built purely for performance.
                 </p>
-                <a href="#chapter-2" class="btn anim anim-scale" style="transition-delay: 500ms;">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
+
+                <div class="icon-chips anim anim-up" style="transition-delay: 400ms;">
+                    <span class="icon-chip"><i class="fa-solid fa-house-laptop"></i> <strong>In-house</strong> execution</span>
+                    <span class="icon-chip"><i class="fa-solid fa-chart-simple"></i> <strong>Data-first</strong> campaigns</span>
+                    <span class="icon-chip"><i class="fa-solid fa-location-dot"></i> <strong>ESI</strong> Hyderabad</span>
+                </div>
+
+                <a href="#chapter-2" class="btn anim anim-scale" style="transition-delay: 550ms; margin-top: 30px;">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </section>
 
         <!-- Chapter 2: The Purpose -->
-        <section id="chapter-2">
+        <section id="chapter-2" class="chapter-bg">
             <div class="container split-layout">
-                <div class="title-column">
-                    <h2 class="section-title anim anim-left">
+                <div class="image-column anim anim-left">
+                    <img src="images/growth.png" alt="Driven by Growth" class="section-image">
+                </div>
+                <div class="text-column">
+                    <h2 class="section-title anim anim-right">
                         Driven by <span class="highlight">Growth.</span><br>
                         Defined by <span class="highlight">Results.</span>
                     </h2>
-                </div>
-                <div class="text-column">
                     <p class="body-text anim anim-right" style="transition-delay: 200ms;">
-                        Every great brand needs a trusted guide to navigate the digital landscape. Our purpose is simple:
-                        to become your global digital growth partner. We don't just chase likes; we combine the art of
-                        creativity with the science of analytics to generate high-quality leads, boost sales,
-                        and produce real, trackable results.
+                        We combine the art of creativity with the science of analytics to generate high-quality leads,
+                        boost sales, and produce trackable results — not just likes.
                     </p>
-                    <p class="body-text anim anim-right" style="transition-delay: 400ms;">
-                        <strong class="highlight">The Promise:</strong> Innovative, performance-focused marketing that maximizes your ROI and secures long-term success.
+
+                    <div class="icon-chips anim anim-right" style="transition-delay: 350ms; justify-content: flex-start;">
+                        <span class="icon-chip"><i class="fa-solid fa-arrow-trend-up"></i> <strong>Revenue</strong> growth</span>
+                        <span class="icon-chip"><i class="fa-solid fa-bullseye"></i> <strong>Quality</strong> leads</span>
+                        <span class="icon-chip"><i class="fa-solid fa-gauge-high"></i> <strong>Max</strong> ROI</span>
+                    </div>
+
+                    <p class="body-text anim anim-right" style="transition-delay: 500ms; margin-top: 24px;">
+                        <strong class="highlight">The Promise:</strong> Performance-focused marketing that maximises ROI and secures long-term success.
                     </p>
-                    <a href="about.html" class="btn btn-outline anim anim-up" style="transition-delay: 600ms;">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="about.html" class="btn btn-outline anim anim-up" style="transition-delay: 650ms;">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Chapter 3: The Toolkit -->
-        <section id="chapter-3">
+        <!-- Chapter 3: The Toolkit (1/2) -->
+        <section id="chapter-3" class="chapter-bg">
             <div class="container">
                 <h2 class="section-title anim anim-up">The Blueprint for Your <span class="script-text">Success</span></h2>
-                <p class="body-text anim anim-up" style="transition-delay: 150ms;">To elevate your brand, we build a comprehensive digital ecosystem tailored to your goals.</p>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">A complete digital ecosystem, tailored to your goals.</p>
 
                 <div class="services-grid">
-                    <a href="services/social-media.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
-                        <h4>Capturing Attention</h4>
-                        <p>Social Media Marketing & Content Creation</p>
+                    <a href="services/social-media-management.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-hashtag"></i></div>
+                        <h4>Social Media Management</h4>
+                        <p>Strategy, content, community &amp; analytics — Instagram, Facebook, LinkedIn, YouTube &amp; X.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/seo-ads.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
-                        <h4>Driving Intent</h4>
-                        <p>Search Engine Optimization (SEO) & Google/PPC Ads</p>
+                    <a href="services/branding-design.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
+                        <h4>Branding &amp; Design</h4>
+                        <p>Logos, visual identity, brand guidelines &amp; marketing collateral — produced in-house.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/web-branding.html" class="tool-card anim anim-up mobile-hide" style="transition-delay: 500ms;">
-                        <h4>Building the Foundation</h4>
-                        <p>Website Development & Creative Branding</p>
-                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
-                    </a>
-                    <a href="services/email-performance.html" class="tool-card anim anim-up mobile-hide" style="transition-delay: 600ms;">
-                        <h4>Nurturing the Lead</h4>
-                        <p>Email Automation & Performance Marketing</p>
+                    <a href="services/seo-aeo-geo.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h4>SEO, AEO &amp; GEO</h4>
+                        <p>Rank on Google, win featured snippets, get cited by ChatGPT &amp; Perplexity.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
 
-                <div class="anim anim-up mobile-hide" style="transition-delay: 750ms; margin-top: 40px;">
-                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                <div class="anim anim-up" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
+                    <a href="#chapter-3b" class="btn btn-outline">More Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
-        <!-- Chapter 3b: More services (mobile-only continuation slide) -->
-        <section id="chapter-3b" class="mobile-only-section">
+        <!-- Chapter 3b: The Toolkit (2/2) -->
+        <section id="chapter-3b" class="chapter-bg">
             <div class="container">
                 <h2 class="section-title anim anim-up">More <span class="script-text">Services</span></h2>
-                <p class="body-text anim anim-up" style="transition-delay: 150ms;">Foundation &amp; nurture: the other half of the toolkit.</p>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">The other half of the toolkit — ads, video &amp; web.</p>
 
                 <div class="services-grid">
-                    <a href="services/web-branding.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
-                        <h4>Building the Foundation</h4>
-                        <p>Website Development & Creative Branding</p>
+                    <a href="services/performance-marketing.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-bullseye"></i></div>
+                        <h4>Performance Marketing</h4>
+                        <p>Meta &amp; Google Ads — lead gen, retargeting &amp; ROAS optimisation. Every rupee tracked.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/email-performance.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
-                        <h4>Nurturing the Lead</h4>
-                        <p>Email Automation & Performance Marketing</p>
+                    <a href="services/video-production.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
+                        <h4>Video Production</h4>
+                        <p>Commercials, Reels, corporate films, podcasts &amp; ad creatives from our ESI studio.</p>
+                        <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                    <a href="services/web-development.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                        <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
+                        <h4>Web Development &amp; UI/UX</h4>
+                        <p>Fast, mobile-first, SEO-ready websites &amp; intuitive experiences built to convert.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
                 </div>
 
-                <div class="anim anim-up" style="transition-delay: 600ms; margin-top: 30px;">
+                <div class="anim anim-up" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
                     <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 4: The Strategy -->
-        <section id="chapter-4">
+        <section id="chapter-4" class="chapter-bg">
             <div class="container split-layout">
                 <div class="text-column">
                     <h2 class="section-title anim anim-left">A Calculated Path <span class="highlight">Forward</span></h2>
                     <p class="body-text anim anim-left" style="transition-delay: 200ms;">
-                        Growth doesn't happen by accident. It requires a structured, relentless approach.
-                        We deploy your narrative across the platforms where your audience actually lives—Meta, Google, YouTube, and LinkedIn—following a proven 5-step journey:
+                        Growth doesn't happen by accident. We deploy your narrative across Meta, Google, YouTube and LinkedIn — following a proven 5-step journey.
                     </p>
-                    <a href="strategy.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
+
+                    <div class="icon-chips anim anim-left" style="transition-delay: 300ms; justify-content: flex-start;">
+                        <span class="icon-chip"><i class="fa-brands fa-meta"></i> Meta</span>
+                        <span class="icon-chip"><i class="fa-brands fa-google"></i> Google</span>
+                        <span class="icon-chip"><i class="fa-brands fa-youtube"></i> YouTube</span>
+                        <span class="icon-chip"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
+                    </div>
+
+                    <a href="strategy.html" class="btn btn-outline anim anim-left" style="transition-delay: 500ms; margin-top: 28px;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="journey-steps mobile-hide">
                     <div class="step-item anim anim-right" style="transition-delay: 100ms;">
                         <span class="step-number">1</span>
-                        <div><strong>Discover:</strong> Market Research & Competitor Analysis</div>
+                        <div><strong>Discover:</strong> Market Research &amp; Competitor Analysis</div>
+                        <span class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 200ms;">
                         <span class="step-number">2</span>
-                        <div><strong>Focus:</strong> Audience Targeting & Channel Selection</div>
+                        <div><strong>Focus:</strong> Audience Targeting &amp; Channel Selection</div>
+                        <span class="step-icon"><i class="fa-solid fa-bullseye"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 300ms;">
                         <span class="step-number">3</span>
-                        <div><strong>Design:</strong> Campaign Strategy & Creative Planning</div>
+                        <div><strong>Design:</strong> Campaign Strategy &amp; Creative Planning</div>
+                        <span class="step-icon"><i class="fa-solid fa-pen-ruler"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 400ms;">
                         <span class="step-number">4</span>
                         <div><strong>Launch:</strong> Campaign Execution</div>
+                        <span class="step-icon"><i class="fa-solid fa-rocket"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 500ms;">
                         <span class="step-number">5</span>
-                        <div><strong>Evolve:</strong> Continuous Performance Optimization</div>
+                        <div><strong>Evolve:</strong> Continuous Performance Optimisation</div>
+                        <span class="step-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 4b: 5-Step Journey (mobile-only continuation slide) -->
-        <section id="chapter-4b" class="mobile-only-section">
+        <section id="chapter-4b" class="mobile-only-section chapter-bg">
             <div class="container">
                 <h2 class="section-title anim anim-up">The 5-Step <span class="script-text">Journey</span></h2>
                 <div class="journey-steps">
                     <div class="step-item anim anim-right" style="transition-delay: 100ms;">
                         <span class="step-number">1</span>
-                        <div><strong>Discover:</strong> Market Research & Competitor Analysis</div>
+                        <div><strong>Discover:</strong> Market Research &amp; Competitor Analysis</div>
+                        <span class="step-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 200ms;">
                         <span class="step-number">2</span>
-                        <div><strong>Focus:</strong> Audience Targeting & Channel Selection</div>
+                        <div><strong>Focus:</strong> Audience Targeting &amp; Channel Selection</div>
+                        <span class="step-icon"><i class="fa-solid fa-bullseye"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 300ms;">
                         <span class="step-number">3</span>
-                        <div><strong>Design:</strong> Campaign Strategy & Creative Planning</div>
+                        <div><strong>Design:</strong> Campaign Strategy &amp; Creative Planning</div>
+                        <span class="step-icon"><i class="fa-solid fa-pen-ruler"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 400ms;">
                         <span class="step-number">4</span>
                         <div><strong>Launch:</strong> Campaign Execution</div>
+                        <span class="step-icon"><i class="fa-solid fa-rocket"></i></span>
                     </div>
                     <div class="step-item anim anim-right" style="transition-delay: 500ms;">
                         <span class="step-number">5</span>
-                        <div><strong>Evolve:</strong> Continuous Performance Optimization</div>
+                        <div><strong>Evolve:</strong> Continuous Performance Optimisation</div>
+                        <span class="step-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 5: The Studio -->
-        <section id="chapter-5">
+        <section id="chapter-5" class="chapter-bg">
             <div class="container split-layout">
-                <div class="title-column">
-                    <h2 class="section-title anim anim-left">Bringing Your Story to Life,<br><span class="highlight">Under One Roof.</span></h2>
-                </div>
                 <div class="text-column">
-                    <p class="body-text anim anim-right" style="transition-delay: 150ms;">
-                        We don't outsource your brand's voice. With our fully equipped, in-house production facility
-                        and soundproof podcast studio, we maintain absolute creative control from the first frame to the final edit.
+                    <h2 class="section-title anim anim-left">Your Story to Life,<br><span class="highlight">Under One Roof.</span></h2>
+                    <p class="body-text anim anim-left" style="transition-delay: 150ms;">
+                        Fully equipped production facility and soundproof podcast studio. Absolute creative control from first frame to final edit.
                     </p>
-                    <p class="body-text anim anim-right" style="transition-delay: 300ms;">
-                        <strong class="highlight">What We Create:</strong> High-end commercial shoots, social reels, corporate videos, and product photography.
-                    </p>
-                    <p class="body-text anim anim-right" style="transition-delay: 450ms;">
-                        <strong class="highlight">The Podcast Advantage:</strong> Professional-grade mics and multi-camera setups ready for brand podcasts, CEO interviews, and industry discussions. Faster turnaround, consistent storytelling.
-                    </p>
-                    <a href="studio.html" class="btn btn-outline anim anim-right" style="transition-delay: 600ms;">Explore Our Studio <i class="fa-solid fa-arrow-right"></i></a>
+
+                    <div class="studio-meta anim anim-left" style="transition-delay: 250ms; justify-content: flex-start;">
+                        <span class="meta-pill"><i class="fa-solid fa-video"></i> Cinema Cameras</span>
+                        <span class="meta-pill"><i class="fa-solid fa-microphone-lines"></i> Podcast Booth</span>
+                        <span class="meta-pill"><i class="fa-solid fa-lightbulb"></i> Pro Lighting</span>
+                        <span class="meta-pill"><i class="fa-solid fa-film"></i> Edit Suite</span>
+                    </div>
+
+                    <a href="services/video-production.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms; margin-top: 30px;">Explore Our Studio <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+
+                <!-- 2x2 image gallery
+                     IMAGE SLOTS → /images/studio-*.jpg (each ~800x600)
+                     Falls back to labelled tiles if images not present. -->
+                <div class="studio-gallery anim anim-right" style="transition-delay: 300ms;">
+                    <div class="studio-tile">
+                        <img src="images/studio-camera.jpg" alt="Cinema camera setup" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                        <div class="tile-fallback"><i class="fa-solid fa-camera"></i><span>Camera</span></div>
+                        <span class="tile-label">Commercial shoots</span>
+                    </div>
+                    <div class="studio-tile">
+                        <img src="images/studio-podcast.jpg" alt="Podcast booth" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                        <div class="tile-fallback"><i class="fa-solid fa-microphone-lines"></i><span>Podcast</span></div>
+                        <span class="tile-label">Podcast studio</span>
+                    </div>
+                    <div class="studio-tile">
+                        <img src="images/studio-editing.jpg" alt="Post production edit bay" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                        <div class="tile-fallback"><i class="fa-solid fa-scissors"></i><span>Edit bay</span></div>
+                        <span class="tile-label">Post-production</span>
+                    </div>
+                    <div class="studio-tile">
+                        <img src="images/studio-product.jpg" alt="Product photography setup" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                        <div class="tile-fallback"><i class="fa-solid fa-box"></i><span>Product</span></div>
+                        <span class="tile-label">Product photography</span>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 6: The Alliance -->
-        <section id="chapter-6">
-            <div class="container split-layout">
-                <div class="text-column">
-                    <h2 class="section-title anim anim-left">Your Co-Authors in <span class="script-text">Growth</span></h2>
-                    <p class="body-text anim anim-left" style="transition-delay: 200ms;">
-                        Your story requires the right supporting cast. We offer flexible team structures to match your exact stage of growth.
-                        Whether you need a fully Remote Dedicated Team, Hybrid Support for your internal staff, or a Full On-Site Team
-                        deployed directly at your office, we adapt to you.
+        <section id="chapter-6" class="chapter-bg">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
+                    <h2 class="section-title anim anim-up">Built for <span class="script-text">every industry.</span></h2>
+                    <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                        Success stories across six verticals — flexible team structures to match your stage of growth.
                     </p>
-                    <a href="contact.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms;">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
+
                 <div class="stats-grid">
                     <div class="stat-box anim anim-scale" style="transition-delay: 150ms;">
                         <i class="fa-solid fa-hand-pointer"></i>
@@ -289,44 +851,69 @@
                         <i class="fa-solid fa-bullseye"></i>
                         <p>Cost Per Lead</p>
                     </div>
-                    <div class="stat-box anim anim-scale" style="transition-delay: 350ms;">
+                    <div class="stat-box anim anim-scale mobile-hide" style="transition-delay: 350ms;">
                         <i class="fa-solid fa-chart-pie"></i>
-                        <p>ROAS Optimization</p>
+                        <p>ROAS Optimisation</p>
                     </div>
-                    <div class="stat-box anim anim-scale" style="transition-delay: 450ms;">
+                    <div class="stat-box anim anim-scale mobile-hide" style="transition-delay: 450ms;">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                         <p>Revenue Growth</p>
                     </div>
+                </div>
+
+                <!-- Industry strip -->
+                <div class="industry-strip anim anim-up" style="transition-delay: 550ms;">
+                    <div class="industry-tile"><i class="fa-solid fa-cart-shopping"></i><span>E-commerce</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-building"></i><span>Real Estate</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-heart-pulse"></i><span>Health</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-graduation-cap"></i><span>Education</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-sack-dollar"></i><span>Finance</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-seedling"></i><span>Startups</span></div>
+                </div>
+
+                <div class="anim anim-up" style="transition-delay: 700ms; margin-top: 40px; text-align: center;">
+                    <a href="contact.html" class="btn btn-outline">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
         <!-- Chapter 7: The Next Chapter -->
-        <section id="chapter-7">
+        <section id="chapter-7" class="chapter-bg">
             <div class="container center-layout">
+                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Ready to Grow?</span>
                 <h2 class="section-title anim anim-up">Let's Write Your Next <span class="highlight">Chapter.</span></h2>
                 <p class="body-text anim anim-up" style="transition-delay: 150ms;">
-                    We've crafted success stories across E-commerce, Real Estate, Health, Education, Finance, and for emerging Startups.
-                    Now, it's time to elevate your brand.
+                    Your story starts with one conversation. We'd love to hear about your business.
                 </p>
 
-                <div class="contact-details">
-                    <div class="contact-item anim anim-left" style="transition-delay: 300ms;">
-                        <i class="fa-solid fa-location-dot"></i>
-                        <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
+                <div class="contact-card anim anim-up" style="transition-delay: 300ms;">
+                    <div class="contact-details" style="margin-top: 0;">
+                        <div class="contact-item">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span><a href="mailto:hello@bhoomerangmedia.com" style="color: inherit; text-decoration: none;">hello@bhoomerangmedia.com</a></span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fa-solid fa-phone"></i>
+                            <span><a href="tel:+918096562345" style="color: inherit; text-decoration: none;">+91 8096 56 2345</a></span>
+                        </div>
                     </div>
-                    <div class="contact-item anim anim-left" style="transition-delay: 400ms;">
-                        <i class="fa-solid fa-envelope"></i>
-                        <span>hello@bhoomerangmedia.com</span>
-                    </div>
-                    <div class="contact-item anim anim-left" style="transition-delay: 500ms;">
-                        <i class="fa-solid fa-phone"></i>
-                        <span>+91 8096 56 2345</span>
+
+                    <div class="icon-chips" style="margin-top: 24px;">
+                        <a href="https://instagram.com" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-instagram"></i> Instagram</a>
+                        <a href="https://linkedin.com" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+                        <a href="https://youtube.com" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-youtube"></i> YouTube</a>
+                        <a href="https://wa.me/918096562345" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
                     </div>
                 </div>
 
-                <br><br>
-                <a href="mailto:hello@bhoomerangmedia.com" class="btn anim anim-scale" style="transition-delay: 650ms;">Let's Elevate Your Brand Together <i class="fa-solid fa-paper-plane"></i></a>
+                <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
+                    <a href="contact.html" class="btn anim anim-scale" style="transition-delay: 500ms;">Start a Conversation <i class="fa-solid fa-paper-plane"></i></a>
+                    <a href="services.html" class="btn btn-outline anim anim-scale" style="transition-delay: 600ms;">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
             </div>
         </section>
 
@@ -338,12 +925,53 @@
         const blob1 = document.getElementById('blob-1');
         const blob2 = document.getElementById('blob-2');
 
-        // Translate vertical wheel scroll to horizontal scroll (desktop pointers).
-        // Touch devices handle horizontal swipe natively via overflow-x: auto.
+        // Translate wheel scroll into full-slide navigation (one section per gesture).
+        // Lock stays on during the programmatic smooth scroll and releases only after
+        // both the animation has ended AND wheel events have stopped for the grace
+        // period — absorbs the trackpad inertia tail so one swipe = one slide.
+        const WHEEL_IDLE_MS = 150;
+        const WHEEL_FALLBACK_MS = 900;
+        let wheelLocked = false;
+        let wheelIdleTimer = null;
+        let wheelFallbackTimer = null;
+
+        function releaseWheelLock() {
+            wheelLocked = false;
+            clearTimeout(wheelIdleTimer);
+            clearTimeout(wheelFallbackTimer);
+        }
+
+        function scheduleIdleRelease() {
+            clearTimeout(wheelIdleTimer);
+            wheelIdleTimer = setTimeout(releaseWheelLock, WHEEL_IDLE_MS);
+        }
+
         window.addEventListener('wheel', (evt) => {
             evt.preventDefault();
-            scrollContainer.scrollLeft += evt.deltaY + evt.deltaX;
+            if (wheelLocked) { scheduleIdleRelease(); return; }
+
+            const delta = evt.deltaY + evt.deltaX;
+            if (Math.abs(delta) < 5) return;
+
+            const idx = currentSectionIndex();
+            const targetIdx = delta > 0
+                ? Math.min(sections.length - 1, idx + 1)
+                : Math.max(0, idx - 1);
+
+            wheelLocked = true;
+            // Fallback in case scrollend never fires (older browsers, no movement).
+            clearTimeout(wheelFallbackTimer);
+            wheelFallbackTimer = setTimeout(releaseWheelLock, WHEEL_FALLBACK_MS);
+
+            if (targetIdx !== idx) scrollToSection(sections[targetIdx]);
+            else scheduleIdleRelease();
         }, { passive: false });
+
+        // When the programmatic smooth scroll completes, arm the idle timer — the
+        // lock releases once wheel events have also stopped.
+        scrollContainer.addEventListener('scrollend', () => {
+            if (wheelLocked) scheduleIdleRelease();
+        });
 
         scrollContainer.addEventListener('scroll', () => {
             let maxScrollLeft = scrollContainer.scrollWidth - scrollContainer.clientWidth;
@@ -399,15 +1027,34 @@
         offcanvasClose.addEventListener('click', closeOffcanvas);
         offcanvasOverlay.addEventListener('click', closeOffcanvas);
 
-        // Nav links: horizontally scroll to the target chapter
+        // Slide transition: soften the container (blur + dim), do the instant scroll
+        // while it's blurred so the snap is invisible, then sharpen back.
+        const SOFTEN_MS = 280;
+        const RESTORE_MS = 320;
+        let transitionActive = false;
+
         function scrollToSection(target) {
-            scrollContainer.scrollTo({ left: target.offsetLeft, behavior: 'smooth' });
+            if (transitionActive) return;
+            transitionActive = true;
+
+            scrollContainer.classList.add('transitioning');
+
+            setTimeout(() => {
+                scrollContainer.scrollTo({ left: target.offsetLeft, behavior: 'auto' });
+                scrollContainer.classList.remove('transitioning');
+                setTimeout(() => {
+                    transitionActive = false;
+                }, RESTORE_MS);
+            }, SOFTEN_MS);
         }
 
-        document.querySelectorAll('.offcanvas-nav a, .site-header .logo').forEach(link => {
+        // Intercept every in-page hash link (offcanvas, logo, in-section CTAs like
+        // "More Services →") and route it through scrollToSection so the slider
+        // animation plays correctly instead of fighting scroll-snap.
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
             link.addEventListener('click', (e) => {
                 const href = link.getAttribute('href');
-                if (href && href.startsWith('#')) {
+                if (href && href.length > 1 && href.startsWith('#')) {
                     const target = document.querySelector(href);
                     if (target) {
                         e.preventDefault();

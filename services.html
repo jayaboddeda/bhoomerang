@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Marketing Services in Hyderabad | Bhoomerang Media ESI</title>
+    <meta name="description" content="Full-service digital marketing in Hyderabad — Social Media Management, Branding, SEO/AEO/GEO, Performance Marketing, Video Production & Web Development. Based in ESI, Erragadda." />
+    <meta name="author" content="Bhoomerang Media" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { corePlugins: { container: false } };</script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body class="page">
+
+    <div class="fixed-background">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+    </div>
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+    <aside class="offcanvas" id="offcanvas">
+        <div class="offcanvas-header">
+            <span class="script-text" style="font-size: 1.6rem; transform: none;">Navigate</span>
+            <button class="offcanvas-close" id="offcanvas-close" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="offcanvas-nav">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li class="has-dropdown">
+                <button type="button" class="nav-dropdown-toggle" aria-expanded="true">
+                    <span><i class="fa-solid fa-briefcase"></i> Services</span>
+                    <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <ul class="nav-submenu">
+                    <li><a href="services/social-media-management.html">Social Media Management</a></li>
+                    <li><a href="services/branding-design.html">Branding &amp; Design</a></li>
+                    <li><a href="services/seo-aeo-geo.html">SEO, AEO &amp; GEO</a></li>
+                    <li><a href="services/performance-marketing.html">Performance Marketing</a></li>
+                    <li><a href="services/video-production.html">Video Production</a></li>
+                    <li><a href="services/web-development.html">Web Development &amp; UI/UX</a></li>
+                </ul>
+            </li>
+            <li><a href="portfolio.html"><i class="fa-solid fa-images"></i> Portfolio</a></li>
+            <li><a href="strategy.html"><i class="fa-solid fa-route"></i> Strategy</a></li>
+            <li><a href="studio.html"><i class="fa-solid fa-video"></i> Studio</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="offcanvas-footer">
+            <div><i class="fa-solid fa-envelope" style="color: var(--orange-accent); margin-right: 8px;"></i>hello@bhoomerangmedia.com</div>
+            <div style="margin-top: 8px;"><i class="fa-solid fa-phone" style="color: var(--orange-accent); margin-right: 8px;"></i>+91 8096 56 2345</div>
+        </div>
+    </aside>
+
+    <main>
+
+        <!-- HERO
+             IMAGE SLOT: wide hero banner
+             → images/services-hero.jpg  (1600×900) -->
+        <section id="hero">
+            <div class="container center-layout">
+                <span class="eyebrow anim anim-up">Our Services</span>
+                <h1 class="section-title anim anim-up">
+                    Digital marketing services in <span class="script-text">Hyderabad</span>
+                </h1>
+                <p class="body-text anim anim-up" style="transition-delay: 200ms;">
+                    A complete suite of services built for businesses in ESI, Erragadda and across Hyderabad.
+                    Whether you're launching or scaling, we have the strategy, tools, and talent —
+                    <span class="highlight">all in-house</span>, all accountable.
+                </p>
+
+                <div class="image-slot ratio-16-9 hero-image-slot anim anim-up" style="transition-delay: 400ms;">
+                    <img src="images/services-hero.jpg" alt="Bhoomerang Media services" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                    <div class="slot-caption">
+                        <i class="fa-regular fa-image"></i>
+                        <span>images/services-hero.jpg · 1600×900</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICES GRID -->
+        <section id="services-list">
+            <div class="container">
+                <div class="section-intro">
+                    <span class="eyebrow anim anim-up">What We Do</span>
+                    <h2 class="section-title anim anim-up">Six services. <span class="highlight">One growth engine.</span></h2>
+                    <p class="body-text anim anim-up" style="transition-delay: 150ms;">Pick one. Pick them all. Each one integrates with the others to compound your results.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Social Media Management -->
+                    <a href="services/social-media-management.html" class="tool-card anim anim-up" style="transition-delay: 200ms;">
+                        <div class="card-image">
+                            <img src="images/svc-social.jpg" alt="Social media management" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-hashtag"></i></div>
+                        </div>
+                        <h4>Social Media Management</h4>
+                        <p>End-to-end management of Instagram, Facebook, LinkedIn, YouTube &amp; X — strategy, content creation, community engagement, monthly analytics.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Branding & Design -->
+                    <a href="services/branding-design.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                        <div class="card-image">
+                            <img src="images/svc-branding.jpg" alt="Branding and design" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-palette"></i></div>
+                        </div>
+                        <h4>Branding &amp; Design</h4>
+                        <p>Strategy-led brand identity — logos, visual systems, brand guidelines, marketing collateral &amp; social templates, all produced in-house.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- SEO, AEO & GEO -->
+                    <a href="services/seo-aeo-geo.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                        <div class="card-image">
+                            <img src="images/svc-seo.jpg" alt="SEO AEO GEO" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        </div>
+                        <h4>SEO, AEO &amp; GEO</h4>
+                        <p>Rank on Google with SEO. Win featured snippets with AEO. Get cited by ChatGPT, Perplexity &amp; AI Overviews with GEO.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Performance Marketing -->
+                    <a href="services/performance-marketing.html" class="tool-card anim anim-up" style="transition-delay: 500ms;">
+                        <div class="card-image">
+                            <img src="images/svc-ads.jpg" alt="Performance marketing" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-chart-line"></i></div>
+                        </div>
+                        <h4>Performance Marketing</h4>
+                        <p>Data-driven Meta &amp; Google Ads that capture high-intent buyers, retarget warm audiences, and maximise ROAS. Every rupee tracked.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Video Production -->
+                    <a href="services/video-production.html" class="tool-card anim anim-up" style="transition-delay: 600ms;">
+                        <div class="card-image">
+                            <img src="images/svc-video.jpg" alt="Video production" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-video"></i></div>
+                        </div>
+                        <h4>Video Production &amp; Editing</h4>
+                        <p>Full in-house video at our ESI studio — commercials, Reels, corporate films, podcasts, product videos &amp; ad creatives.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <!-- Web Development -->
+                    <a href="services/web-development.html" class="tool-card anim anim-up" style="transition-delay: 700ms;">
+                        <div class="card-image">
+                            <img src="images/svc-web.jpg" alt="Web development" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="placeholder-icon" style="display: none;"><i class="fa-solid fa-code"></i></div>
+                        </div>
+                        <h4>Web Development &amp; UI/UX</h4>
+                        <p>Fast, mobile-first, SEO-ready websites and intuitive digital experiences — built to convert visitors into customers.</p>
+                        <span class="card-link">Explore service <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHY BHOOMERANG
+             IMAGE SLOT: workspace / team at work
+             → images/services-why.jpg  (1200×900) -->
+        <section id="why-us">
+            <div class="container split-layout reverse">
+                <div class="image-column anim anim-right">
+                    <div class="image-slot ratio-4-3">
+                        <img src="images/services-why.jpg" alt="Bhoomerang team at work" onerror="this.parentElement.classList.add('empty'); this.style.display='none';">
+                        <div class="slot-caption">
+                            <i class="fa-solid fa-users"></i>
+                            <span>images/services-why.jpg · 1200×900</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-column">
+                    <span class="eyebrow anim anim-left">Why Bhoomerang</span>
+                    <h2 class="section-title anim anim-left">
+                        One agency. <span class="highlight">Every channel covered.</span>
+                    </h2>
+                    <p class="body-text anim anim-left" style="transition-delay: 150ms;">
+                        Instead of juggling five vendors, get strategy, creative, and media under one roof — tuned to Hyderabad's market.
+                    </p>
+                    <ul class="feature-list anim anim-left" style="transition-delay: 300ms;">
+                        <li>Hyderabad-based team, deep local knowledge</li>
+                        <li>Fully in-house execution — no subcontracting</li>
+                        <li>Data-first: leads &amp; revenue, not vanity metrics</li>
+                        <li>Transparent monthly reporting with ROI attribution</li>
+                        <li>Flexible: Remote, Hybrid or Full On-Site engagement</li>
+                        <li>Integrated services that compound results</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROCESS -->
+        <section id="process">
+            <div class="container">
+                <div class="section-intro">
+                    <span class="eyebrow anim anim-up">How We Work</span>
+                    <h2 class="section-title anim anim-up">A <span class="script-text">five-step</span> path to results</h2>
+                    <p class="body-text anim anim-up" style="transition-delay: 150ms;">Structured. Repeatable. Relentless.</p>
+                </div>
+
+                <div class="process-grid" style="grid-template-columns: repeat(5, 1fr);">
+                    <div class="process-step anim anim-up" style="transition-delay: 200ms;">
+                        <span class="step-num">1</span>
+                        <h4>Discover</h4>
+                        <p>Market research &amp; competitor analysis.</p>
+                    </div>
+                    <div class="process-step anim anim-up" style="transition-delay: 300ms;">
+                        <span class="step-num">2</span>
+                        <h4>Focus</h4>
+                        <p>Audience targeting &amp; channel selection.</p>
+                    </div>
+                    <div class="process-step anim anim-up" style="transition-delay: 400ms;">
+                        <span class="step-num">3</span>
+                        <h4>Design</h4>
+                        <p>Campaign strategy &amp; creative planning.</p>
+                    </div>
+                    <div class="process-step anim anim-up" style="transition-delay: 500ms;">
+                        <span class="step-num">4</span>
+                        <h4>Launch</h4>
+                        <p>Campaign execution across channels.</p>
+                    </div>
+                    <div class="process-step anim anim-up" style="transition-delay: 600ms;">
+                        <span class="step-num">5</span>
+                        <h4>Evolve</h4>
+                        <p>Continuous performance optimisation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta">
+            <div class="container center-layout">
+                <h2 class="section-title anim anim-up">Not sure which service you <span class="highlight">need?</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                    Tell us about your business. We'll audit your current digital presence and recommend the right mix of services to hit your specific goals.
+                </p>
+                <a href="contact.html" class="btn anim anim-scale" style="transition-delay: 300ms;">Book a Free Consultation <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>© 2026 Bhoomerang Media · Digital Marketing Services in ESI, Hyderabad</p>
+            <p class="footer-nav">
+                <a href="index.html">Home</a> ·
+                <a href="about.html">About</a> ·
+                <a href="services.html">Services</a> ·
+                <a href="contact.html">Contact</a>
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        const animObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    animObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.anim, .anim-reveal').forEach(el => animObserver.observe(el));
+
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const offcanvas = document.getElementById('offcanvas');
+        const offcanvasOverlay = document.getElementById('offcanvas-overlay');
+        const offcanvasClose = document.getElementById('offcanvas-close');
+        const openOc = () => { offcanvas.classList.add('active'); offcanvasOverlay.classList.add('active'); };
+        const closeOc = () => { offcanvas.classList.remove('active'); offcanvasOverlay.classList.remove('active'); };
+        hamburgerBtn.addEventListener('click', openOc);
+        offcanvasClose.addEventListener('click', closeOc);
+        offcanvasOverlay.addEventListener('click', closeOc);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOc(); });
+        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const parent = toggle.closest('.has-dropdown');
+                const isOpen = parent.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen);
+            });
+        });
+        // Auto-open services dropdown on services pages
+        document.querySelector('.has-dropdown')?.classList.add('open');
+    </script>
+</body>
+</html>

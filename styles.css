@@ -113,6 +113,13 @@ body::before {
     overflow-y: hidden;
     width: 100vw;
     height: 100vh;
+    scroll-snap-type: x mandatory;
+    overscroll-behavior: contain;
+}
+
+section {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
 }
 
 .horizontal-scroll-container::-webkit-scrollbar {
@@ -148,6 +155,22 @@ section {
     text-align: center;
     max-width: 900px;
     margin: 0 auto;
+}
+
+.image-column {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-image {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#chapter-2 .section-title {
+    font-size: 3rem;
 }
 
 .section-title {
@@ -1046,6 +1069,27 @@ section {
         transform: none !important;
         opacity: 1 !important;
         clip-path: none !important;
+        filter: none !important;
+    }
+}
+
+/* --- Slide transition: soften (blur + dim) the scroll container during nav.
+   The fixed background, blobs and rocket sit outside the container so they
+   stay sharp and continue to animate, giving a sense of depth while the
+   foreground softens through the snap. --- */
+.horizontal-scroll-container {
+    transition: filter 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.horizontal-scroll-container.transitioning {
+    filter: blur(14px) brightness(0.45);
+    will-change: filter;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .horizontal-scroll-container,
+    .horizontal-scroll-container.transitioning {
+        transition: none !important;
         filter: none !important;
     }
 }

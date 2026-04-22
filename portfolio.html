@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portfolio | Digital Marketing Case Studies Hyderabad | Bhoomerang Media</title>
+    <meta name="description" content="Bhoomerang Media's client portfolio — brands across e-commerce, real estate, health, education, finance and startups. See the Hyderabad businesses we've helped grow with digital marketing." />
+    <meta name="author" content="Bhoomerang Media" />
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+    <meta name="geo.region" content="IN-TG" />
+    <meta name="geo.placename" content="Erragadda, Hyderabad" />
+    <meta property="og:locale" content="en_IN" />
+    <meta property="og:site_name" content="Bhoomerang Media" />
+    <meta property="og:title" content="Client Portfolio | Bhoomerang Media Hyderabad" />
+    <meta property="og:description" content="Clients across e-commerce, real estate, health, education, finance and startups — the brands Bhoomerang Media has grown." />
+    <meta property="og:type" content="website" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>tailwind.config = { corePlugins: { container: false } };</script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body class="page">
+
+    <div class="fixed-background">
+        <div class="gradient-blob blob-1"></div>
+        <div class="gradient-blob blob-2"></div>
+    </div>
+
+    <header class="site-header">
+        <a href="index.html" class="logo">
+            <img src="logo.png" alt="Bhoomerang Media" onerror="this.style.display='none'">
+        </a>
+        <button class="hamburger" id="hamburger-btn" aria-label="Open menu">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </header>
+
+    <div class="offcanvas-overlay" id="offcanvas-overlay"></div>
+    <aside class="offcanvas" id="offcanvas">
+        <div class="offcanvas-header">
+            <span class="script-text" style="font-size: 1.6rem; transform: none;">Navigate</span>
+            <button class="offcanvas-close" id="offcanvas-close" aria-label="Close menu">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <ul class="offcanvas-nav">
+            <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+            <li><a href="about.html"><i class="fa-solid fa-circle-info"></i> About Us</a></li>
+            <li class="has-dropdown">
+                <button type="button" class="nav-dropdown-toggle" aria-expanded="false">
+                    <span><i class="fa-solid fa-briefcase"></i> Services</span>
+                    <i class="fa-solid fa-chevron-down chevron"></i>
+                </button>
+                <ul class="nav-submenu">
+                    <li><a href="services/social-media-management.html">Social Media Management</a></li>
+                    <li><a href="services/branding-design.html">Branding &amp; Design</a></li>
+                    <li><a href="services/seo-aeo-geo.html">SEO, AEO &amp; GEO</a></li>
+                    <li><a href="services/performance-marketing.html">Performance Marketing</a></li>
+                    <li><a href="services/video-production.html">Video Production</a></li>
+                    <li><a href="services/web-development.html">Web Development &amp; UI/UX</a></li>
+                </ul>
+            </li>
+            <li><a href="portfolio.html" aria-current="page"><i class="fa-solid fa-images"></i> Portfolio</a></li>
+            <li><a href="strategy.html"><i class="fa-solid fa-route"></i> Strategy</a></li>
+            <li><a href="studio.html"><i class="fa-solid fa-video"></i> Studio</a></li>
+            <li><a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact Us</a></li>
+        </ul>
+        <div class="offcanvas-footer">
+            <div><i class="fa-solid fa-envelope" style="color: var(--orange-accent); margin-right: 8px;"></i>hello@bhoomerangmedia.com</div>
+            <div style="margin-top: 8px;"><i class="fa-solid fa-phone" style="color: var(--orange-accent); margin-right: 8px;"></i>+91 8096 56 2345</div>
+        </div>
+    </aside>
+
+    <main>
+
+        <!-- HERO -->
+        <section id="hero">
+            <div class="container center-layout">
+                <span class="eyebrow anim anim-up">Our Work</span>
+                <h1 class="section-title anim anim-up">
+                    The brands we've <span class="script-text">grown.</span>
+                </h1>
+                <p class="body-text anim anim-up" style="transition-delay: 200ms;">
+                    From Hyderabad startups to established brands across <span class="highlight">six industries</span>.
+                    Search by name or filter by category to see our work.
+                </p>
+            </div>
+        </section>
+
+        <!-- PORTFOLIO GRID -->
+        <section id="portfolio" style="padding-top: 30px;">
+            <div class="container">
+
+                <!-- Search + filter toolbar -->
+                <div class="portfolio-toolbar anim anim-up">
+                    <div class="search-wrap">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="search" id="portfolio-search" placeholder="Search by client name..." aria-label="Search clients" />
+                    </div>
+                    <div class="filter-chips" id="filter-chips" role="tablist" aria-label="Filter by category">
+                        <button class="filter-chip active" data-filter="all" role="tab" aria-selected="true">All</button>
+                        <button class="filter-chip" data-filter="ecommerce" role="tab">E-commerce</button>
+                        <button class="filter-chip" data-filter="real-estate" role="tab">Real Estate</button>
+                        <button class="filter-chip" data-filter="health" role="tab">Health</button>
+                        <button class="filter-chip" data-filter="education" role="tab">Education</button>
+                        <button class="filter-chip" data-filter="finance" role="tab">Finance</button>
+                        <button class="filter-chip" data-filter="startups" role="tab">Startups</button>
+                    </div>
+                </div>
+
+                <span class="portfolio-result-count" id="result-count"></span>
+
+                <!-- Client cards
+                     To add a new client, copy one of the <article> blocks below and update:
+                       • data-category (must match a filter-chip data-filter)
+                       • data-name    (used for search — lowercase version of client name)
+                       • .client-logo img src → images/clients/[slug].png (PNG with transparent bg, ~400×225)
+                       • .logo-fallback       → client initials if logo image is missing
+                       • .client-category     → human label shown on card
+                       • .client-name         → brand name
+                       • social icons hrefs   → their actual profiles; remove any platforms they're not on
+                       • .client-website      → their site; if none, replace the <a> with <span class="no-website">No website</span>
+                -->
+                <div class="portfolio-grid" id="portfolio-grid">
+
+                    <!-- E-COMMERCE -->
+                    <article class="client-card anim anim-up" data-category="ecommerce" data-name="greenmart foods" style="transition-delay: 100ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/greenmart.png" alt="GreenMart Foods logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">GM</div>
+                        </div>
+                        <span class="client-category">E-commerce</span>
+                        <h3 class="client-name">GreenMart Foods</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <article class="client-card anim anim-up" data-category="ecommerce" data-name="urbanstyle boutique" style="transition-delay: 200ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/urbanstyle.png" alt="UrbanStyle Boutique logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">US</div>
+                        </div>
+                        <span class="client-category">E-commerce</span>
+                        <h3 class="client-name">UrbanStyle Boutique</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <!-- REAL ESTATE -->
+                    <article class="client-card anim anim-up" data-category="real-estate" data-name="metro realty hyderabad" style="transition-delay: 300ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/metro-realty.png" alt="Metro Realty Hyderabad logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">MR</div>
+                        </div>
+                        <span class="client-category">Real Estate</span>
+                        <h3 class="client-name">Metro Realty Hyderabad</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <article class="client-card anim anim-up" data-category="real-estate" data-name="skyline properties" style="transition-delay: 400ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/skyline.png" alt="Skyline Properties logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">SP</div>
+                        </div>
+                        <span class="client-category">Real Estate</span>
+                        <h3 class="client-name">Skyline Properties</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <!-- HEALTH -->
+                    <article class="client-card anim anim-up" data-category="health" data-name="wellcare clinic" style="transition-delay: 500ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/wellcare.png" alt="WellCare Clinic logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">WC</div>
+                        </div>
+                        <span class="client-category">Health</span>
+                        <h3 class="client-name">WellCare Clinic</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <article class="client-card anim anim-up" data-category="health" data-name="brightsmile dental" style="transition-delay: 600ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/brightsmile.png" alt="BrightSmile Dental logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">BS</div>
+                        </div>
+                        <span class="client-category">Health</span>
+                        <h3 class="client-name">BrightSmile Dental</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <!-- EDUCATION -->
+                    <article class="client-card anim anim-up" data-category="education" data-name="learnify academy" style="transition-delay: 100ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/learnify.png" alt="Learnify Academy logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">LA</div>
+                        </div>
+                        <span class="client-category">Education</span>
+                        <h3 class="client-name">Learnify Academy</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <!-- FINANCE -->
+                    <article class="client-card anim anim-up" data-category="finance" data-name="capital growth partners" style="transition-delay: 200ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/capital-growth.png" alt="Capital Growth Partners logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">CG</div>
+                        </div>
+                        <span class="client-category">Finance</span>
+                        <h3 class="client-name">Capital Growth Partners</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                    <!-- STARTUPS -->
+                    <article class="client-card anim anim-up" data-category="startups" data-name="launchpad startups" style="transition-delay: 300ms;">
+                        <div class="client-logo">
+                            <img src="images/clients/launchpad.png" alt="LaunchPad Startups logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                            <div class="logo-fallback" style="display: none;">LP</div>
+                        </div>
+                        <span class="client-category">Startups</span>
+                        <h3 class="client-name">LaunchPad Startups</h3>
+                        <div class="client-socials">
+                            <a href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="#" target="_blank" rel="noopener" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+                        </div>
+                        <a href="#" target="_blank" rel="noopener" class="client-website">Visit Website <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </article>
+
+                </div>
+
+                <div class="portfolio-empty" id="portfolio-empty">
+                    <i class="fa-regular fa-folder-open"></i>
+                    <p>No clients match your search. Try a different keyword or category.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section id="cta">
+            <div class="container center-layout">
+                <h2 class="section-title anim anim-up">Your brand, <span class="highlight">our next story.</span></h2>
+                <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                    Every client you see here started with one conversation. Let's start yours.
+                </p>
+                <a href="contact.html" class="btn anim anim-scale" style="transition-delay: 300ms;">Start a Conversation <i class="fa-solid fa-paper-plane"></i></a>
+            </div>
+        </section>
+
+        <footer class="page-footer">
+            <p>© 2026 Bhoomerang Media · Client Portfolio</p>
+            <p class="footer-nav">
+                <a href="index.html">Home</a> ·
+                <a href="about.html">About</a> ·
+                <a href="services.html">Services</a> ·
+                <a href="portfolio.html">Portfolio</a> ·
+                <a href="strategy.html">Strategy</a> ·
+                <a href="studio.html">Studio</a> ·
+                <a href="contact.html">Contact</a>
+            </p>
+        </footer>
+
+    </main>
+
+    <script>
+        // Scroll-in animations (shared pattern across inner pages)
+        const animObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in-view'); animObserver.unobserve(entry.target); } });
+        }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.anim, .anim-reveal').forEach(el => animObserver.observe(el));
+
+        // Offcanvas
+        const hamburgerBtn = document.getElementById('hamburger-btn');
+        const offcanvas = document.getElementById('offcanvas');
+        const offcanvasOverlay = document.getElementById('offcanvas-overlay');
+        const offcanvasClose = document.getElementById('offcanvas-close');
+        const openOc = () => { offcanvas.classList.add('active'); offcanvasOverlay.classList.add('active'); };
+        const closeOc = () => { offcanvas.classList.remove('active'); offcanvasOverlay.classList.remove('active'); };
+        hamburgerBtn.addEventListener('click', openOc);
+        offcanvasClose.addEventListener('click', closeOc);
+        offcanvasOverlay.addEventListener('click', closeOc);
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOc(); });
+        document.querySelectorAll('.nav-dropdown-toggle').forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const parent = toggle.closest('.has-dropdown');
+                const isOpen = parent.classList.toggle('open');
+                toggle.setAttribute('aria-expanded', isOpen);
+            });
+        });
+
+        // --- Portfolio search + category filter ---
+        const searchInput = document.getElementById('portfolio-search');
+        const chips = document.querySelectorAll('.filter-chip');
+        const cards = document.querySelectorAll('.client-card');
+        const empty = document.getElementById('portfolio-empty');
+        const grid  = document.getElementById('portfolio-grid');
+        const resultCount = document.getElementById('result-count');
+
+        let currentFilter = 'all';
+        let currentSearch = '';
+
+        function applyFilters() {
+            let matched = 0;
+            cards.forEach(card => {
+                const cat = card.dataset.category;
+                const name = (card.dataset.name || '').toLowerCase();
+                const catMatch = currentFilter === 'all' || cat === currentFilter;
+                const searchMatch = !currentSearch || name.includes(currentSearch);
+                const show = catMatch && searchMatch;
+                card.style.display = show ? '' : 'none';
+                if (show) matched++;
+            });
+            grid.style.display = matched === 0 ? 'none' : '';
+            empty.style.display = matched === 0 ? 'block' : 'none';
+
+            const totalText = matched === cards.length ? 'all' : matched;
+            const label = matched === 1 ? 'client' : 'clients';
+            resultCount.innerHTML = matched === 0
+                ? ''
+                : `Showing <strong>${totalText}</strong> ${label}${currentFilter !== 'all' ? ` in ${currentFilter.replace('-', ' ')}` : ''}${currentSearch ? ` matching "${currentSearch}"` : ''}.`;
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            currentSearch = e.target.value.toLowerCase().trim();
+            applyFilters();
+        });
+
+        chips.forEach(chip => {
+            chip.addEventListener('click', () => {
+                chips.forEach(c => {
+                    c.classList.remove('active');
+                    c.setAttribute('aria-selected', 'false');
+                });
+                chip.classList.add('active');
+                chip.setAttribute('aria-selected', 'true');
+                currentFilter = chip.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        applyFilters();
+    </script>
+</body>
+</html>
