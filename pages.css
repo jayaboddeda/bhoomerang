@@ -9,10 +9,15 @@
    Add <body class="page"> to activate these styles.
    ============================================================ */
 
-/* --- Unlock vertical scrolling (styles.css locks body overflow) --- */
-html, body {
+/* --- Unlock vertical scrolling (styles.css locks body overflow) ---
+   Only html scrolls; body is visible so we don't get nested scrollbars. */
+html {
     overflow-x: hidden;
     overflow-y: auto;
+    height: auto;
+}
+body {
+    overflow: visible;
     height: auto;
 }
 
