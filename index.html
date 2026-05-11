@@ -85,6 +85,17 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Home-page visual enhancements -->
     <style>
+        /* === Chapter 1 (video-only) — clear the dark gradient overlay so the
+              video plays at full vibrancy with nothing layered on top. */
+        #chapter-1::after { display: none; }
+
+        /* === Chapter 1b (hero text) — same radial-spotlight backdrop the
+              hero originally used. */
+        #chapter-1b {
+            background: radial-gradient(circle at center, rgba(40,40,40,0.5) 0%, rgba(10,10,10,1) 100%);
+            overflow: hidden;
+        }
+
         /* === Per-chapter background images ===
            Drop into /images/ as the filenames below. Each section lays a
            low-opacity image underneath, then a gradient overlay keeps text
@@ -536,13 +547,13 @@
               scroll, so anything that spills past the viewport is invisible. These rules
               tighten the densest chapters so all content sits within one screen. */
         @media (max-width: 600px) {
-            /* Chapter 1 — Hero */
-            #chapter-1 .hero-badge { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 11px; }
-            #chapter-1 .section-subtitle { font-size: 1rem; margin-bottom: 10px; }
-            #chapter-1 .body-text { margin-bottom: 14px; }
-            #chapter-1 .icon-chips { gap: 8px; margin-top: 12px; }
-            #chapter-1 .icon-chip { font-size: 0.78rem; padding: 6px 12px; gap: 6px; }
-            #chapter-1 .container .btn { margin-top: 18px !important; }
+            /* Chapter 1b — Hero text */
+            #chapter-1b .hero-badge { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 11px; }
+            #chapter-1b .section-subtitle { font-size: 1rem; margin-bottom: 10px; }
+            #chapter-1b .body-text { margin-bottom: 14px; }
+            #chapter-1b .icon-chips { gap: 8px; margin-top: 12px; }
+            #chapter-1b .icon-chip { font-size: 0.78rem; padding: 6px 12px; gap: 6px; }
+            #chapter-1b .container .btn { margin-top: 18px !important; }
 
             /* Chapter 2 — Growth (image + text) */
             #chapter-2 .section-image { max-width: 55%; margin: 0 auto; }
@@ -622,9 +633,160 @@
             #chapter-7 .container > div:last-child { margin-top: 12px !important; gap: 10px !important; }
         }
 
+        /* === Free Audit Modal ===
+              Reuses .contact-form styles from pages.css (inlined below so the
+              home page doesn't need to load the full pages.css stylesheet). */
+        .audit-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .audit-modal.is-visible { display: flex; }
+        .audit-modal.is-open { opacity: 1; }
+        .audit-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.88);
+            cursor: pointer;
+        }
+        .audit-modal-panel {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            max-height: 90vh;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            background: #0e0a06;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            border-radius: 22px;
+            padding: 36px 36px 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(255, 138, 0, 0.08);
+            transform: translateY(12px) scale(0.98);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .audit-modal.is-open .audit-modal-panel { transform: translateY(0) scale(1); }
+        .audit-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            color: var(--orange-accent);
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .audit-modal-close:hover {
+            background: var(--orange-accent);
+            color: #000;
+            transform: rotate(90deg);
+        }
+        .audit-modal-header { text-align: center; margin-bottom: 22px; }
+        .audit-modal-header .hero-badge { margin-bottom: 14px; }
+        .audit-modal-header h3 {
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .audit-modal-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        body.audit-modal-open { overflow: hidden; }
+
+        @media (max-width: 600px) {
+            .audit-modal { padding: 12px; }
+            .audit-modal-panel { padding: 24px 20px 22px; max-height: 92vh; border-radius: 18px; }
+            .audit-modal-header h3 { font-size: 1.4rem; }
+            .audit-modal-header p { font-size: 0.85rem; }
+            .audit-modal-close { width: 32px; height: 32px; top: 10px; right: 10px; }
+        }
+
+        /* Form styles (mirrored from pages.css so the modal renders correctly here) */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            gap: 16px;
+        }
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 640px) {
+            .contact-form .form-row { grid-template-columns: 1fr; }
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.2);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--orange-accent);
+            background-color: rgba(255, 138, 0, 0.04);
+            box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.12);
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder { color: rgba(224, 224, 224, 0.4); }
+        .contact-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ff8a00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 14px 14px;
+            padding-right: 44px;
+            cursor: pointer;
+        }
+        .contact-form select option {
+            background-color: #1a0f08;
+            color: var(--text-white);
+        }
+        .contact-form textarea { resize: vertical; min-height: 110px; }
+        .contact-form .submit-row { margin-top: 6px; text-align: center; }
+
         /* Ultra-narrow phones (< 380px) — shrink titles and tighten further */
         @media (max-width: 380px) {
-            #chapter-1 .icon-chip,
+            #chapter-1b .icon-chip,
             #chapter-2 .icon-chip,
             #chapter-4 .icon-chip,
             #chapter-7 .icon-chip { font-size: 0.7rem; padding: 5px 9px; }
@@ -632,6 +794,199 @@
             #chapter-6 .stat-box p { font-size: 0.72rem; }
             #chapter-6 .industry-tile span { font-size: 0.65rem; }
             #chapter-7 .contact-item { font-size: 0.78rem; }
+        }
+
+        /* === Client logos slide + hover/click popup === */
+        .home-clients-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 14px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1100px) { .home-clients-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (max-width: 768px)  { .home-clients-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; } }
+        @media (max-width: 480px)  { .home-clients-grid { grid-template-columns: repeat(3, 1fr); } }
+
+        .logo-item {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: none;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 12px;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+        }
+        .logo-item:focus-visible {
+            outline: 2px solid var(--orange-accent);
+            outline-offset: 3px;
+            background: rgba(255, 138, 0, 0.05);
+        }
+        .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: grayscale(60%) brightness(1.1);
+            opacity: 0.8;
+            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .logo-item:hover img {
+            filter: grayscale(0%) brightness(1.15);
+            opacity: 1;
+            transform: scale(1.08);
+        }
+
+        /* Client logo popup (matches portfolio.html behavior) */
+        .logo-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        }
+        .logo-modal.open {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.35s ease, visibility 0s linear 0s;
+        }
+        .logo-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 8, 10, 0.82);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            cursor: pointer;
+        }
+        .logo-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            color: var(--orange-accent);
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.35s ease;
+        }
+        .logo-modal-close:hover {
+            background: var(--orange-accent);
+            color: #000;
+            transform: rotate(90deg);
+        }
+        .logo-modal-stage {
+            position: relative;
+            width: min(460px, 86vw);
+            height: min(460px, 86vw);
+            transform: scale(0.55);
+            opacity: 0;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+        }
+        .logo-modal.open .logo-modal-stage {
+            transform: scale(1);
+            opacity: 1;
+            transition-delay: 0.05s;
+        }
+        .logo-modal-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin: -100px 0 0 -100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            box-shadow: 0 0 80px rgba(255, 138, 0, 0.28),
+                        inset 0 0 30px rgba(255, 138, 0, 0.06);
+            z-index: 2;
+        }
+        .logo-modal-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(1.1);
+        }
+        .logo-modal-name {
+            position: absolute;
+            bottom: -54px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: var(--text-white);
+            font-size: 1.1rem;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+        .logo-orbit {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .logo-orbit a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin: -25px 0 0 -25px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.12);
+            border: 1px solid rgba(255, 138, 0, 0.4);
+            color: var(--orange-accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            text-decoration: none;
+            pointer-events: auto;
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            transform: translate(0, 0) scale(0);
+            opacity: 0;
+            transition:
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+                opacity  0.4s ease var(--delay, 0s),
+                background 0.25s ease,
+                color      0.25s ease,
+                box-shadow 0.25s ease;
+        }
+        .logo-modal.open .logo-orbit a {
+            transform: translate(var(--x, 0px), var(--y, 0px)) scale(1);
+            opacity: 1;
+        }
+        .logo-orbit a:hover {
+            background: var(--orange-accent);
+            color: #000;
+            box-shadow: 0 8px 22px rgba(255, 138, 0, 0.45);
+        }
+        @media (max-width: 600px) {
+            .logo-modal-stage { width: min(360px, 88vw); height: min(360px, 88vw); }
+            .logo-modal-card  { width: 150px; height: 150px; margin: -75px 0 0 -75px; padding: 22px; }
+            .logo-orbit a     { width: 44px; height: 44px; margin: -22px 0 0 -22px; font-size: 0.95rem; }
+            .logo-modal-close { top: 16px; right: 16px; }
         }
     </style>
 </head>
@@ -649,21 +1004,24 @@
 
     <div id="site-header-root"></div>
 
-    <!-- Slider Controls -->
-    <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous section">
+    <!-- Slider Controls (arrows + dots hidden for now; kept in DOM so slider JS still works) -->
+    <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous section" style="display: none;">
         <i class="fa-solid fa-chevron-left"></i>
     </button>
-    <button class="slider-arrow slider-next" id="slider-next" aria-label="Next section">
+    <button class="slider-arrow slider-next" id="slider-next" aria-label="Next section" style="display: none;">
         <i class="fa-solid fa-chevron-right"></i>
     </button>
-    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Section navigation"></div>
+    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Section navigation" style="display: none;"></div>
 
     <div class="horizontal-scroll-container">
         
-        <!-- Chapter 1: The Hook -->
+        <!-- Chapter 1: The Hook (video only — no text overlay) -->
         <section id="chapter-1">
             <video class="bg-video" src="intro.mp4" autoplay muted loop playsinline preload="auto"></video>
+        </section>
 
+        <!-- Chapter 1b: Hero text -->
+        <section id="chapter-1b">
             <!-- Floating decorative icons -->
             <div class="float-icons" aria-hidden="true">
                 <i class="fa-brands fa-instagram"></i>
@@ -955,7 +1313,7 @@
                 <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
                     <h2 class="section-title anim anim-up">Built for <span class="script-text">every industry.</span></h2>
                     <p class="body-text anim anim-up" style="transition-delay: 150ms;">
-                        Success stories across six verticals — flexible team structures to match your stage of growth.
+                        Success stories across many verticals — flexible team structures to match your stage of growth.
                     </p>
                 </div>
 
@@ -984,12 +1342,102 @@
                     <div class="industry-tile"><i class="fa-solid fa-building"></i><span>Real Estate</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-heart-pulse"></i><span>Health</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-graduation-cap"></i><span>Education</span></div>
-                    <div class="industry-tile"><i class="fa-solid fa-sack-dollar"></i><span>Finance</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-seedling"></i><span>Startups</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-ellipsis"></i><span>&amp; many more</span></div>
                 </div>
 
                 <div class="anim anim-up" style="transition-delay: 700ms; margin-top: 40px; text-align: center;">
                     <a href="contact.html" class="btn btn-outline">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6b: Our Clients -->
+        <section id="chapter-clients" class="chapter-bg">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto 36px;">
+                    <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Our Clients</span>
+                    <h2 class="section-title anim anim-up">The brands we've <span class="script-text">grown.</span></h2>
+                    <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                        A glimpse of the partners we've helped scale — hover or tap any logo to connect.
+                    </p>
+                </div>
+
+                <div class="home-clients-grid">
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 50ms;"
+                            data-name="Finsetter"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/Finsetter1.png" alt="Finsetter logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 100ms;"
+                            data-name="Arka Elite"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/arka-elite-logo.png" alt="Arka Elite logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 150ms;"
+                            data-name="Asain Labs"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/asain-labs-logo.png" alt="Asain Labs logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 200ms;"
+                            data-name="Asian Motors"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/asian-motors-logo.png" alt="Asian Motors logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 250ms;"
+                            data-name="Buttabomma"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/buttabomma-logo.png" alt="Buttabomma logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 300ms;"
+                            data-name="Care Nest US"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/care-nest-us-logo.png" alt="Care Nest US logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 350ms;"
+                            data-name="Catholic Youth Association"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/catholic-youth-association-logo.png" alt="Catholic Youth Association logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 400ms;"
+                            data-name="Dhatri Foods"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/dhatri-foods-logo.png" alt="Dhatri Foods logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 450ms;"
+                            data-name="Interntion"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/interntion-logo.png" alt="Interntion logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 500ms;"
+                            data-name="Liran Digital Solutions"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/liran-digital-solutions-logo.png" alt="Liran Digital Solutions logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 550ms;"
+                            data-name="Liran Pharma &amp; Baby Care"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/liran-pharma-baby-care-logo.png" alt="Liran Pharma Baby Care logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 600ms;"
+                            data-name="Raj Talks"
+                            data-website="#" data-instagram="#" data-facebook="#" data-youtube="#" data-twitter="#">
+                        <img src="images/client_logos/raj-talks-logo.png" alt="Raj Talks logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 650ms;"
+                            data-name="Swasthavritti Tech Service"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/swasthavritti-tech-service-logo.png" alt="Swasthavritti Tech Service logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 700ms;"
+                            data-name="Vaarahi TVS"
+                            data-website="#" data-instagram="#" data-facebook="#" data-linkedin="#" data-youtube="#">
+                        <img src="images/client_logos/vaarahi-tvs-logo.png" alt="Vaarahi TVS logo" loading="lazy">
+                    </button>
+                </div>
+
+                <div class="anim anim-up" style="transition-delay: 800ms; margin-top: 36px; text-align: center;">
+                    <a href="portfolio.html" class="btn btn-outline">See Full Portfolio <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -1031,11 +1479,26 @@
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
                     <a href="contact.html" class="btn anim anim-scale" style="transition-delay: 500ms;">Start a Conversation <i class="fa-solid fa-paper-plane"></i></a>
-                    <a href="services.html" class="btn btn-outline anim anim-scale" style="transition-delay: 600ms;">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+                    <button type="button" id="open-audit-modal" class="btn btn-outline anim anim-scale" style="transition-delay: 600ms;">Claim Your Free Audit <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </section>
 
+    </div>
+
+    <!-- Client logo popup (fixed; lives outside the horizontal scroller) -->
+    <div class="logo-modal" id="logo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="logo-modal-name">
+        <div class="logo-modal-backdrop" data-close></div>
+        <button type="button" class="logo-modal-close" data-close aria-label="Close">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <div class="logo-modal-stage">
+            <div class="logo-orbit" id="logo-orbit"></div>
+            <div class="logo-modal-card">
+                <img id="logo-modal-img" src="" alt="">
+            </div>
+            <h3 class="logo-modal-name" id="logo-modal-name"></h3>
+        </div>
     </div>
 
     <script src="js/site-header.js"></script>
@@ -1067,6 +1530,9 @@
         }
 
         window.addEventListener('wheel', (evt) => {
+            // When a modal is open, don't navigate slides on wheel.
+            if (document.body.classList.contains('audit-modal-open')) return;
+            if (document.body.classList.contains('logo-modal-open')) { evt.preventDefault(); return; }
             evt.preventDefault();
             if (wheelLocked) { scheduleIdleRelease(); return; }
 
@@ -1258,7 +1724,245 @@
                 }
             }
         }, { passive: true });
+
+        // --- Free Audit modal: open from CTA, close on backdrop / X / Esc ---
+        // Modal markup is rendered later in the document, so defer lookups until DOM is parsed.
+        document.addEventListener('DOMContentLoaded', () => {
+            const auditModal = document.getElementById('audit-modal');
+            const auditOpenBtn = document.getElementById('open-audit-modal');
+            const auditForm = document.getElementById('audit-form');
+
+            function openAuditModal() {
+                if (!auditModal) return;
+                auditModal.classList.add('is-visible');
+                auditModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('audit-modal-open');
+                requestAnimationFrame(() => auditModal.classList.add('is-open'));
+                const firstField = auditModal.querySelector('input, textarea');
+                if (firstField) setTimeout(() => firstField.focus(), 250);
+            }
+
+            function closeAuditModal() {
+                if (!auditModal) return;
+                auditModal.classList.remove('is-open');
+                auditModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('audit-modal-open');
+                setTimeout(() => auditModal.classList.remove('is-visible'), 260);
+            }
+
+            if (auditOpenBtn) auditOpenBtn.addEventListener('click', openAuditModal);
+            if (auditModal) {
+                auditModal.querySelectorAll('[data-close-audit]').forEach(el => {
+                    el.addEventListener('click', closeAuditModal);
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && auditModal && auditModal.classList.contains('is-visible')) closeAuditModal();
+            });
+
+            if (auditForm) {
+                auditForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert("Thanks — we'll get back to you within 24 hours. (Note: form endpoint not yet connected.)");
+                    auditForm.reset();
+                    closeAuditModal();
+                });
+            }
+        });
+
+        // --- Client logo popup with orbiting social icons ---
+        (function () {
+            const SOCIAL_PLATFORMS = [
+                { key: 'website',   label: 'Website',   icon: 'fa-solid fa-globe' },
+                { key: 'instagram', label: 'Instagram', icon: 'fa-brands fa-instagram' },
+                { key: 'facebook',  label: 'Facebook',  icon: 'fa-brands fa-facebook-f' },
+                { key: 'youtube',   label: 'YouTube',   icon: 'fa-brands fa-youtube' },
+                { key: 'linkedin',  label: 'LinkedIn',  icon: 'fa-brands fa-linkedin-in' },
+                { key: 'twitter',   label: 'Twitter / X', icon: 'fa-brands fa-x-twitter' },
+                { key: 'whatsapp',  label: 'WhatsApp',  icon: 'fa-brands fa-whatsapp' },
+            ];
+
+            const modal     = document.getElementById('logo-modal');
+            const modalImg  = document.getElementById('logo-modal-img');
+            const modalName = document.getElementById('logo-modal-name');
+            const orbit     = document.getElementById('logo-orbit');
+            const stage     = modal.querySelector('.logo-modal-stage');
+
+            const HOVER_OPEN_DELAY    = 220;
+            const STAGE_LEAVE_CLOSE   = 300;
+            const NO_ENGAGEMENT_CLOSE = 2500;
+            const supportsHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+            let openTimer = null;
+            let closeTimer = null;
+            let inactivityTimer = null;
+            const cancelOpenTimer       = () => { if (openTimer)       { clearTimeout(openTimer);       openTimer       = null; } };
+            const cancelCloseTimer      = () => { if (closeTimer)      { clearTimeout(closeTimer);      closeTimer      = null; } };
+            const cancelInactivityTimer = () => { if (inactivityTimer) { clearTimeout(inactivityTimer); inactivityTimer = null; } };
+
+            function openLogoModal(item) {
+                cancelCloseTimer();
+                const img = item.querySelector('img');
+                modalImg.src = img.getAttribute('src');
+                modalImg.alt = img.getAttribute('alt') || '';
+                modalName.textContent = item.dataset.name || '';
+
+                const links = SOCIAL_PLATFORMS
+                    .map(p => ({ ...p, url: item.dataset[p.key] }))
+                    .filter(p => p.url && p.url.trim() !== '');
+
+                const stageSize = stage.offsetWidth;
+                const radius = stageSize / 2 - 32;
+                const count = links.length;
+
+                orbit.innerHTML = '';
+                links.forEach((link, i) => {
+                    const angle = -Math.PI / 2 + (2 * Math.PI * i) / count;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.setAttribute('aria-label', `${item.dataset.name || ''} on ${link.label}`.trim());
+                    a.style.setProperty('--x', `${x}px`);
+                    a.style.setProperty('--y', `${y}px`);
+                    a.style.setProperty('--delay', `${0.12 + i * 0.06}s`);
+                    a.innerHTML = `<i class="${link.icon}" aria-hidden="true"></i>`;
+                    orbit.appendChild(a);
+                });
+
+                void modal.offsetWidth;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('logo-modal-open');
+            }
+
+            function closeLogoModal() {
+                cancelOpenTimer();
+                cancelCloseTimer();
+                cancelInactivityTimer();
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('logo-modal-open');
+            }
+
+            document.querySelectorAll('.logo-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cancelOpenTimer();
+                    cancelInactivityTimer();
+                    openLogoModal(item);
+                });
+
+                if (!supportsHover) return;
+
+                item.addEventListener('mouseenter', () => {
+                    cancelCloseTimer();
+                    cancelInactivityTimer();
+                    cancelOpenTimer();
+                    openTimer = setTimeout(() => {
+                        openLogoModal(item);
+                        openTimer = null;
+                        inactivityTimer = setTimeout(() => {
+                            closeLogoModal();
+                            inactivityTimer = null;
+                        }, NO_ENGAGEMENT_CLOSE);
+                    }, HOVER_OPEN_DELAY);
+                });
+                item.addEventListener('mouseleave', () => {
+                    // Only abort a pending open. The stage owns close behavior
+                    // once the popup is up — see the comment in portfolio.html.
+                    cancelOpenTimer();
+                });
+            });
+
+            if (supportsHover) {
+                stage.addEventListener('mouseenter', () => {
+                    cancelInactivityTimer();
+                    cancelCloseTimer();
+                });
+                stage.addEventListener('mouseleave', () => {
+                    cancelCloseTimer();
+                    closeTimer = setTimeout(() => {
+                        closeLogoModal();
+                        closeTimer = null;
+                    }, STAGE_LEAVE_CLOSE);
+                });
+            }
+
+            modal.querySelectorAll('[data-close]').forEach(el => {
+                el.addEventListener('click', closeLogoModal);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeLogoModal();
+            });
+        })();
     </script>
+    <!-- Free Audit Modal (form mirrors contact.html) -->
+    <div id="audit-modal" class="audit-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title">
+        <div class="audit-modal-backdrop" data-close-audit></div>
+        <div class="audit-modal-panel" role="document">
+            <button type="button" class="audit-modal-close" aria-label="Close" data-close-audit>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="audit-modal-header">
+                <span class="hero-badge"><i class="fa-solid fa-circle"></i> Free Audit</span>
+                <h3 id="audit-modal-title">Claim Your Free Audit</h3>
+                <p>Tell us about your business — we'll review and come back with a tailored growth plan within 24 hours.</p>
+            </div>
+
+            <form class="contact-form" id="audit-form" action="#" method="POST" name="audit" aria-label="Free audit request form">
+                <div class="form-row">
+                    <div>
+                        <label for="audit-name">Your Name *</label>
+                        <input type="text" id="audit-name" name="name" required placeholder="e.g. Ravi Kumar" />
+                    </div>
+                    <div>
+                        <label for="audit-email">Email *</label>
+                        <input type="email" id="audit-email" name="email" required placeholder="you@business.com" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="audit-phone">Phone</label>
+                        <input type="tel" id="audit-phone" name="phone" placeholder="+91 98765 43210" />
+                    </div>
+                    <div>
+                        <label for="audit-business">Business Name</label>
+                        <input type="text" id="audit-business" name="business" placeholder="Your Business" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="audit-service">Service You're Interested In</label>
+                    <select id="audit-service" name="service">
+                        <option value="">— Select a Service —</option>
+                        <option value="social-media-management">Social Media Management</option>
+                        <option value="branding-design">Branding &amp; Design</option>
+                        <option value="seo-aeo-geo">SEO, AEO &amp; GEO</option>
+                        <option value="performance-marketing">Performance Marketing (Meta &amp; Google Ads)</option>
+                        <option value="video-production">Video Production &amp; Editing</option>
+                        <option value="web-development">Web Development &amp; UI/UX</option>
+                        <option value="all">Full-Service Digital Marketing</option>
+                        <option value="not-sure">Not sure — help me decide</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="audit-message">Tell Us About Your Business &amp; Goals *</label>
+                    <textarea id="audit-message" name="message" required rows="4" placeholder="Briefly describe your business and what you'd like to achieve..."></textarea>
+                </div>
+
+                <div class="submit-row">
+                    <button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Floating WhatsApp CTA -->
     <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Bhoomerang Media on WhatsApp" title="Chat on WhatsApp">
         <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
