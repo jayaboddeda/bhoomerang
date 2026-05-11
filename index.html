@@ -1561,6 +1561,9 @@
             // When a modal is open, don't navigate slides on wheel.
             if (document.body.classList.contains('audit-modal-open')) return;
             if (document.body.classList.contains('logo-modal-open')) { evt.preventDefault(); return; }
+            // Let the offcanvas sidebar scroll natively when it's open.
+            const offcanvasEl = document.getElementById('offcanvas');
+            if (offcanvasEl && offcanvasEl.classList.contains('active')) return;
             evt.preventDefault();
             if (wheelLocked) { scheduleIdleRelease(); return; }
 
