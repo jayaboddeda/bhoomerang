@@ -1425,6 +1425,15 @@ body {
 .team-card .image-slot {
     margin-bottom: 18px;
     border-radius: 14px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: auto;
+}
+
+.team-card .image-slot img {
+    height: auto;
+    object-fit: contain;
 }
 
 .team-card .member-name {
@@ -1455,6 +1464,21 @@ body {
    distinct units without needing extra background colour. */
 .department + .department {
     border-top: 1px solid rgba(255, 138, 0, 0.12);
+}
+
+/* Leadership portraits (MD + Director): keep the 3:4 ratio but
+   cap the slot width so it isn't as tall as a full split column. */
+#managing-director .image-column .image-slot,
+#director .image-column .image-slot {
+    max-width: 368px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 992px) {
+    #managing-director .image-column .image-slot,
+    #director .image-column .image-slot {
+        max-width: 328px;
+    }
 }
 
 /* Comparison table used in blog posts (e.g. GEO vs SEO). Tailwind's
