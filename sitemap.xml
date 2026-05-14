@@ -4,87 +4,85 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
-
 
 <url>
   <loc>https://bhoomerangmedia.com/</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/about.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/about-bhoomerang-media-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
   <loc>https://bhoomerangmedia.com/team.html</loc>
-  <lastmod>2026-05-11T00:00:00+00:00</lastmod>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.70</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/social-media-management.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/digital-marketing-services-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
+  <priority>0.90</priority>
+</url>
+<url>
+  <loc>https://bhoomerangmedia.com/services/social-media-management-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/branding-design.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/branding-design-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/seo-aeo-geo.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/seo-aeo-geo-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/performance-marketing.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/performance-marketing-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/video-production.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/video-production-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services/web-development.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/services/web-development-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/services.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/digital-marketing-strategy-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/strategy.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <loc>https://bhoomerangmedia.com/contact-bhoomerang-media-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://bhoomerangmedia.com/contact.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>https://bhoomerangmedia.com/index.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
-  <priority>0.64</priority>
-</url>
-<url>
-  <loc>https://bhoomerangmedia.com/studio/podcast-studio-hyderabad.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
-  <priority>0.64</priority>
+  <loc>https://bhoomerangmedia.com/portfolio.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
 </url>
 <url>
   <loc>https://bhoomerangmedia.com/studio.html</loc>
-  <lastmod>2026-05-01T02:41:15+00:00</lastmod>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://bhoomerangmedia.com/studio/podcast-studio-hyderabad.html</loc>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 <url>
   <loc>https://bhoomerangmedia.com/blog.html</loc>
-  <lastmod>2026-05-12T00:00:00+00:00</lastmod>
+  <lastmod>2026-05-14T00:00:00+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
@@ -117,6 +115,5 @@
   <lastmod>2026-04-30T00:00:00+00:00</lastmod>
   <priority>0.70</priority>
 </url>
-
 
 </urlset>
