@@ -485,6 +485,23 @@ body {
 .info-tile a:hover { color: var(--orange-accent); }
 
 /* ============================================================
+   LOCATION GROUPS (contact page — state-wise city tiles)
+   ============================================================ */
+.location-group { margin-top: 30px; }
+.location-state {
+    font-size: 1.25rem;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 138, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.location-state i { color: var(--orange-accent); font-size: 1.1rem; }
+.location-group .info-grid { margin-top: 20px; }
+
+/* ============================================================
    PORTFOLIO — clean client logo grid (no card chrome) + popup
    ============================================================ */
 .logo-grid {
