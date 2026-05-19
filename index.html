@@ -75,7 +75,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -489,6 +489,29 @@
         #chapter-7 .contact-item i { font-size: 1.25rem; }
         #chapter-7 .contact-card .icon-chips { margin-top: 18px; gap: 10px; }
         #chapter-7 .icon-chip { font-size: 0.88rem; padding: 8px 14px; }
+        #chapter-7 .contact-group {
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 138, 0, 0.16);
+        }
+        #chapter-7 .contact-group-label {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--orange-accent);
+        }
+        #chapter-7 .contact-group-label i { margin-right: 7px; }
+        #chapter-7 .contact-group .icon-chips { margin-top: 12px !important; }
+        #chapter-7 .social-icons .icon-chip {
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        #chapter-7 .social-icons .icon-chip i { font-size: 1.1rem; }
 
         @media (max-width: 992px) {
             #chapter-7 .section-title { font-size: 2.2rem; }
@@ -1064,7 +1087,7 @@
             </div>
 
             <div class="container center-layout">
-                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Digital Marketing Agency · ESI, Hyderabad</span>
+                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Digital Marketing Agency</span>
                 <h1 class="section-title anim anim-up">
                     You put your brand out into the <span class="script-text">world.</span>
                 </h1>
@@ -1077,7 +1100,7 @@
                 <div class="icon-chips anim anim-up" style="transition-delay: 400ms;">
                     <span class="icon-chip"><i class="fa-solid fa-house-laptop"></i> <strong>In-house</strong> execution</span>
                     <span class="icon-chip"><i class="fa-solid fa-chart-simple"></i> <strong>Data-first</strong> campaigns</span>
-                    <span class="icon-chip"><i class="fa-solid fa-location-dot"></i> <strong>ESI</strong> Hyderabad</span>
+                    <span class="icon-chip"><i class="fa-solid fa-bullseye"></i> <strong>ROI-focused</strong> results</span>
                 </div>
 
                 <a href="#chapter-2" class="btn anim anim-scale" style="transition-delay: 550ms; margin-top: 30px;">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
@@ -1497,25 +1520,33 @@
                     <div class="contact-details" style="margin-top: 0;">
                         <div class="contact-item">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span><a href="mailto:hello@bhoomerangmedia.com" style="color: inherit; text-decoration: none;">hello@bhoomerangmedia.com</a></span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <span><a href="tel:+918096562345" style="color: inherit; text-decoration: none;">+91 8096 56 2345</a></span>
+                            <span><strong>Registered Office</strong> — 408, 4th Floor, Jain Friend Square Mall, Suchitra Circle, Hyderabad 500067, Telangana</span>
                         </div>
                     </div>
 
-                    <div class="icon-chips" style="margin-top: 24px;">
-                        <a href="https://www.instagram.com/bhoomerang_media/" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                        <a href="https://linkedin.com/company/bhoomerang-media" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                        <a href="https://youtube.com/@bhoomerangmedia" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                        <a href="https://facebook.com/letsbhoomerang" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-facebook"></i> Facebook</a>
-                        <a href="https://x.com/BhoomerangMedia" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-x-twitter"></i> X</a>
-                        <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <div class="contact-group">
+                        <span class="contact-group-label"><i class="fa-solid fa-code-branch"></i> Our Branches</span>
+                        <div class="icon-chips">
+                            <span class="icon-chip">ESI, Hyderabad</span>
+                            <span class="icon-chip">Warangal</span>
+                            <span class="icon-chip">Karimnagar</span>
+                            <span class="icon-chip">Visakhapatnam</span>
+                            <span class="icon-chip">Vijayawada</span>
+                            <span class="icon-chip">Kurnool</span>
+                            <span class="icon-chip">Bangalore</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-group">
+                        <span class="contact-group-label"><i class="fa-solid fa-share-nodes"></i> Connect With Us</span>
+                        <div class="icon-chips social-icons">
+                            <a href="https://www.instagram.com/bhoomerang_media/" target="_blank" rel="noopener" class="icon-chip" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://linkedin.com/company/bhoomerang-media" target="_blank" rel="noopener" class="icon-chip" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://youtube.com/@bhoomerangmedia" target="_blank" rel="noopener" class="icon-chip" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://facebook.com/letsbhoomerang" target="_blank" rel="noopener" class="icon-chip" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://x.com/BhoomerangMedia" target="_blank" rel="noopener" class="icon-chip" aria-label="X" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" target="_blank" rel="noopener" class="icon-chip" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
                     </div>
                 </div>
 

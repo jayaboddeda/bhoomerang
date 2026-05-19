@@ -25,6 +25,33 @@
     <script>tailwind.config = { corePlugins: { container: false } };</script>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="pages.css">
+    <style>
+        .info-tile .icon-chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .info-tile .icon-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 4px 10px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.25);
+            border-radius: 50px;
+            font-size: 0.74rem;
+            color: var(--text-muted);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+        }
+        .info-tile .icon-chip:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 138, 0, 0.08);
+            border-color: var(--orange-accent);
+        }
+        .info-tile .icon-chip i { color: var(--orange-accent); font-size: 0.62rem; }
+    </style>
 </head>
 <body class="page" data-base="" data-page="contact">
     <!-- Google Tag Manager (noscript) -->
@@ -76,8 +103,15 @@
                     <div class="info-tile anim anim-up" style="transition-delay: 350ms;">
                         <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
                         <h4>Visit Us</h4>
-                        <p>Pillar No 987, Bhanu Enclave, Flat 312, 3rd Floor</p>
-                        <p style="font-size: 0.9rem; margin-top: 4px;">Beside ESI Hospital Metro, Erragadda, Hyderabad 500038</p>
+                        <div class="icon-chips">
+                            <span class="icon-chip">ESI, Hyderabad</span>
+                            <span class="icon-chip">Warangal</span>
+                            <span class="icon-chip">Karimnagar</span>
+                            <span class="icon-chip">Visakhapatnam</span>
+                            <span class="icon-chip">Vijayawada</span>
+                            <span class="icon-chip">Kurnool</span>
+                            <span class="icon-chip">Bangalore</span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -192,9 +226,9 @@
             <div class="container">
                 <div class="section-intro">
                     <span class="eyebrow anim anim-up">Where We Serve</span>
-                    <h2 class="section-title anim anim-up">Across <span class="script-text">Telugu states.</span></h2>
+                    <h2 class="section-title anim anim-up">Across <span class="script-text">India.</span></h2>
                     <p class="body-text anim anim-up" style="transition-delay: 150ms;">
-                        Headquartered in Hyderabad, with active clients and partners across Telangana and Andhra Pradesh.
+                        Headquartered in Hyderabad, with active clients and partners across Telangana, Andhra Pradesh and Karnataka.
                     </p>
                 </div>
 
@@ -219,9 +253,9 @@
                         </div>
                         <div class="info-tile anim anim-up" style="transition-delay: 450ms;">
                             <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
-                            <h4>Warangal</h4>
+                            <h4>Warangal &amp; Karimnagar</h4>
                             <p>Regional Coverage</p>
-                            <p style="font-size: 0.85rem; margin-top: 4px;">Warangal District, Telangana</p>
+                            <p style="font-size: 0.85rem; margin-top: 4px;">Warangal &amp; Karimnagar Districts, Telangana</p>
                         </div>
                     </div>
                 </div>
@@ -233,21 +267,35 @@
                     <div class="info-grid">
                         <div class="info-tile anim anim-up" style="transition-delay: 350ms;">
                             <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
-                            <h4>Vijayawada</h4>
-                            <p>Regional Coverage</p>
-                            <p style="font-size: 0.85rem; margin-top: 4px;">NTR District, Andhra Pradesh</p>
-                        </div>
-                        <div class="info-tile anim anim-up" style="transition-delay: 450ms;">
-                            <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
                             <h4>Visakhapatnam</h4>
                             <p>Regional Coverage</p>
                             <p style="font-size: 0.85rem; margin-top: 4px;">Vizag, Andhra Pradesh</p>
+                        </div>
+                        <div class="info-tile anim anim-up" style="transition-delay: 450ms;">
+                            <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <h4>Vijayawada</h4>
+                            <p>Regional Coverage</p>
+                            <p style="font-size: 0.85rem; margin-top: 4px;">NTR District, Andhra Pradesh</p>
                         </div>
                         <div class="info-tile anim anim-up" style="transition-delay: 550ms;">
                             <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
                             <h4>Kurnool</h4>
                             <p>Regional Coverage</p>
                             <p style="font-size: 0.85rem; margin-top: 4px;">Kurnool District, Andhra Pradesh</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-group anim anim-up" style="transition-delay: 400ms; margin-top: 40px;">
+                    <h3 class="location-state">
+                        <i class="fa-solid fa-map-location-dot"></i> Karnataka
+                    </h3>
+                    <div class="info-grid">
+                        <div class="info-tile anim anim-up" style="transition-delay: 450ms;">
+                            <span class="tile-icon"><i class="fa-solid fa-location-dot"></i></span>
+                            <h4>Bangalore</h4>
+                            <p>Regional Coverage</p>
+                            <p style="font-size: 0.85rem; margin-top: 4px;">HSR Layout, Bengaluru, Karnataka</p>
                         </div>
                     </div>
                 </div>
