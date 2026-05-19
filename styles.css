@@ -902,6 +902,13 @@ body.page .site-header {
     transform: translateX(4px);
 }
 
+.offcanvas-nav a[aria-current="page"] {
+    background: rgba(255, 138, 0, 0.12);
+    color: var(--orange-accent);
+    font-weight: 700;
+    box-shadow: inset 3px 0 0 var(--orange-accent);
+}
+
 .offcanvas-nav .nav-num {
     font-family: 'Caveat', cursive;
     color: var(--orange-accent);
