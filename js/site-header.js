@@ -2,7 +2,7 @@
     const body = document.body;
     const base = body.dataset.base || '';
     const currentPage = body.dataset.page || '';
-    const homeHref = body.dataset.home || (base + 'index.html');
+    const homeHref = body.dataset.home || (base === '' ? '/' : base);
 
     const placeholder = document.getElementById('site-header-root');
     if (!placeholder) return;

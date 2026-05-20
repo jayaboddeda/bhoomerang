@@ -16,6 +16,7 @@
     <title>Best Digital Marketing Agency In ESI Hyderabad | Bhoomerang Media</title>
     <meta name="description" content="Bhoomerang Media is the Best Digital Marketing Agency in ESI, Hyderabad. SEO, Social Media, Google Ads, Web Design &amp; Performance Marketing for businesses near ESI Hospital, Erragadda. Get a free strategy call." />
     <meta name="author" content="Bhoomerang Media" />
+    <link rel="canonical" href="https://bhoomerangmedia.com/" />
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="geo.region" content="IN-TG" />
     <meta name="geo.placename" content="Erragadda, Hyderabad" />
@@ -74,7 +75,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <!-- Tailwind CSS (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -85,6 +86,17 @@
     <link rel="stylesheet" href="styles.css">
     <!-- Home-page visual enhancements -->
     <style>
+        /* === Chapter 1 (video-only) — clear the dark gradient overlay so the
+              video plays at full vibrancy with nothing layered on top. */
+        #chapter-1::after { display: none; }
+
+        /* === Chapter 1b (hero text) — same radial-spotlight backdrop the
+              hero originally used. */
+        #chapter-1b {
+            background: radial-gradient(circle at center, rgba(40,40,40,0.5) 0%, rgba(10,10,10,1) 100%);
+            overflow: hidden;
+        }
+
         /* === Per-chapter background images ===
            Drop into /images/ as the filenames below. Each section lays a
            low-opacity image underneath, then a gradient overlay keeps text
@@ -477,6 +489,29 @@
         #chapter-7 .contact-item i { font-size: 1.25rem; }
         #chapter-7 .contact-card .icon-chips { margin-top: 18px; gap: 10px; }
         #chapter-7 .icon-chip { font-size: 0.88rem; padding: 8px 14px; }
+        #chapter-7 .contact-group {
+            margin-top: 22px;
+            padding-top: 22px;
+            border-top: 1px solid rgba(255, 138, 0, 0.16);
+        }
+        #chapter-7 .contact-group-label {
+            display: block;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            font-weight: 700;
+            color: var(--orange-accent);
+        }
+        #chapter-7 .contact-group-label i { margin-right: 7px; }
+        #chapter-7 .contact-group .icon-chips { margin-top: 12px !important; }
+        #chapter-7 .social-icons .icon-chip {
+            width: 44px;
+            height: 44px;
+            padding: 0;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        #chapter-7 .social-icons .icon-chip i { font-size: 1.1rem; }
 
         @media (max-width: 992px) {
             #chapter-7 .section-title { font-size: 2.2rem; }
@@ -536,13 +571,13 @@
               scroll, so anything that spills past the viewport is invisible. These rules
               tighten the densest chapters so all content sits within one screen. */
         @media (max-width: 600px) {
-            /* Chapter 1 — Hero */
-            #chapter-1 .hero-badge { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 11px; }
-            #chapter-1 .section-subtitle { font-size: 1rem; margin-bottom: 10px; }
-            #chapter-1 .body-text { margin-bottom: 14px; }
-            #chapter-1 .icon-chips { gap: 8px; margin-top: 12px; }
-            #chapter-1 .icon-chip { font-size: 0.78rem; padding: 6px 12px; gap: 6px; }
-            #chapter-1 .container .btn { margin-top: 18px !important; }
+            /* Chapter 1b — Hero text */
+            #chapter-1b .hero-badge { margin-bottom: 12px; font-size: 0.72rem; padding: 5px 11px; }
+            #chapter-1b .section-subtitle { font-size: 1rem; margin-bottom: 10px; }
+            #chapter-1b .body-text { margin-bottom: 14px; }
+            #chapter-1b .icon-chips { gap: 8px; margin-top: 12px; }
+            #chapter-1b .icon-chip { font-size: 0.78rem; padding: 6px 12px; gap: 6px; }
+            #chapter-1b .container .btn { margin-top: 18px !important; }
 
             /* Chapter 2 — Growth (image + text) */
             #chapter-2 .section-image { max-width: 55%; margin: 0 auto; }
@@ -622,9 +657,160 @@
             #chapter-7 .container > div:last-child { margin-top: 12px !important; gap: 10px !important; }
         }
 
+        /* === Free Audit Modal ===
+              Reuses .contact-form styles from pages.css (inlined below so the
+              home page doesn't need to load the full pages.css stylesheet). */
+        .audit-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.25s ease;
+        }
+        .audit-modal.is-visible { display: flex; }
+        .audit-modal.is-open { opacity: 1; }
+        .audit-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(5, 5, 5, 0.88);
+            cursor: pointer;
+        }
+        .audit-modal-panel {
+            position: relative;
+            width: 100%;
+            max-width: 720px;
+            max-height: 90vh;
+            overflow-y: auto;
+            overscroll-behavior: contain;
+            -webkit-overflow-scrolling: touch;
+            background: #0e0a06;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            border-radius: 22px;
+            padding: 36px 36px 30px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 60px rgba(255, 138, 0, 0.08);
+            transform: translateY(12px) scale(0.98);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .audit-modal.is-open .audit-modal-panel { transform: translateY(0) scale(1); }
+        .audit-modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.3);
+            color: var(--orange-accent);
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .audit-modal-close:hover {
+            background: var(--orange-accent);
+            color: #000;
+            transform: rotate(90deg);
+        }
+        .audit-modal-header { text-align: center; margin-bottom: 22px; }
+        .audit-modal-header .hero-badge { margin-bottom: 14px; }
+        .audit-modal-header h3 {
+            font-size: 1.85rem;
+            font-weight: 600;
+            color: var(--text-white);
+            margin-bottom: 8px;
+            line-height: 1.2;
+        }
+        .audit-modal-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.55;
+            max-width: 520px;
+            margin: 0 auto;
+        }
+        body.audit-modal-open { overflow: hidden; }
+
+        @media (max-width: 600px) {
+            .audit-modal { padding: 12px; }
+            .audit-modal-panel { padding: 24px 20px 22px; max-height: 92vh; border-radius: 18px; }
+            .audit-modal-header h3 { font-size: 1.4rem; }
+            .audit-modal-header p { font-size: 0.85rem; }
+            .audit-modal-close { width: 32px; height: 32px; top: 10px; right: 10px; }
+        }
+
+        /* Form styles (mirrored from pages.css so the modal renders correctly here) */
+        .contact-form {
+            max-width: 700px;
+            margin: 0 auto;
+            display: grid;
+            gap: 16px;
+        }
+        .contact-form .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        @media (max-width: 640px) {
+            .contact-form .form-row { grid-template-columns: 1fr; }
+        }
+        .contact-form label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+        }
+        .contact-form input,
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px 14px;
+            background: var(--dark-card);
+            border: 1px solid rgba(255, 138, 0, 0.2);
+            border-radius: 10px;
+            color: var(--text-white);
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+        .contact-form input:focus,
+        .contact-form select:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--orange-accent);
+            background-color: rgba(255, 138, 0, 0.04);
+            box-shadow: 0 0 0 4px rgba(255, 138, 0, 0.12);
+        }
+        .contact-form input::placeholder,
+        .contact-form textarea::placeholder { color: rgba(224, 224, 224, 0.4); }
+        .contact-form select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23ff8a00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'/></svg>");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 14px 14px;
+            padding-right: 44px;
+            cursor: pointer;
+        }
+        .contact-form select option {
+            background-color: #1a0f08;
+            color: var(--text-white);
+        }
+        .contact-form textarea { resize: vertical; min-height: 110px; }
+        .contact-form .submit-row { margin-top: 6px; text-align: center; }
+
         /* Ultra-narrow phones (< 380px) — shrink titles and tighten further */
         @media (max-width: 380px) {
-            #chapter-1 .icon-chip,
+            #chapter-1b .icon-chip,
             #chapter-2 .icon-chip,
             #chapter-4 .icon-chip,
             #chapter-7 .icon-chip { font-size: 0.7rem; padding: 5px 9px; }
@@ -632,6 +818,230 @@
             #chapter-6 .stat-box p { font-size: 0.72rem; }
             #chapter-6 .industry-tile span { font-size: 0.65rem; }
             #chapter-7 .contact-item { font-size: 0.78rem; }
+        }
+
+        /* === Client logos slide + hover/click popup === */
+        .home-clients-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 14px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        @media (max-width: 1100px) { .home-clients-grid { grid-template-columns: repeat(5, 1fr); } }
+        @media (max-width: 768px)  { .home-clients-grid { grid-template-columns: repeat(4, 1fr); gap: 10px; } }
+        @media (max-width: 480px)  {
+            .home-clients-grid { grid-template-columns: repeat(3, 1fr); }
+            /* Show only 6 logos on small phones — keeps a clean 2×3 grid */
+            .home-clients-grid .logo-item:nth-child(n+7) { display: none; }
+        }
+
+        .logo-item {
+            appearance: none;
+            -webkit-appearance: none;
+            background: transparent;
+            border: none;
+            font: inherit;
+            color: inherit;
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+            border-radius: 12px;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+        }
+        .logo-item:focus-visible {
+            outline: 2px solid var(--orange-accent);
+            outline-offset: 3px;
+            background: rgba(255, 138, 0, 0.05);
+        }
+        .logo-item img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            opacity: 0.9;
+            transition: filter 0.35s ease, opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        /* Client logo popup (matches portfolio.html behavior) */
+        .logo-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+        }
+        .logo-modal.open {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.35s ease, visibility 0s linear 0s;
+        }
+        .logo-modal-backdrop {
+            position: absolute;
+            inset: 0;
+            background: rgba(8, 8, 10, 0.82);
+            -webkit-backdrop-filter: blur(14px);
+            backdrop-filter: blur(14px);
+            cursor: pointer;
+        }
+        .logo-modal-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            color: var(--orange-accent);
+            font-size: 1.05rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 3;
+            transition: background 0.25s ease, color 0.25s ease, transform 0.35s ease;
+        }
+        .logo-modal-close:hover {
+            background: var(--orange-accent);
+            color: #000;
+            transform: rotate(90deg);
+        }
+        .logo-modal-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 22px;
+            max-height: 100vh;
+            transform: scale(0.55);
+            opacity: 0;
+            transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+        }
+        .logo-modal.open .logo-modal-content {
+            transform: scale(1);
+            opacity: 1;
+            transition-delay: 0.05s;
+        }
+        .logo-modal-stage {
+            position: relative;
+            width: min(460px, 86vw);
+            height: min(460px, 86vw);
+        }
+        .logo-modal-card {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 200px;
+            height: 200px;
+            margin: -100px 0 0 -100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 138, 0, 0.35);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px;
+            box-shadow: 0 0 80px rgba(255, 138, 0, 0.28),
+                        inset 0 0 30px rgba(255, 138, 0, 0.06);
+            z-index: 2;
+        }
+        .logo-modal-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+        .logo-modal-info {
+            width: min(560px, 92vw);
+            text-align: center;
+            color: var(--text-white);
+        }
+        .logo-modal-industry {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--orange-accent);
+            background: rgba(255, 138, 0, 0.1);
+            border: 1px solid rgba(255, 138, 0, 0.4);
+            padding: 5px 14px;
+            border-radius: 999px;
+            margin: 0 0 12px;
+        }
+        .logo-modal-name {
+            color: var(--text-white);
+            font-size: 1.25rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin: 0 0 10px;
+        }
+        .logo-modal-description {
+            font-size: 0.92rem;
+            line-height: 1.55;
+            color: rgba(255, 255, 255, 0.75);
+            margin: 0 auto;
+            max-width: 480px;
+        }
+        .logo-orbit {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+        .logo-orbit a {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 50px;
+            height: 50px;
+            margin: -25px 0 0 -25px;
+            border-radius: 50%;
+            background: rgba(255, 138, 0, 0.12);
+            border: 1px solid rgba(255, 138, 0, 0.4);
+            color: var(--orange-accent);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.05rem;
+            text-decoration: none;
+            pointer-events: auto;
+            -webkit-backdrop-filter: blur(6px);
+            backdrop-filter: blur(6px);
+            transform: translate(0, 0) scale(0);
+            opacity: 0;
+            transition:
+                transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+                opacity  0.4s ease var(--delay, 0s),
+                background 0.25s ease,
+                color      0.25s ease,
+                box-shadow 0.25s ease;
+        }
+        .logo-modal.open .logo-orbit a {
+            transform: translate(var(--x, 0px), var(--y, 0px)) scale(1);
+            opacity: 1;
+        }
+        .logo-orbit a:hover {
+            background: var(--orange-accent);
+            color: #000;
+            box-shadow: 0 8px 22px rgba(255, 138, 0, 0.45);
+        }
+        @media (max-width: 600px) {
+            .logo-modal-stage { width: min(360px, 88vw); height: min(360px, 88vw); }
+            .logo-modal-card  { width: 150px; height: 150px; margin: -75px 0 0 -75px; padding: 22px; }
+            .logo-orbit a     { width: 44px; height: 44px; margin: -22px 0 0 -22px; font-size: 0.95rem; }
+            .logo-modal-close { top: 16px; right: 16px; }
+            .logo-modal-content     { gap: 14px; }
+            .logo-modal-info        { width: 92vw; }
+            .logo-modal-industry    { font-size: 0.62rem; padding: 4px 10px; margin-bottom: 8px; }
+            .logo-modal-name        { font-size: 1.05rem; margin-bottom: 6px; }
+            .logo-modal-description { font-size: 0.82rem; line-height: 1.5; }
         }
     </style>
 </head>
@@ -649,21 +1059,24 @@
 
     <div id="site-header-root"></div>
 
-    <!-- Slider Controls -->
-    <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous section">
+    <!-- Slider Controls (arrows + dots hidden for now; kept in DOM so slider JS still works) -->
+    <button class="slider-arrow slider-prev" id="slider-prev" aria-label="Previous section" style="display: none;">
         <i class="fa-solid fa-chevron-left"></i>
     </button>
-    <button class="slider-arrow slider-next" id="slider-next" aria-label="Next section">
+    <button class="slider-arrow slider-next" id="slider-next" aria-label="Next section" style="display: none;">
         <i class="fa-solid fa-chevron-right"></i>
     </button>
-    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Section navigation"></div>
+    <div class="slider-dots" id="slider-dots" role="tablist" aria-label="Section navigation" style="display: none;"></div>
 
     <div class="horizontal-scroll-container">
         
-        <!-- Chapter 1: The Hook -->
+        <!-- Chapter 1: The Hook (video only — no text overlay) -->
         <section id="chapter-1">
             <video class="bg-video" src="intro.mp4" autoplay muted loop playsinline preload="auto"></video>
+        </section>
 
+        <!-- Chapter 1b: Hero text -->
+        <section id="chapter-1b">
             <!-- Floating decorative icons -->
             <div class="float-icons" aria-hidden="true">
                 <i class="fa-brands fa-instagram"></i>
@@ -674,7 +1087,7 @@
             </div>
 
             <div class="container center-layout">
-                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Digital Marketing Agency · ESI, Hyderabad</span>
+                <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Digital Marketing Agency</span>
                 <h1 class="section-title anim anim-up">
                     You put your brand out into the <span class="script-text">world.</span>
                 </h1>
@@ -687,7 +1100,7 @@
                 <div class="icon-chips anim anim-up" style="transition-delay: 400ms;">
                     <span class="icon-chip"><i class="fa-solid fa-house-laptop"></i> <strong>In-house</strong> execution</span>
                     <span class="icon-chip"><i class="fa-solid fa-chart-simple"></i> <strong>Data-first</strong> campaigns</span>
-                    <span class="icon-chip"><i class="fa-solid fa-location-dot"></i> <strong>ESI</strong> Hyderabad</span>
+                    <span class="icon-chip"><i class="fa-solid fa-bullseye"></i> <strong>ROI-focused</strong> results</span>
                 </div>
 
                 <a href="#chapter-2" class="btn anim anim-scale" style="transition-delay: 550ms; margin-top: 30px;">Begin Your Journey <i class="fa-solid fa-arrow-right"></i></a>
@@ -719,7 +1132,7 @@
                     <p class="body-text anim anim-right" style="transition-delay: 500ms; margin-top: 24px;">
                         <strong class="highlight">The Promise:</strong> Performance-focused marketing that maximises ROI and secures long-term success.
                     </p>
-                    <a href="about.html" class="btn btn-outline anim anim-up" style="transition-delay: 650ms;">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="about-bhoomerang-media-hyderabad.html" class="btn btn-outline anim anim-up" style="transition-delay: 650ms;">Learn More About Us <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -731,19 +1144,19 @@
                 <p class="body-text anim anim-up" style="transition-delay: 150ms;">A complete digital ecosystem, tailored to your goals.</p>
 
                 <div class="services-grid">
-                    <a href="services/social-media-management.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                    <a href="services/social-media-management-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
                         <div class="tool-icon"><i class="fa-solid fa-hashtag"></i></div>
                         <h4>Social Media Management</h4>
                         <p>Strategy, content, community &amp; analytics — Instagram, Facebook, LinkedIn, YouTube &amp; X.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/branding-design.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                    <a href="services/branding-design-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
                         <div class="tool-icon"><i class="fa-solid fa-palette"></i></div>
                         <h4>Branding &amp; Design</h4>
                         <p>Logos, visual identity, brand guidelines &amp; marketing collateral — produced in-house.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/seo-aeo-geo.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
+                    <a href="services/seo-aeo-geo-hyderabad.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
                         <div class="tool-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h4>SEO, AEO &amp; GEO</h4>
                         <p>Rank on Google, win featured snippets, get cited by ChatGPT &amp; Perplexity.</p>
@@ -764,19 +1177,19 @@
                 <p class="body-text anim anim-up" style="transition-delay: 150ms;">The other half of the toolkit — ads, video &amp; web.</p>
 
                 <div class="services-grid">
-                    <a href="services/performance-marketing.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                    <a href="services/performance-marketing-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
                         <div class="tool-icon"><i class="fa-solid fa-bullseye"></i></div>
                         <h4>Performance Marketing</h4>
                         <p>Meta &amp; Google Ads — lead gen, retargeting &amp; ROAS optimisation. Every rupee tracked.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/video-production.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                    <a href="services/video-production-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
                         <div class="tool-icon"><i class="fa-solid fa-video"></i></div>
                         <h4>Video Production</h4>
                         <p>Commercials, Reels, corporate films, podcasts &amp; ad creatives from our ESI studio.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/web-development.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
+                    <a href="services/web-development-hyderabad.html" class="tool-card mobile-hide anim anim-up" style="transition-delay: 500ms;">
                         <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
                         <h4>Web Development &amp; UI/UX</h4>
                         <p>Fast, mobile-first, SEO-ready websites &amp; intuitive experiences built to convert.</p>
@@ -785,7 +1198,7 @@
                 </div>
 
                 <div class="anim anim-up mobile-hide" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
-                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services/digital-marketing-services-hyderabad.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="anim anim-up mobile-only-inline" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
                     <a href="#chapter-3c" class="btn btn-outline">More Services <i class="fa-solid fa-arrow-right"></i></a>
@@ -800,13 +1213,13 @@
                 <p class="body-text anim anim-up" style="transition-delay: 150ms;">Get found &amp; convert — the digital foundation layer.</p>
 
                 <div class="services-grid">
-                    <a href="services/seo-aeo-geo.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
+                    <a href="services/seo-aeo-geo-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 300ms;">
                         <div class="tool-icon"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h4>SEO, AEO &amp; GEO</h4>
                         <p>Rank on Google, win featured snippets, get cited by ChatGPT &amp; Perplexity.</p>
                         <span class="card-link">Learn more <i class="fa-solid fa-arrow-right"></i></span>
                     </a>
-                    <a href="services/web-development.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
+                    <a href="services/web-development-hyderabad.html" class="tool-card anim anim-up" style="transition-delay: 400ms;">
                         <div class="tool-icon"><i class="fa-solid fa-code"></i></div>
                         <h4>Web Development &amp; UI/UX</h4>
                         <p>Fast, mobile-first, SEO-ready websites &amp; intuitive experiences built to convert.</p>
@@ -815,7 +1228,7 @@
                 </div>
 
                 <div class="anim anim-up" style="transition-delay: 650ms; margin-top: 36px; text-align: center;">
-                    <a href="services.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services/digital-marketing-services-hyderabad.html" class="btn btn-outline">View All Services <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -836,7 +1249,7 @@
                         <span class="icon-chip"><i class="fa-brands fa-linkedin"></i> LinkedIn</span>
                     </div>
 
-                    <a href="strategy.html" class="btn btn-outline anim anim-left" style="transition-delay: 500ms; margin-top: 28px;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="digital-marketing-strategy-hyderabad.html" class="btn btn-outline anim anim-left" style="transition-delay: 500ms; margin-top: 28px;">Discover Our Process <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
                 <div class="journey-steps mobile-hide">
                     <div class="step-item anim anim-right" style="transition-delay: 100ms;">
@@ -918,7 +1331,7 @@
                         <span class="meta-pill"><i class="fa-solid fa-film"></i> Edit Suite</span>
                     </div>
 
-                    <a href="services/video-production.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms; margin-top: 30px;">Explore Our Studio <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="services/video-production-hyderabad.html" class="btn btn-outline anim anim-left" style="transition-delay: 400ms; margin-top: 30px;">Explore Our Studio <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
 
                 <!-- 2x2 image gallery
@@ -955,7 +1368,7 @@
                 <div style="text-align: center; max-width: 800px; margin: 0 auto 30px;">
                     <h2 class="section-title anim anim-up">Built for <span class="script-text">every industry.</span></h2>
                     <p class="body-text anim anim-up" style="transition-delay: 150ms;">
-                        Success stories across six verticals — flexible team structures to match your stage of growth.
+                        Success stories across many verticals — flexible team structures to match your stage of growth.
                     </p>
                 </div>
 
@@ -984,12 +1397,112 @@
                     <div class="industry-tile"><i class="fa-solid fa-building"></i><span>Real Estate</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-heart-pulse"></i><span>Health</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-graduation-cap"></i><span>Education</span></div>
-                    <div class="industry-tile"><i class="fa-solid fa-sack-dollar"></i><span>Finance</span></div>
                     <div class="industry-tile"><i class="fa-solid fa-seedling"></i><span>Startups</span></div>
+                    <div class="industry-tile"><i class="fa-solid fa-ellipsis"></i><span>&amp; many more</span></div>
                 </div>
 
                 <div class="anim anim-up" style="transition-delay: 700ms; margin-top: 40px; text-align: center;">
-                    <a href="contact.html" class="btn btn-outline">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="contact-bhoomerang-media-hyderabad.html" class="btn btn-outline">Build Your Team <i class="fa-solid fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chapter 6b: Our Clients -->
+        <section id="chapter-clients" class="chapter-bg">
+            <div class="container">
+                <div style="text-align: center; max-width: 800px; margin: 0 auto 36px;">
+                    <span class="hero-badge anim anim-up"><i class="fa-solid fa-circle"></i> Our Clients</span>
+                    <h2 class="section-title anim anim-up">The brands we've <span class="script-text">grown.</span></h2>
+                    <p class="body-text anim anim-up" style="transition-delay: 150ms;">
+                        A glimpse of the partners we've helped scale — hover or tap any logo to connect.
+                    </p>
+                </div>
+
+                <div class="home-clients-grid">
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 50ms;"
+                            data-name="Finsetter"
+                            data-industry="Finance"
+                            data-description="Finance-focused platform delivering insights, trends, and practical strategies to help individuals and businesses make smarter financial decisions."
+                            data-website="https://www.thefinsetter.com/" data-instagram="https://www.instagram.com/thefinsetter/" data-facebook="https://www.facebook.com/TheFinSetter">
+                        <img src="images/client_transparent/Finsetter.png" alt="Finsetter logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 100ms;"
+                            data-name="Arka Elite"
+                            data-industry="Real Estate"
+                            data-description="Real estate company specializing in open plots, property investments, and end-to-end buying and selling solutions in Hyderabad."
+                            data-website="https://arkaeliteproperties.com/" data-instagram="https://www.instagram.com/arkaelite.properties/" data-facebook="https://www.facebook.com/profile.php?id=61586164556415" data-youtube="https://www.youtube.com/@arkaelite.properties">
+                        <img src="images/client_transparent/Arka_Eite_Png.png" alt="Arka Elite logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 150ms;"
+                            data-name="Asian Motors"
+                            data-industry="Automotive"
+                            data-description="Trusted pre-owned car dealership offering quality-verified vehicles, transparent deals, and hassle-free buying in Hyderabad."
+                            data-website="https://www.asianmotors.co.in/" data-youtube="https://www.youtube.com/@AsianMotorsHyd">
+                        <img src="images/client_transparent/Asian Motors Logo.png" alt="Asian Motors logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 200ms;"
+                            data-name="Buttabomma"
+                            data-industry="Beauty &amp; Makeup"
+                            data-description="Bridal and professional makeup service offering elegant, occasion-based looks with high-quality beauty products and styling expertise."
+                            data-website="https://buttabomma.makeup/" data-instagram="https://www.instagram.com/buttabomma_schoolofmakeup/" data-facebook="https://www.facebook.com/profile.php?id=61578284187465" data-youtube="https://www.youtube.com/@ButtaBomma-SchoolOfMakeUp">
+                        <img src="images/client_transparent/bb png.png" alt="Buttabomma logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 250ms;"
+                            data-name="Care Nest US"
+                            data-industry="Healthcare Staffing"
+                            data-description="US-based healthcare staffing and recruitment platform connecting hospitals with skilled medical professionals across nursing, allied health, and physician roles."
+                            data-website="https://www.carenesthealth.com/" data-instagram="https://www.instagram.com/carenest_health/" data-facebook="https://www.facebook.com/profile.php?id=100094644187060" data-linkedin="https://www.linkedin.com/company/carenest-health-services-inc">
+                        <img src="images/client_transparent/Carenest Usa.png" alt="Care Nest US logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 300ms;"
+                            data-name="Dhatri Foods"
+                            data-industry="Nutrition &amp; Social Impact"
+                            data-description="Community-driven nutrition program combating malnutrition and anemia among children and women across India."
+                            data-website="https://sposhan.in/" data-instagram="https://www.instagram.com/dhatrifoods/" data-facebook="https://www.facebook.com/DhatriFoods/" data-linkedin="https://www.linkedin.com/in/dhatri-foods-1bb8b4251/">
+                        <img src="images/client_transparent/dhathri foods.png" alt="Dhatri Foods logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 350ms;"
+                            data-name="Interntion"
+                            data-industry="Careers &amp; Internships"
+                            data-description="Career platform providing verified internships, project support, and mentorship to help students gain real-world experience and job readiness."
+                            data-website="https://interntion.co.uk/" data-instagram="https://www.instagram.com/theinterntion/" data-facebook="https://www.facebook.com/profile.php?id=100080797801569">
+                        <img src="images/client_transparent/Interntion.png" alt="Interntion logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 400ms;"
+                            data-name="Liran Digital Solutions"
+                            data-industry="Digital Marketing"
+                            data-description="Premium digital marketing services for healthcare professionals across India."
+                            data-website="https://www.liran.in/" data-instagram="https://www.instagram.com/liran.digital/" data-facebook="https://www.facebook.com/lirandigitalmedia/" data-linkedin="https://www.linkedin.com/company/liran-solutions/">
+                        <img src="images/client_transparent/liran solutions.png" alt="Liran Digital Solutions logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 450ms;"
+                            data-name="Liran Pharma &amp; Baby Care"
+                            data-industry="Pharma &amp; Baby Care"
+                            data-description="Pharmaceutical and baby care brand offering safe, gentle healthcare and hygiene products for infants and families."
+                            data-website="https://www.liran.in/" data-instagram="https://www.instagram.com/liranpharmaandbabycare/" data-facebook="https://www.facebook.com/profile.php?id=61583673490100">
+                        <img src="images/client_transparent/liran pharma.png" alt="Liran Pharma Baby Care logo" loading="lazy">
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 500ms;"
+                            data-name="Swasthavritti Tech Service"
+                            data-industry="Career Consultancy"
+                            data-description="Career consultancy enabling global opportunities through student visas, training programs, and healthcare staffing solutions."
+                            data-website="https://swasthavritti.com/" data-instagram="https://www.instagram.com/swasthavritti_tech_services/" data-facebook="https://www.facebook.com/swasthavrittitechservices/" data-linkedin="https://www.linkedin.com/company/swasthavritti-tech-services-pvt-ltd/" data-youtube="https://www.youtube.com/@swasthavritti">
+                        <span class="logo-stack" style="display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; width:100%; height:100%;">
+                            <img src="images/client_transparent/swas_tech logo.png" alt="Swasthavritti Tech Service symbol" loading="lazy" style="max-height:70px;">
+                            <img src="images/client_transparent/swas_tech_name_logo.png" alt="Swasthavritti Tech Service name" loading="lazy" style="max-height:35px;">
+                        </span>
+                    </button>
+                    <button type="button" class="logo-item anim anim-up" style="transition-delay: 550ms;"
+                            data-name="Vaarahi TVS"
+                            data-industry="Automotive"
+                            data-description="Authorized TVS three-wheeler dealer offering reliable autos, flexible finance options, and complete support for commercial vehicle buyers."
+                            data-website="https://vaarahitvs.in/" data-instagram="https://www.instagram.com/vaarahitvs/" data-facebook="https://www.facebook.com/profile.php?id=61576538883817">
+                        <img src="images/client_transparent/Vaarahi_Motors.png" alt="Vaarahi TVS logo" loading="lazy">
+                    </button>
+                </div>
+
+                <div class="anim anim-up" style="transition-delay: 800ms; margin-top: 36px; text-align: center;">
+                    <a href="portfolio.html" class="btn btn-outline">See Full Portfolio <i class="fa-solid fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
@@ -1007,35 +1520,64 @@
                     <div class="contact-details" style="margin-top: 0;">
                         <div class="contact-item">
                             <i class="fa-solid fa-location-dot"></i>
-                            <span>Pillar No 987, Bhanu Enclave, Flat No 312, 3rd Floor, beside ESI Hospital Metro Station, Erragadda, Hyderabad, Telangana 500038</span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <span><a href="mailto:hello@bhoomerangmedia.com" style="color: inherit; text-decoration: none;">hello@bhoomerangmedia.com</a></span>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <span><a href="tel:+918096562345" style="color: inherit; text-decoration: none;">+91 8096 56 2345</a></span>
+                            <span><strong>Registered Office</strong> — 408, 4th Floor, Jain Friend Square Mall, Suchitra Circle, Hyderabad 500067, Telangana</span>
                         </div>
                     </div>
 
-                    <div class="icon-chips" style="margin-top: 24px;">
-                        <a href="https://www.instagram.com/bhoomerang_media/" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-instagram"></i> Instagram</a>
-                        <a href="https://linkedin.com/company/bhoomerang-media" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-                        <a href="https://youtube.com/@bhoomerangmedia" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                        <a href="https://facebook.com/letsbhoomerang" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-facebook"></i> Facebook</a>
-                        <a href="https://x.com/BhoomerangMedia" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-x-twitter"></i> X</a>
-                        <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" target="_blank" rel="noopener" class="icon-chip"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a>
+                    <div class="contact-group">
+                        <span class="contact-group-label"><i class="fa-solid fa-code-branch"></i> Our Branches</span>
+                        <div class="icon-chips">
+                            <span class="icon-chip">ESI, Hyderabad</span>
+                            <span class="icon-chip">Warangal</span>
+                            <span class="icon-chip">Karimnagar</span>
+                            <span class="icon-chip">Visakhapatnam</span>
+                            <span class="icon-chip">Vijayawada</span>
+                            <span class="icon-chip">Kurnool</span>
+                            <span class="icon-chip">Bangalore</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-group">
+                        <span class="contact-group-label"><i class="fa-solid fa-share-nodes"></i> Connect With Us</span>
+                        <div class="icon-chips social-icons">
+                            <a href="https://www.instagram.com/bhoomerang_media/" target="_blank" rel="noopener" class="icon-chip" aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                            <a href="https://linkedin.com/company/bhoomerang-media" target="_blank" rel="noopener" class="icon-chip" aria-label="LinkedIn" title="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+                            <a href="https://youtube.com/@bhoomerangmedia" target="_blank" rel="noopener" class="icon-chip" aria-label="YouTube" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                            <a href="https://facebook.com/letsbhoomerang" target="_blank" rel="noopener" class="icon-chip" aria-label="Facebook" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                            <a href="https://x.com/BhoomerangMedia" target="_blank" rel="noopener" class="icon-chip" aria-label="X" title="X"><i class="fa-brands fa-x-twitter"></i></a>
+                            <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" target="_blank" rel="noopener" class="icon-chip" aria-label="WhatsApp" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                        </div>
                     </div>
                 </div>
 
                 <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 30px;">
-                    <a href="contact.html" class="btn anim anim-scale" style="transition-delay: 500ms;">Start a Conversation <i class="fa-solid fa-paper-plane"></i></a>
-                    <a href="services.html" class="btn btn-outline anim anim-scale" style="transition-delay: 600ms;">Explore Services <i class="fa-solid fa-arrow-right"></i></a>
+                    <a href="contact-bhoomerang-media-hyderabad.html" class="btn anim anim-scale" style="transition-delay: 500ms;">Start a Conversation <i class="fa-solid fa-paper-plane"></i></a>
+                    <button type="button" id="open-audit-modal" class="btn btn-outline anim anim-scale" style="transition-delay: 600ms;">Claim Your Free Audit <i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
         </section>
 
+    </div>
+
+    <!-- Client logo popup (fixed; lives outside the horizontal scroller) -->
+    <div class="logo-modal" id="logo-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="logo-modal-name">
+        <div class="logo-modal-backdrop" data-close></div>
+        <button type="button" class="logo-modal-close" data-close aria-label="Close">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+        <div class="logo-modal-content">
+            <div class="logo-modal-stage">
+                <div class="logo-orbit" id="logo-orbit"></div>
+                <div class="logo-modal-card">
+                    <img id="logo-modal-img" src="" alt="">
+                </div>
+            </div>
+            <div class="logo-modal-info">
+                <span class="logo-modal-industry" id="logo-modal-industry"></span>
+                <h3 class="logo-modal-name" id="logo-modal-name"></h3>
+                <p class="logo-modal-description" id="logo-modal-description"></p>
+            </div>
+        </div>
     </div>
 
     <script src="js/site-header.js"></script>
@@ -1067,6 +1609,12 @@
         }
 
         window.addEventListener('wheel', (evt) => {
+            // When a modal is open, don't navigate slides on wheel.
+            if (document.body.classList.contains('audit-modal-open')) return;
+            if (document.body.classList.contains('logo-modal-open')) { evt.preventDefault(); return; }
+            // Let the offcanvas sidebar scroll natively when it's open.
+            const offcanvasEl = document.getElementById('offcanvas');
+            if (offcanvasEl && offcanvasEl.classList.contains('active')) return;
             evt.preventDefault();
             if (wheelLocked) { scheduleIdleRelease(); return; }
 
@@ -1258,10 +1806,254 @@
                 }
             }
         }, { passive: true });
+
+        // --- Free Audit modal: open from CTA, close on backdrop / X / Esc ---
+        // Modal markup is rendered later in the document, so defer lookups until DOM is parsed.
+        document.addEventListener('DOMContentLoaded', () => {
+            const auditModal = document.getElementById('audit-modal');
+            const auditOpenBtn = document.getElementById('open-audit-modal');
+            const auditForm = document.getElementById('audit-form');
+
+            function openAuditModal() {
+                if (!auditModal) return;
+                auditModal.classList.add('is-visible');
+                auditModal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('audit-modal-open');
+                requestAnimationFrame(() => auditModal.classList.add('is-open'));
+                const firstField = auditModal.querySelector('input, textarea');
+                if (firstField) setTimeout(() => firstField.focus(), 250);
+            }
+
+            function closeAuditModal() {
+                if (!auditModal) return;
+                auditModal.classList.remove('is-open');
+                auditModal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('audit-modal-open');
+                setTimeout(() => auditModal.classList.remove('is-visible'), 260);
+            }
+
+            if (auditOpenBtn) auditOpenBtn.addEventListener('click', openAuditModal);
+            if (auditModal) {
+                auditModal.querySelectorAll('[data-close-audit]').forEach(el => {
+                    el.addEventListener('click', closeAuditModal);
+                });
+            }
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && auditModal && auditModal.classList.contains('is-visible')) closeAuditModal();
+            });
+
+            if (auditForm) {
+                auditForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    alert("Thanks — we'll get back to you within 24 hours. (Note: form endpoint not yet connected.)");
+                    auditForm.reset();
+                    closeAuditModal();
+                });
+            }
+        });
+
+        // --- Client logo popup with orbiting social icons ---
+        (function () {
+            const SOCIAL_PLATFORMS = [
+                { key: 'website',   label: 'Website',   icon: 'fa-solid fa-globe' },
+                { key: 'instagram', label: 'Instagram', icon: 'fa-brands fa-instagram' },
+                { key: 'facebook',  label: 'Facebook',  icon: 'fa-brands fa-facebook-f' },
+                { key: 'youtube',   label: 'YouTube',   icon: 'fa-brands fa-youtube' },
+                { key: 'linkedin',  label: 'LinkedIn',  icon: 'fa-brands fa-linkedin-in' },
+                { key: 'twitter',   label: 'Twitter / X', icon: 'fa-brands fa-x-twitter' },
+                { key: 'whatsapp',  label: 'WhatsApp',  icon: 'fa-brands fa-whatsapp' },
+            ];
+
+            const modal         = document.getElementById('logo-modal');
+            const modalImg      = document.getElementById('logo-modal-img');
+            const modalName     = document.getElementById('logo-modal-name');
+            const modalIndustry = document.getElementById('logo-modal-industry');
+            const modalDesc     = document.getElementById('logo-modal-description');
+            const orbit         = document.getElementById('logo-orbit');
+            const stage         = modal.querySelector('.logo-modal-stage');
+            const content       = modal.querySelector('.logo-modal-content');
+
+            const HOVER_OPEN_DELAY    = 220;
+            const STAGE_LEAVE_CLOSE   = 300;
+            const NO_ENGAGEMENT_CLOSE = 2500;
+            // Hover-to-open popup intentionally disabled — click only.
+            const supportsHover = false;
+
+            let openTimer = null;
+            let closeTimer = null;
+            let inactivityTimer = null;
+            const cancelOpenTimer       = () => { if (openTimer)       { clearTimeout(openTimer);       openTimer       = null; } };
+            const cancelCloseTimer      = () => { if (closeTimer)      { clearTimeout(closeTimer);      closeTimer      = null; } };
+            const cancelInactivityTimer = () => { if (inactivityTimer) { clearTimeout(inactivityTimer); inactivityTimer = null; } };
+
+            function openLogoModal(item) {
+                cancelCloseTimer();
+                const img = item.querySelector('img');
+                modalImg.src = img.getAttribute('src');
+                modalImg.alt = img.getAttribute('alt') || '';
+                modalName.textContent = item.dataset.name || '';
+                modalIndustry.textContent = item.dataset.industry || '';
+                modalIndustry.hidden = !item.dataset.industry;
+                modalDesc.textContent = item.dataset.description || '';
+                modalDesc.hidden = !item.dataset.description;
+
+                const links = SOCIAL_PLATFORMS
+                    .map(p => ({ ...p, url: item.dataset[p.key] }))
+                    .filter(p => p.url && p.url.trim() !== '');
+
+                const stageSize = stage.offsetWidth;
+                const radius = stageSize / 2 - 32;
+                const count = links.length;
+
+                orbit.innerHTML = '';
+                links.forEach((link, i) => {
+                    const angle = -Math.PI / 2 + (2 * Math.PI * i) / count;
+                    const x = Math.cos(angle) * radius;
+                    const y = Math.sin(angle) * radius;
+                    const a = document.createElement('a');
+                    a.href = link.url;
+                    a.target = '_blank';
+                    a.rel = 'noopener';
+                    a.setAttribute('aria-label', `${item.dataset.name || ''} on ${link.label}`.trim());
+                    a.style.setProperty('--x', `${x}px`);
+                    a.style.setProperty('--y', `${y}px`);
+                    a.style.setProperty('--delay', `${0.12 + i * 0.06}s`);
+                    a.innerHTML = `<i class="${link.icon}" aria-hidden="true"></i>`;
+                    orbit.appendChild(a);
+                });
+
+                void modal.offsetWidth;
+                modal.classList.add('open');
+                modal.setAttribute('aria-hidden', 'false');
+                document.body.classList.add('logo-modal-open');
+            }
+
+            function closeLogoModal() {
+                cancelOpenTimer();
+                cancelCloseTimer();
+                cancelInactivityTimer();
+                modal.classList.remove('open');
+                modal.setAttribute('aria-hidden', 'true');
+                document.body.classList.remove('logo-modal-open');
+            }
+
+            document.querySelectorAll('.logo-item').forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    cancelOpenTimer();
+                    cancelInactivityTimer();
+                    openLogoModal(item);
+                });
+
+                if (!supportsHover) return;
+
+                item.addEventListener('mouseenter', () => {
+                    cancelCloseTimer();
+                    cancelInactivityTimer();
+                    cancelOpenTimer();
+                    openTimer = setTimeout(() => {
+                        openLogoModal(item);
+                        openTimer = null;
+                        inactivityTimer = setTimeout(() => {
+                            closeLogoModal();
+                            inactivityTimer = null;
+                        }, NO_ENGAGEMENT_CLOSE);
+                    }, HOVER_OPEN_DELAY);
+                });
+                item.addEventListener('mouseleave', () => {
+                    // Only abort a pending open. The stage owns close behavior
+                    // once the popup is up — see the comment in portfolio.html.
+                    cancelOpenTimer();
+                });
+            });
+
+            if (supportsHover) {
+                content.addEventListener('mouseenter', () => {
+                    cancelInactivityTimer();
+                    cancelCloseTimer();
+                });
+                content.addEventListener('mouseleave', () => {
+                    cancelCloseTimer();
+                    closeTimer = setTimeout(() => {
+                        closeLogoModal();
+                        closeTimer = null;
+                    }, STAGE_LEAVE_CLOSE);
+                });
+            }
+
+            modal.querySelectorAll('[data-close]').forEach(el => {
+                el.addEventListener('click', closeLogoModal);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('open')) closeLogoModal();
+            });
+        })();
     </script>
-    <!-- Floating WhatsApp CTA -->
-    <a href="https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat with Bhoomerang Media on WhatsApp" title="Chat on WhatsApp">
-        <i class="fa-brands fa-whatsapp" aria-hidden="true"></i>
-    </a>
+    <!-- Free Audit Modal (form mirrors contact.html) -->
+    <div id="audit-modal" class="audit-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="audit-modal-title">
+        <div class="audit-modal-backdrop" data-close-audit></div>
+        <div class="audit-modal-panel" role="document">
+            <button type="button" class="audit-modal-close" aria-label="Close" data-close-audit>
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="audit-modal-header">
+                <span class="hero-badge"><i class="fa-solid fa-circle"></i> Free Audit</span>
+                <h3 id="audit-modal-title">Claim Your Free Audit</h3>
+                <p>Tell us about your business — we'll review and come back with a tailored growth plan within 24 hours.</p>
+            </div>
+
+            <form class="contact-form" id="audit-form" action="#" method="POST" name="audit" aria-label="Free audit request form">
+                <div class="form-row">
+                    <div>
+                        <label for="audit-name">Your Name *</label>
+                        <input type="text" id="audit-name" name="name" required placeholder="e.g. Ravi Kumar" />
+                    </div>
+                    <div>
+                        <label for="audit-email">Email *</label>
+                        <input type="email" id="audit-email" name="email" required placeholder="you@business.com" />
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div>
+                        <label for="audit-phone">Phone</label>
+                        <input type="tel" id="audit-phone" name="phone" placeholder="+91 98765 43210" />
+                    </div>
+                    <div>
+                        <label for="audit-business">Business Name</label>
+                        <input type="text" id="audit-business" name="business" placeholder="Your Business" />
+                    </div>
+                </div>
+
+                <div>
+                    <label for="audit-service">Service You're Interested In</label>
+                    <select id="audit-service" name="service">
+                        <option value="">— Select a Service —</option>
+                        <option value="social-media-management">Social Media Management</option>
+                        <option value="branding-design">Branding &amp; Design</option>
+                        <option value="seo-aeo-geo">SEO, AEO &amp; GEO</option>
+                        <option value="performance-marketing">Performance Marketing (Meta &amp; Google Ads)</option>
+                        <option value="video-production">Video Production &amp; Editing</option>
+                        <option value="web-development">Web Development &amp; UI/UX</option>
+                        <option value="all">Full-Service Digital Marketing</option>
+                        <option value="not-sure">Not sure — help me decide</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label for="audit-message">Tell Us About Your Business &amp; Goals *</label>
+                    <textarea id="audit-message" name="message" required rows="4" placeholder="Briefly describe your business and what you'd like to achieve..."></textarea>
+                </div>
+
+                <div class="submit-row">
+                    <button type="submit" class="btn">Send Message <i class="fa-solid fa-paper-plane"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/floating-cta.js"></script>
+    <script src="js/audit-modal.js"></script>
 </body>
 </html>

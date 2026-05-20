@@ -485,7 +485,264 @@ body {
 .info-tile a:hover { color: var(--orange-accent); }
 
 /* ============================================================
-   PORTFOLIO — search + filter toolbar and client cards
+   LOCATION GROUPS (contact page — state-wise city tiles)
+   ============================================================ */
+.location-group { margin-top: 30px; }
+.location-state {
+    font-size: 1.25rem;
+    color: var(--text-white);
+    margin-bottom: 6px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 138, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.location-state i { color: var(--orange-accent); font-size: 1.1rem; }
+.location-group .info-grid { margin-top: 20px; }
+
+/* ============================================================
+   PORTFOLIO — clean client logo grid (no card chrome) + popup
+   ============================================================ */
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+}
+@media (max-width: 992px) { .logo-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; } }
+@media (max-width: 600px) { .logo-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+
+.logo-item {
+    /* button reset */
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    /* layout */
+    aspect-ratio: 3 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 12px;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), background 0.3s ease;
+}
+.logo-item:focus-visible {
+    outline: 2px solid var(--orange-accent);
+    outline-offset: 4px;
+    background: rgba(255, 138, 0, 0.04);
+}
+.logo-item img {
+    max-width: 60%;
+    max-height: 120px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+    transition: filter 0.35s ease, opacity 0.35s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@media (max-width: 992px) {
+    .logo-item img { max-height: 95px; max-width: 70%; }
+}
+@media (max-width: 600px) {
+    .logo-item img { max-height: 75px; max-width: 75%; }
+}
+.logo-item:hover img {
+    opacity: 1;
+    transform: scale(1.08);
+}
+.logo-item:active img { transform: scale(1.02); }
+
+/* ---- Logo popup modal ---- */
+.logo-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+.logo-modal.open {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.35s ease, visibility 0s linear 0s;
+}
+.logo-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(8, 8, 10, 0.82);
+    -webkit-backdrop-filter: blur(14px);
+    backdrop-filter: blur(14px);
+    cursor: pointer;
+}
+.logo-modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 138, 0, 0.1);
+    border: 1px solid rgba(255, 138, 0, 0.35);
+    color: var(--orange-accent);
+    font-size: 1.05rem;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    transition: background 0.25s ease, color 0.25s ease, transform 0.35s ease;
+}
+.logo-modal-close:hover {
+    background: var(--orange-accent);
+    color: #000;
+    transform: rotate(90deg);
+}
+
+.logo-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+    max-height: 100vh;
+    transform: scale(0.55);
+    opacity: 0;
+    transition: transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease;
+}
+.logo-modal.open .logo-modal-content {
+    transform: scale(1);
+    opacity: 1;
+    transition-delay: 0.05s;
+}
+.logo-modal-stage {
+    position: relative;
+    width: min(460px, 86vw);
+    height: min(460px, 86vw);
+}
+
+.logo-modal-card {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200px;
+    height: 200px;
+    margin: -100px 0 0 -100px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 138, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    box-shadow: 0 0 80px rgba(255, 138, 0, 0.28),
+                inset 0 0 30px rgba(255, 138, 0, 0.06);
+    z-index: 2;
+}
+.logo-modal-card img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: brightness(1.1);
+}
+.logo-modal-info {
+    width: min(560px, 92vw);
+    text-align: center;
+    color: var(--text-white);
+}
+.logo-modal-industry {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--orange-accent);
+    background: rgba(255, 138, 0, 0.1);
+    border: 1px solid rgba(255, 138, 0, 0.4);
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin: 0 0 12px;
+}
+.logo-modal-name {
+    color: var(--text-white);
+    font-size: 1.25rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    margin: 0 0 10px;
+}
+.logo-modal-description {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.75);
+    margin: 0 auto;
+    max-width: 480px;
+}
+
+/* Circular orbit of social icons around the logo card */
+.logo-orbit {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.logo-orbit a {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    margin: -25px 0 0 -25px;
+    border-radius: 50%;
+    background: rgba(255, 138, 0, 0.12);
+    border: 1px solid rgba(255, 138, 0, 0.4);
+    color: var(--orange-accent);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    text-decoration: none;
+    pointer-events: auto;
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    /* start collapsed at center; open transition flies them outward */
+    transform: translate(0, 0) scale(0);
+    opacity: 0;
+    transition:
+        transform 0.6s cubic-bezier(0.22, 1, 0.36, 1) var(--delay, 0s),
+        opacity  0.4s ease var(--delay, 0s),
+        background 0.25s ease,
+        color      0.25s ease,
+        box-shadow 0.25s ease;
+}
+.logo-modal.open .logo-orbit a {
+    transform: translate(var(--x, 0px), var(--y, 0px)) scale(1);
+    opacity: 1;
+}
+.logo-orbit a:hover {
+    background: var(--orange-accent);
+    color: #000;
+    box-shadow: 0 8px 22px rgba(255, 138, 0, 0.45);
+}
+
+@media (max-width: 600px) {
+    .logo-modal-stage { width: min(360px, 88vw); height: min(360px, 88vw); }
+    .logo-modal-card  { width: 150px; height: 150px; margin: -75px 0 0 -75px; padding: 22px; }
+    .logo-orbit a     { width: 44px; height: 44px; margin: -22px 0 0 -22px; font-size: 0.95rem; }
+    .logo-modal-close { top: 16px; right: 16px; }
+    .logo-modal-content     { gap: 14px; }
+    .logo-modal-info        { width: 92vw; }
+    .logo-modal-industry    { font-size: 0.62rem; padding: 4px 10px; margin-bottom: 8px; }
+    .logo-modal-name        { font-size: 1.05rem; margin-bottom: 6px; }
+    .logo-modal-description { font-size: 0.82rem; line-height: 1.5; }
+}
+
+/* ============================================================
+   PORTFOLIO — search + filter toolbar and client cards (legacy)
    ============================================================ */
 .portfolio-toolbar {
     display: flex;
@@ -1143,3 +1400,172 @@ body {
     .blog-author-card { flex-direction: column; text-align: center; gap: 16px; padding: 20px; }
     .blog-foot { flex-direction: column; align-items: flex-start; }
 }
+
+/* ============================================================
+   TEAM PAGE — Department member grid
+   Used on team.html. Section headers re-use .section-intro,
+   member cards re-use the .image-slot.ratio-3-4 portrait box.
+   ============================================================ */
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 20px;
+}
+
+.team-grid--two {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.team-grid--one {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 340px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (max-width: 992px) {
+    .team-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .team-grid--two { max-width: 640px; }
+}
+@media (max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; gap: 22px; max-width: 360px; margin-left: auto; margin-right: auto; }
+    .team-grid--two { grid-template-columns: 1fr; max-width: 360px; }
+}
+
+.team-card {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.team-card:hover { transform: translateY(-4px); }
+
+.team-card .image-slot {
+    margin-bottom: 18px;
+    border-radius: 14px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+    aspect-ratio: auto;
+}
+
+.team-card .image-slot img {
+    height: auto;
+    object-fit: contain;
+}
+
+.team-card .member-name {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--text-white);
+    margin: 0 0 4px;
+    letter-spacing: 0.01em;
+}
+
+.team-card .member-role {
+    font-size: 0.95rem;
+    color: var(--orange-accent);
+    font-weight: 500;
+    margin: 0 0 4px;
+}
+
+.team-card .member-years {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    opacity: 0.75;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+/* Subtle divider between department sections so they read as
+   distinct units without needing extra background colour. */
+.department + .department {
+    border-top: 1px solid rgba(255, 138, 0, 0.12);
+}
+
+/* Leadership portraits (MD + Director): keep the 3:4 ratio but
+   cap the slot width so it isn't as tall as a full split column. */
+#managing-director .image-column .image-slot,
+#director .image-column .image-slot {
+    max-width: 368px;
+    margin-left: auto;
+    margin-right: auto;
+}
+@media (max-width: 992px) {
+    #managing-director .image-column .image-slot,
+    #director .image-column .image-slot {
+        max-width: 328px;
+    }
+}
+
+/* Comparison table used in blog posts (e.g. GEO vs SEO). Tailwind's
+   preflight strips default table styling, so we restore borders, padding
+   and rhythm here. The wrapper lets it scroll horizontally on mobile. */
+.comparison-table-wrap,
+.table-scroll {
+    width: 100%;
+    overflow-x: auto;
+    margin: 24px 0;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 138, 0, 0.18);
+    background: var(--dark-card);
+}
+
+.comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--text-white);
+    font-size: 0.98rem;
+    line-height: 1.55;
+}
+
+.comparison-table thead th {
+    text-align: left;
+    padding: 14px 18px;
+    font-weight: 600;
+    color: var(--orange-accent);
+    background: rgba(255, 138, 0, 0.08);
+    border-bottom: 1px solid rgba(255, 138, 0, 0.25);
+    letter-spacing: 0.02em;
+}
+
+.comparison-table tbody td {
+    padding: 14px 18px;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: top;
+}
+
+.comparison-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.comparison-table tbody tr:nth-child(even) td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.comparison-table tbody td + td {
+    border-left: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.comparison-table thead th + th {
+    border-left: 1px solid rgba(255, 138, 0, 0.18);
+}
+
+@media (max-width: 600px) {
+    .comparison-table {
+        font-size: 0.92rem;
+    }
+    .comparison-table thead th,
+    .comparison-table tbody td {
+        padding: 12px 14px;
+    }
+}
+
