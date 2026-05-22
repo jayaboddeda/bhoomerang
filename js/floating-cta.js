@@ -1,9 +1,19 @@
 (function () {
     const callHref = 'tel:+918096562345';
     const whatsappHref = 'https://wa.me/8096562345?text=Hi%20Bhoomerang%20Media!%20I%E2%80%99m%20interested%20in%20growing%20my%20brand.%20Can%20we%20chat%20about%20a%20free%20consultation%20for%20my%20business?';
+    const locationHref = 'https://share.google/QcoJh7stgOiKzgDYP';
 
     function inject() {
         if (document.querySelector('.call-float') || document.querySelector('.whatsapp-float')) return;
+
+        const mapLink = document.createElement('a');
+        mapLink.href = locationHref;
+        mapLink.className = 'location-float';
+        mapLink.target = '_blank';
+        mapLink.rel = 'noopener';
+        mapLink.setAttribute('aria-label', 'View Bhoomerang Media location on Google Maps');
+        mapLink.title = 'View Location';
+        mapLink.innerHTML = '<i class="fa-solid fa-location-dot" aria-hidden="true"></i>';
 
         const callLink = document.createElement('a');
         callLink.href = callHref;
@@ -21,6 +31,7 @@
         waLink.title = 'Chat on WhatsApp';
         waLink.innerHTML = '<i class="fa-brands fa-whatsapp" aria-hidden="true"></i>';
 
+        document.body.appendChild(mapLink);
         document.body.appendChild(callLink);
         document.body.appendChild(waLink);
     }
