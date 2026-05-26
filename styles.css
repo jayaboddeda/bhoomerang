@@ -311,6 +311,18 @@ section {
     pointer-events: none;
 }
 
+/* On mobile, the landscape video gets badly zoomed/cropped when forced to
+   fill the tall portrait screen. Show the full frame at 100% width with its
+   natural height instead, centred vertically. */
+@media (max-width: 768px) {
+    .bg-video {
+        top: 50%;
+        height: auto;
+        transform: translateY(-50%);
+        object-fit: contain;
+    }
+}
+
 #chapter-1::after {
     content: '';
     position: absolute;
